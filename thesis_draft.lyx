@@ -1,0 +1,5017 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{subfig}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing double
+\use_hyperref true
+\pdf_author "Joshua Saunders"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+CONTROL STRATEGIES FOR MITIGATING TRAFFIC SHOCK WAVES UTILIZING CONNECTED
+ AND AUTONOMOUS VEHICLES
+\end_layout
+
+\begin_layout Date
+06/21/2018
+\end_layout
+
+\begin_layout Author
+Joshua Saunders
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abstract}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+In this research paper, we aim to develop and test various control algorithms
+ to mitigate shock waves in traffic streams consisting of connected and
+ autonomous vehicles (CAVs).
+ We first explain the formation of shock-waves with the help of mathematical
+ modeling and numerical simulation.
+ Further, we formulate an optimal control problem to mitigate shock waves
+ on a circular track consisting of CAVs.
+ We solve the optimal control problem using Pontryagin’s minimization principle.
+ We use entropy to measure the effectiveness of CAVs to reduce shock waves
+ (stop-and-go) waves on a circular track, thereby increasing throughput
+ and reducing emissions.
+ An optimal control law is also developed to minimize the error of the headway
+ between vehicles in a platoon.
+\end_layout
+
+\begin_layout Abstract
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgments
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Acknowledgments}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Acknowledge people here
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{List of Tables}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{List of Figures}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Motivation
+\end_layout
+
+\begin_layout Section
+Why Traffic Congestion Matters
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Transportation has played an integral role in human society from the very
+ beginning, allowing humans to colonize different geographical regions,
+ trade amongst different civilizations, and to spread ideas.
+ Initially, humans walked and carried items on their backs and heads.
+ Beasts of burden such as mules or oxen were then used which allowed for
+ more goods to be transported at a higher speed.
+ Then, roads were built and people and goods were carried by wheeled carts.
+ As transportation systems became more complex and advanced, people and
+ goods were able to be transported further and at greater speeds.
+\end_layout
+
+\begin_layout Standard
+Transportation has played an integral role in human society from the very
+ beginning, allowing humans to colonize different geographical regions,
+ trade amongst different civilizations, and to spread ideas.
+ Transport by land started by foot with people walking from place to place
+ carrying goods on their backs and heads.
+ By the early twentieth century, automobiles began to be mass produced in
+ America.
+ Initially they were seen as toys for the rich.
+ 
+\end_layout
+
+\begin_layout Standard
+Traffic congestion, air and noise pollution, and safety are common problems
+ that many cities face today.
+ It is estimated that 50% of the total population is living in cities, and
+ by 2050, this percentage is projected to grow over 70%, i.e.
+ over six billion people will live in cities and urban areas.
+ In 2014, U.S.
+ drivers drove over 2 trillion vehicle miles, with congestion costing over
+ 5 billion dollars on average for very large urban areas and over 191 million
+ dollars on average in small urban areas.
+ In 2014, there was a reported 5.9 million accidents by passenger vehicles
+ and the costs and accident rates are increasing on average across the nation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ntsaccidents"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The transportation engineering and planning communities are witnessing the
+ emergence of a new generation of traffic systems, also known as connected
+ and autonomous vehicles (CAVs).
+ Recent advancements in CAVs are expected to transform how people use transporta
+tion.
+ There is a growing interest in the research community to exploit the available
+ vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication
+ technologies in CAVs, to improve the efficiency and safety of traffic flow
+ while reducing emissions.
+ It is estimated that integration of CAVs will reduce about 40% of fatal
+ traffic accidents 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2016valuing"
+literal "false"
+
+\end_inset
+
+.
+ Aside from passenger and road safety, researchers also envision that CAV
+ technology will reduce congestion and fuel consumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fagnant2015preparing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The ability to communicate between vehicles improves the perception of the
+ driving environment and the quality of driving related decisions.
+ V2V communications provide detailed information about vehicle movements
+ and operation decisions (e.g.
+ speed and acceleration), while V2I communications provide detailed information
+ on road and weather conditions.
+ The CAV is also able to obtain information from adjacent vehicles and predict
+ the traffic stream parameters ahead of them (e.g., shockwave formations).
+ The availability of V2I communications provides information on breakdown
+ formations (e.g.
+ lane closure or crash), changes in the speed limit, work zone conditions,
+ and additional information 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "talebpour2016influence"
+literal "false"
+
+\end_inset
+
+.
+ User experiences are important for smoother transition to next generation
+ technologies.
+ Bansal and Kockelman performed a national survey to understand the future
+ vehicle preferences related to CAV technology 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bansal2017forecasting"
+literal "false"
+
+\end_inset
+
+.
+ As noted by the respondents, traffic sign recognition and left turn assist
+ was of no interest, as about 46% of users were not willing to pay for the
+ technologies to be added to their vehicles.
+ However, respondents were very interested in a blind-spot monitoring system.
+ As a result, many manufacturers implemented this technology in their vehicles.
+ About 54.4% of the respondents perceived CAVs as a useful advancement in
+ the near future.
+ Furthermore, 50.4% of the respondents were comfortable with their vehicle
+ transmitting information to other vehicles and 62.3% were willing to trust
+ technology companies.
+ Most users show signs of accepting the changes, and as CAV technology continues
+ to advance, it will provide a positive impact on the future of mobility.
+\end_layout
+
+\begin_layout Part
+Background
+\end_layout
+
+\begin_layout Section
+Trends in Automation
+\end_layout
+
+\begin_layout Standard
+Like many other industries, the automotive industry is benefiting from the
+ increasing capabilities and especially shrinking footprint of computers.
+ Processing power is getting cheaper and because of this very powerful computers
+ are able to fit into smaller volumes including the cramped spaces inside
+ of motor vehicles.
+ Not only are computers more powerful, smaller, and cheaper than ever before
+ so are sensors.
+ Lidar, radar, and cameras are (relatively) cheap, powerful, and have high
+ resolution.
+ Powerful computers and sensors in novel objects is fertile ground for innovatio
+n.
+ Large automakers and smaller startups (many funded by large companies and/or
+ investors) are in a race to create the first autonomous vehicle.
+\end_layout
+
+\begin_layout Subsection
+Current Capabilities
+\end_layout
+
+\begin_layout Standard
+SAE International breaks down autonomous vehicles into six automation levels.
+ These levels are given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:sae-automation-levels"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and are sourced from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nhtsaautomatedlevels"
+literal "false"
+
+\end_inset
+
+.
+ The levels of automation range from the human driver being completely in
+ control 100% of the time (Level 0) to an Advanced Driver System (ADS) is
+ fully in control with no human intervention necessary (Level 5).
+ A great example of advancing automation in the automotive industry is Tesla.
+ 
+\end_layout
+
+\begin_layout Standard
+Currently, Tesla's Autopilot (which is one of the most advanced ADS on the
+ market) is at Level 2 which means that Tesla vehicles are capable of steering
+ within a lane, maintaining a speed relative to other vehicles, assisting
+ lane changes, parking, and summoning to and from garage.
+ Tesla will continue to update the Autopilot on its vehicles (which Tesla
+ will the Enhanced Autopilot), steadily adding new features such as automatic
+ lane keeping, speed matching, lane changing, freeway exiting, parking (when
+ near a parking space).
+ Like many other car-makers, Tesla plans to eventually have its cars be
+ self-driving 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "teslaautopilotpresskit,teslaautopilot"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="15col%">
+<column alignment="center" valignment="top" width="78col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Automation Level
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Who does what, when
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The human driver does all the driving.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An advanced driver assistance system (ADAS) on the vehicle can sometimes
+ assist the human driver with either steering or braking/accelerating, but
+ not both simultaneously.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An ADAS on the vehicle can itself actually control both steering and braking/acc
+elerating simultaneously under some circumstances.
+ The human driver must continue to pay full attention (monitor the driving
+ environment) at all times and perform the rest of the driving task.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An Automated Driving System (ADS) on the vehicle can itself perform all
+ aspects of the driving task under some circumstances.
+ In those circumstances, the human driver must be ready to take back control
+ at any time when the ADS requests the human driver to do so.
+ In all other circumstances, the human driver performs the driving task.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An ADS on the vehicle can itself perform all driving tasks and monitor the
+ driving environment essentially, do all the driving in certain circumstances.
+ The human need not pay attention in those circumstances.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An Automated Driving System (ADS) on the vehicle can do all the driving
+ in all circumstances.
+ The human occupants are just passengers and need never be involved in driving.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+SAE International automation levels
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:sae-automation-levels"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Research and Testing
+\end_layout
+
+\begin_layout Standard
+There are many companies that are competing in the race to the elusive self-driv
+ing car.
+ Some of the biggest names are Uber, Waymo (formerly known as the Google
+ self-driving car project), NVIDIA Corporation, and major car manufacturers
+ such as Honda, GM Cruise LLC, and Tesla 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2018permitholders"
+literal "false"
+
+\end_inset
+
+.
+ Because of the secretive nature of industrial research it's difficult to
+ determine just how far along each company is towards achieving full autonomy
+ for self-driving cars.
+ However, one way to determine how far along companies are towards realizing
+ a fully autonomous (Level 5) car is to examine documents that they are
+ required to release.
+ One such document is the Autonomous Vehicle Disengagement Report that the
+ California Department of Motor Vehicles requires as a part of the licensing
+ requirements for performing field tests on California roads under the Autonomou
+s Vehicle Testing Program.
+\end_layout
+
+\begin_layout Standard
+Autonomous Vehicle Disengagement Reports contain the number of miles driven
+ autonomously on public roads in California per month and disengagement
+ events and related information.
+ During field tests of autonomous vehicles, a driver (test operator) must
+ be in the driver's seat of the vehicle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2016autovels"
+literal "false"
+
+\end_inset
+
+.
+ A disengagement event is 
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
+a deactivation of the autonomous mode when a failure of the autonomous technolog
+y is detected or when the safe operation of the vehicle requires that the
+ autonomous vehicle test driver disengage the autonomous mode and take immediate
+ manual control of the vehicle, or in the case of driverless vehicles, when
+ the safety of the vehicle, the occupants of the vehicle, or the public
+ requires that the autonomous technology be deactivated.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmvadoptedregulatorytext"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The information related to this event is what initiated the event (driver
+ or autonomous system), the location of the event, and a description of
+ the event 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2017disengagement"
+literal "false"
+
+\end_inset
+
+.
+ A very simple (although perhaps a bit naive) method is to examine all of
+ the Autonomous Vehicle Disengagement Reports for each company for every
+ year.
+ By doing so, a picture of each company's progress begins to emerge.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Here, put a plot of miles driven per year for the top 5 (?) testers and
+ a plot for miles per disengagement as a way to judge progress
+\end_layout
+
+\begin_layout Standard
+It's interesting to note that Tesla is not included in 2017.
+ In that year's report Tesla states that it has not had any disengagement
+ events.
+ This is not because Tesla is not performing any autonomous tests, it's
+ just not performing any autonomous tests 
+\emph on
+as defined by California law
+\emph default
+.
+ Tesla is performing autonomous tests via 
+\begin_inset Quotes eld
+\end_inset
+
+simulation, in laboratories, on test tracks, and on public roads in various
+ locations around the world
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tesla2017vehicletestdata"
+literal "false"
+
+\end_inset
+
+.
+ In addition, it's testing its control algorithms against the human drivers
+ of its vehicles out in field and thus considering its hundres of thousands
+ of customers' vehicles part of its test fleet.
+ By doing this Tesla has been able to acquire billions of test miles in
+ a very short time.
+ This is accomplished by the vehicles running in 
+\begin_inset Quotes eld
+\end_inset
+
+shadow mode
+\begin_inset Quotes erd
+\end_inset
+
+ which allows Tesla to collect telemetry data such as braking and acceleration
+ and Autopilot data and then uses this to develop and test its control algorithm
+s safely as none of the algorithms actuate the vehicle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "teslaprivacypolicy,tesla2017vehicletestdata"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Integration of AI
+\end_layout
+
+\begin_layout Standard
+According to Chen et al, in much of industry, mediated perception techniques
+ for vision-based autonomous driving systems are used 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ Mediated perception techniques use subcomponents to recognize traffic data
+ such as other vehicles, lanes, traffic signs and signals, and pedestrians.
+ This data is then combined to create a representation of the traffic scenario
+ such as splines for lane detections and bounding boxes for vehicle detections.
+ An AI-based control system can then take in this representation, determine
+ appropriate trajectories, and actuate the vehicle.
+ Chen et al.
+ describe a few problems with this technique, however.
+ 
+\end_layout
+
+\begin_layout Standard
+First, the representation that is created can be too 
+\begin_inset Quotes eld
+\end_inset
+
+rich
+\begin_inset Quotes erd
+\end_inset
+
+ meaning that not all of the information in the representation is necessary
+ for the AI-based controller.
+ Second, AI-controllers don't directly use this representation (i.e., it has
+ to be transformed to some other representation that the controller 
+\emph on
+can
+\emph default
+ use) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ These transformations from splines and bounding boxes into useful information
+ can create noise and errors that add more uncertainty to the mix.
+ Third, structured details from the traffic scene such as straight edges
+ in buildings can cause false positives for other vehicles.
+\end_layout
+
+\begin_layout Standard
+Another technique is behavior reflex approach 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ In this technique, sensory input (e.g., radar, lidar, and images) is mapped
+ to driving actions (e.g., steering angles and accelerations or braking) using
+ neural networks.
+ Although straightforward, this technique has flaws.
+ First, driving conditions are never the same.
+ Even if the same cars are in the same location at the same time of day,
+ people have different moods and intentions and may exhibit different a
+ behavior.
+ Second, the neural network must process an entire image and determine the
+ relevant parts which is difficult for the network.
+\end_layout
+
+\begin_layout Subsection
+Obstacles and Limitations
+\end_layout
+
+\begin_layout Standard
+A hurdle for obtaining level 5 autonomy is that of data.
+ Training neural networks takes a lot of data, which is why we see manufacturers
+ performing extensive field tests.
+ Also, it is necessary to prove that these vehicles are safe and currently
+ the way to prove this is through real-world tests.
+ The RAND Corporation estimates that in order for autonomous vehicles to
+ match the safety rate of human drivers (about 1 fatality in 100 million
+ miles driven) autonomous vehicles need to have in the range of billions
+ to hundreds of billions of test miles driven, which could take hundreds
+ (or even thousands) of years depending on the size of the test fleet and
+ how much better it is desired for the autonomous vehicles to be than human
+ drivers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kalrapaddoc2016rand"
+literal "false"
+
+\end_inset
+
+.
+ This is why Tesla is running tests using its customers' vehicles as its
+ own test fleet.
+ The more vehicles it has, the faster Tesla can improve and prove its technology.
+\end_layout
+
+\begin_layout Standard
+Another limitation of the current implementation of autonomy in industry
+ is the lack of coordination of autonomous vehicles and sharing of information.
+ As far publications go, no car companies are talking about if and how their
+ vehicles will share information with infrastructure (V2I) and each other
+ (V2V).
+ Some companies, such as Tesla and Waymo, are discussing about eventually
+ having an autonomous ride-hailing service 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "waymoridehailing,teslamasterplan2"
+literal "false"
+
+\end_inset
+
+.
+ However, the lack of sharing information about the vehicles and coordination
+ with other vehicles on the road (including private vehicles) can prove
+ to be problematic for the larger picture.
+ Connected Autonomous Vehicles (CAVs) can increase the throughput and efficiency
+ of roads and highways, but a necessity is the sharing of information between
+ vehicles on the road due to faster response times and the shorter distances
+ (headways) needed between vehicles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rios2017automated"
+literal "false"
+
+\end_inset
+
+.
+ If this information is not shared then it will be difficult to glean these
+ efficiencies and much of the improvements of autonomous vehicles will not
+ be realized.
+\end_layout
+
+\begin_layout Section
+Overview of Traffic Flow Theory
+\end_layout
+
+\begin_layout Standard
+Traffic may be modeled using different levels of models such as macroscopic,
+ microscopic, mesoscopic, and aggregation and disaggregation levels 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ Macroscopic models describe the aggregate behavior of traffic, similar
+ to how hydrodynamic models describe the aggregate behavior of particles
+ in liquids and gases.
+ Microscopic models on the other hand describe the interactions and reactions
+ of single vehicles with each other similar to multi-particle systems.
+ Mesoscopic models are hybrids of macroscopic and microscopic models.
+ Finally, aggregation and disaggregation is the use of microscopic quantities
+ to describe macroscopic ones (aggregation) and using macroscopic quantities
+ to describe microscopic ones (disaggregation).
+\end_layout
+
+\begin_layout Standard
+The macroscopic quantities that are of interest are the speed (
+\begin_inset Formula $V$
+\end_inset
+
+), density (
+\begin_inset Formula $\rho$
+\end_inset
+
+), and flow (
+\begin_inset Formula $Q$
+\end_inset
+
+) of the vehicles.
+ There are several different definitions of speed, but essentially speed
+ is the distance traveled per unit time.
+ Density is defined as the number of vehicles per unit length of road.
+ Finally, flow is defined as the number of vehicles passing through a certain
+ point in space per unit time.
+ Because these macroscopic quantities.
+ These quantities are related to each other through two charts, combined
+ called the fundamental diagram.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Insert an example of the fundamental diagram.
+ Explain them
+\end_layout
+
+\begin_layout Subsection
+Shock Waves
+\end_layout
+
+\begin_layout Standard
+A more mathematical treatment of traffic shock waves will be given later
+ on, however, traffic shock waves can be understood through the straightforward
+ idea of positive feedback 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ In general, drivers try to keep a safe distance between themselves and
+ the vehicle ahead of them.
+ If they drive at velocity 
+\begin_inset Formula $v$
+\end_inset
+
+ and have a response 
+\begin_inset Formula $T$
+\end_inset
+
+, then the minimum safe separation distance, 
+\begin_inset Formula $d_{min}$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{\text{min}}=Tv\label{eq:shock-wave-min-safe-sep}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If all drivers are driving at a safe distance from one another, then the
+ density, 
+\begin_inset Formula $ρ$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho=\frac{1}{\ell+Tv}\label{eq:shock-wave-traffic-density}
+\end{equation}
+
+\end_inset
+
+and the throughput, 
+\begin_inset Formula $r$
+\end_inset
+
+, is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+r=\frac{v}{\ell+Tv}\label{eq:shock-wave-throughput}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instabilities, in the form of waves in density and speed, grow in amplitude
+ and may grow until the speed of the vehicles approach zero 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ This phenomena can understood through positive feedback.
+ Lower vehicle speeds cause higher traffic densities, which in turn cause
+ lower speeds.
+ On the other hand, higher speeds cause lower traffic densities, which cause
+ higher speeds and so on (of course taking into account speed limits and
+ safety considerations).
+ Therefore, we can see that the system is amplifying the characteristics
+ of traffic (vehicle speed and traffic density) rather than dampening them.
+ This is characteristic of a system with positive feedback.
+ In addition to the system having positive feedback, after a certain density,
+ drivers braking can cause the vehicles behind them to brake, propagating
+ the wave backwards through the roadway.
+\end_layout
+
+\begin_layout Standard
+Horn states that the root of the problem stems from the drivers’ feedback
+ and the flow of information.
+ Drivers tend to perform actions that benefit themselves, but tend to be
+ detrimental to other drivers.
+ The flow of information on the road from vehicle to vehicle is unidirectional
+ from the front vehicle to the back.
+ Each vehicle adjusts its acceleration based on the relative position and
+ velocity of the vehicle immediately ahead of it.
+ The deceleration coupled with the backwards, unidirectional flow of information
+ creates an effect that is similar to a shock wave is which also moves backwards
+ through traffic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Vehicle Platoons
+\end_layout
+
+\begin_layout Standard
+A vehicle platoon consists of a string of vehicles that travel along the
+ road, acting as one single unit, with each car following one another closely
+ at normal highway speeds, as shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:n-vehicle-platoon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation,kavathekar2011vehicle"
+literal "false"
+
+\end_inset
+
+.
+ The 
+\begin_inset Formula $1^{st}$
+\end_inset
+
+ car is the leader and the subsequent cars are followers.
+ Vehicle platooning is a promising strategy that can lead to significant
+ fuel savings and emission reduction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2018modeling"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/platooning-straight.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An 
+\begin_inset Formula $n$
+\end_inset
+
+-vehicle platoon formation
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:n-vehicle-platoon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platoons are an ideal remedy to driving situations for peak traffic conditions
+ such as at intersections and highways.
+ Traffic congestion is caused by a cascade of driver decelerations down
+ a roadway which, in turn, causes an increase in density of vehicles causing
+ more driver decelerations, and so on.
+ These cascaded decelerations cause a shock wave to move backwards through
+ traffic that can be sustained even after the cause of the shock wave has
+ disappeared.
+ By sharing information throughout and coordinating vehicles within a platoon,
+ these shock waves can be reduced.
+ This increases highway capacity by a factor of 2 or 3, relieves congestion,
+ reduces travel times, and decreases fuel consumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/ring-road.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Slot car race track with five vehicles.
+ The arrows indicate the instantaneous velocity vector.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ring-road"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CAVs
+\end_layout
+
+\begin_layout Section
+Mathematical Background
+\end_layout
+
+\begin_layout Subsection
+Modeling Traffic
+\end_layout
+
+\begin_layout Standard
+Here, traffic will be modeled using a macroscopic model using a hydrodynamic
+ flow-density relation.
+ Before the model is developed it is important define the parameters that
+ will be used, which are given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:traffic-flow-model-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ below.
+ It is also important to note that each of the parameters in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:traffic-flow-model-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ have different forms (such as average, effective, and total).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traffic density
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traffic flow
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lane-averaged, or effective speed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of lanes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of vehicles
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model parameters for macroscopic model of traffic flow
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:traffic-flow-model-parameters"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Macroscopic Models
+\end_layout
+
+\begin_layout Subsubsection*
+Traffic Flow Characteristics
+\end_layout
+
+\begin_layout Subsubsection*
+Density
+\end_layout
+
+\begin_layout Standard
+Density, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, is defined as the number of vehicles per length of road and can either
+ be for 
+\end_layout
+
+\begin_layout Itemize
+a single lane: 
+\begin_inset Formula $\rho_{i}\left(x,t\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $i=1,\dots,n$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of lanes
+\end_layout
+
+\begin_layout Itemize
+total density over all lanes of a length of road: 
+\begin_inset Formula $\rho_{tot}\left(x,t\right)=\sum_{i=1}^{I}\rho_{i}\left(x,t\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+lane-averaged density: 
+\begin_inset Formula $\rho\left(x,t\right)=\nicefrac{\rho_{tot}\left(x,t\right)}{I}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Velocity
+\end_layout
+
+\begin_layout Standard
+Velocity, 
+\begin_inset Formula $V$
+\end_inset
+
+, is defined in terms as a lane-averaged (or, effective) speed and is given
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V\left(x,t\right)=\sum_{i=1}^{I}\frac{\rho_{i}\left(x,t\right)}{\rho_{tot}\left(x,t\right)}V_{i}\left(x,t\right)\label{eq:lane-average-speed}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{i}\left(x,t\right)$
+\end_inset
+
+ is the local speed of lane 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Hydrodynamic Flow Relation
+\end_layout
+
+\begin_layout Standard
+Flow, 
+\begin_inset Formula $Q$
+\end_inset
+
+, is defined as the number of vehicles per unit time and is the product
+ between density and velocity, as shown below
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q\left(x,y\right)=\rho\left(x,t\right)V\left(x,t\right)\label{eq:lane-average-flow}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Flow can be given in terms of a single lane, all lanes, or as a lane-average
+ (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Many times the flow in terms of all lanes will be used as the conservation
+ of vehicles holds only for the total density, 
+\begin_inset Formula $\rho_{tot}$
+\end_inset
+
+, and not for each lane individually (vehicles can change lanes afterall).
+ It should be noted that this relation holds for all types of macroscopic
+ models, but not for all types of roads.
+ In other words, the geometry of the road matters but not the model.
+ For example, on- and off-ramps and a change in the number of lanes will
+ change Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Continuity Equation
+\end_layout
+
+\begin_layout Standard
+In physics, the continuity equation is a consequence of the conservation
+ of matter that relates the density and velocity of a fluid 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "taylor2005classicalmechanics"
+literal "false"
+
+\end_inset
+
+.
+ Its analog in electromagnetism is the conservation of electric charge 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "taylor2005classicalmechanics"
+literal "false"
+
+\end_inset
+
+.
+ In traffic flow, there is an analog to the conservation of matter: the
+ 
+\emph on
+conservation of vehicles
+\emph default
+.
+ On a certain length of road, the number of vehicles is conserved and given
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+n\left(t\right)=\int_{x}^{x+\Delta x}\rho_{tot}\left(x',t\right)dx'\approx\rho_{tot}\left(x,t\right)\Delta x\label{eq:number-of-vehicles-on-road-length}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a road section with no on- or off-ramps and no change in number of lanes
+ (i.e., a homogeneous road section) of length 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, the continuity equation can be derived as follows (as given in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{dn}{dt}= & \,Q_{in}\left(x,t\right)-Q_{out}\left(x,t\right)\\
+= & \,Q_{tot}\left(x,t\right)-Q_{tot}\left(x+\Delta x,t\right)\\
+= & \,\frac{\partial}{\partial t}\left(\rho_{tot}\,\Delta x\right)
+\end{aligned}
+\label{eq:num-vehicles-time-derivative}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rewriting Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:num-vehicles-time-derivative"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gives
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{\partial\rho_{tot}}{\partial t}=\, & \frac{1}{\Delta x}\frac{dn}{dt}\\
+= & -\left(\frac{Q_{tot}\left(x+\Delta x,t\right)-Q_{tot}\left(x,t\right)}{\Delta x}\right)
+\end{aligned}
+\label{eq:partial-rho-wrt-time}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\lim_{\Delta x\rightarrow0}\,\frac{\partial\rho_{tot}}{\partial t}= & -\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}\\
+\frac{\partial\rho_{tot}}{\partial t}\approx & -\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}
+\end{aligned}
+\label{eq:limit-of-del-x-of-total-density}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, rewriting Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:limit-of-del-x-of-total-density"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we get
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho_{tot}\left(x,t\right)}{\partial t}+\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}=0\label{eq:continuity-equation-in-terms-of-q}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can use Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (the hydrodynamic flow relation) to rewrite Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:continuity-equation-in-terms-of-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (and using the fact that 
+\begin_inset Formula $\frac{\partial Q_{tot}}{\partial x}=\frac{\partial\rho_{tot}V}{\partial x}$
+\end_inset
+
+) and arrive at the continuity equation
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho_{tot}}{\partial t}+\frac{\partial\rho_{tot}V}{\partial x}=0\qquad\text{or}\qquad\frac{\partial\rho}{\partial t}+\frac{\partial\rho V}{\partial x}=0}\label{eq:continuity-equation-in-terms-of-density}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lighthill-Whitham-Richards Models
+\end_layout
+
+\begin_layout Standard
+Lighthill-Whitham-Richards (LWR) models are first-order models, i.e., they
+ don't include acceleration, and they only are the same except for the form
+ of their respective fundamental diagrams and mathematical representation
+ which is determined by the modeling of the flow and speed only 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ LWR models give flow and velocity in a functional form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}Q\left(x,t\right)= & Q_{e}\left(\rho\left(x,t\right)\right)\\
+V\left(x,t\right)= & V_{e}\left(\rho\left(x,t\right)\right)
+\end{aligned}
+\label{eq:lwr-flow-speed-functional-form}
+\end{equation}
+
+\end_inset
+
+The equations in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-flow-speed-functional-form"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ assume that local flow (
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+) or speed (
+\begin_inset Formula $V_{i}$
+\end_inset
+
+) are always in equilibrium with respect to the actual density, 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ It also assumes that the flow and local velocity changes instantaneously
+ to follow the density.
+\end_layout
+
+\begin_layout Standard
+Using the continuity equation, Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:continuity-equation-in-terms-of-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the LWR model can be defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho}{\partial t}+\frac{dQ_{e}\left(\rho\right)}{d\rho}\frac{\partial\rho}{\partial x}=0}\label{eq:lwr-cont-eq-model-q}
+\end{equation}
+
+\end_inset
+
+if we recognize that 
+\begin_inset Formula $\frac{\partial Q_{e}\left(\rho\right)}{\partial x}=\frac{dQ_{e}\left(\rho\right)}{d\rho}\frac{\partial\rho}{\partial x}$
+\end_inset
+
+ due to the chain rule.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-cont-eq-model-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can also be written as 
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho}{\partial t}+\left(V_{e}+\rho\frac{dV_{e}}{d\rho}\right)\frac{\partial\rho}{\partial x}=0}\label{eq:lwr-cont-eq-model-v}
+\end{equation}
+
+\end_inset
+
+which is the LWR model.
+\end_layout
+
+\begin_layout Subsubsection*
+Fundamental Diagram
+\end_layout
+
+\begin_layout Standard
+The fundamental diagram is determined by fitting empirical data, but its
+ basic shape is determined by the definitions given earlier.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Show fundamental diagram...
+\end_layout
+
+\begin_layout Subsection
+Microscopic Models
+\end_layout
+
+\begin_layout Standard
+Microscopic models take into account interactions between vehicles and the
+ reactions of drivers.
+ Many first-order models have the following (typical kinematic model) variables
+ for each 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $l_{i}$
+\end_inset
+
+: length of the vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+: position
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $v_{i}$
+\end_inset
+
+: velocity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}$
+\end_inset
+
+: acceleration
+\end_layout
+
+\begin_layout Quote
+Some models also include the headway (bumper-to-bumper distance of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+vehicles), 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, as well.
+\end_layout
+
+\begin_layout Subsubsection*
+Traffic Flow Characteristics
+\end_layout
+
+\begin_layout Standard
+Mesoscopic models can be used to relate microscopic parameters to macroscopic
+ ones such as lane-average speed, density, and flow.
+\end_layout
+
+\begin_layout Subsection
+Theory of Traffic Shock Waves
+\end_layout
+
+\begin_layout Standard
+The formation of traffic shock waves can be explained using the LWR model,
+ although with some limitation.
+ Let's define the initial density of the traffic flow to be 
+\begin_inset Formula $\rho\left(x,0\right)=\rho_{0}\left(x\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho\left(x,t\right)=\rho_{0}\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{c}$
+\end_inset
+
+ is the propagation velocity of the density waves.
+ We can see that 
+\begin_inset Formula $\frac{\partial\rho}{\partial t}=-\widetilde{c}\rho_{0}'\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial\rho}{\partial x}=\rho_{0}'\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ which, when combined with Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-cont-eq-model-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (the LWR model) leads to 
+\begin_inset Formula 
+\[
+-\widetilde{c}\,\rho_{0}'\left(x-\widetilde{c}t\right)+\frac{dQ_{e}}{d\rho}\rho_{0}'\left(x-\widetilde{c}t\right)=0
+\]
+
+\end_inset
+
+or
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boxed{\widetilde{c}\left(\rho\right)=\frac{dQ_{e}}{d\rho}=\frac{d\left(\rho V_{e}\left(\rho\right)\right)}{d\rho}}\label{eq:lwr-density-prop-vel}
+\end{equation}
+
+\end_inset
+
+This shows that density waves propagate at a velocity dependent on the change
+ in the flow of traffic.
+ This important result will be used to help explain the formation of traffic
+ shock waves later.
+ If we examine the density wave propagation from the point of view of driver
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\widetilde{c}_{\text{rel}}\left(\rho\right)=\, & \widetilde{c}\left(\rho\right)-V\\
+=\, & \widetilde{c}\left(\rho\right)-V_{e}\left(\rho\right)\\
+=\, & \rho V'_{e}\left(\rho\right)
+\end{aligned}
+\label{eq:lwr-rel-density-prop-vel}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula $V'_{e}\left(\rho\right)<0$
+\end_inset
+
+, thus, from the driver's perspective when 
+\begin_inset Formula $\widetilde{c}_{\text{rel}}\left(\rho\right)\leq0$
+\end_inset
+
+ the density variations propagate backwards.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Insert image for use in derivation below
+\end_layout
+
+\begin_layout Standard
+For a single-lane highway, let 
+\begin_inset Formula $n=\rho_{1}x_{12}+\rho_{2}\left(L-x_{12}\right)$
+\end_inset
+
+ be the number of vehicles passing through a sufficiently small section
+ of road.
+ Then,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\frac{dn}{dt}=\, & \frac{d\left(\rho_{1}x_{12}\right)}{dt}+\frac{d\left(\rho_{2}\left(L-x_{12}\right)\right)}{dt}\\
+=\, & \rho_{1}\frac{dx_{12}}{dt}-\rho_{2}\frac{dx_{12}}{dt}\\
+=\, & \left(\rho_{1}-\rho_{2}\right)c_{12}\\
+=\, & Q_{1}-Q_{2}\\
+=\, & Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)\\
+\therefore\quad\left(\rho_{1}-\rho_{2}\right)c_{12}=\, & Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)
+\end{aligned}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{12}=\frac{dx_{12}}{dt}$
+\end_inset
+
+.
+ Finally, we arrive at
+\begin_inset Formula 
+\begin{equation}
+\boxed{c_{12}=\,\frac{Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)}{\rho_{1}-\rho_{2}}}\label{eq:density-wave-propagation-velocity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A great property of the LWR model is that velocities can be determined directly
+ from the fundamental diagram.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{c}\left(\rho\right)=Q_{e}'\left(\rho\right)$
+\end_inset
+
+: propagation velocity density variations (slope of the fundamental diagram)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c_{12}$
+\end_inset
+
+: propagation velocity of shock wave fronts (slope of secant line of connecting
+ points of the fundamental diagram)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{e}\left(\rho\right)=\frac{Q_{e}\left(\rho\right)}{\rho}$
+\end_inset
+
+: vehicle speed (slope of secant line from origin to corresponding point
+ on fundamental diagram)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Show the fundamental diagram here and different parts of it.
+ Explain where free and congested traffic is and above points in list.
+\end_layout
+
+\begin_layout Subsection
+Driver Models
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Driver-Models"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following is a discussion on two different microscopic models.
+\end_layout
+
+\begin_layout Subsubsection*
+Human Driver Model
+\end_layout
+
+\begin_layout Standard
+To mimic the traffic shock waves to be controlled, a human driver model
+ is used.
+ The dynamics of the human driver is from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014optimal,orosz2010traffic"
+literal "false"
+
+\end_inset
+
+ and is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\dot{h}_{i}\left(t\right)=\, & v_{i+1}\left(t\right)-v_{i}\left(t\right)\nonumber \\
+\dot{v}_{i}\left(t\right)=\, & \alpha_{i}\left(V_{i}\left(h_{i}\left(t\right)\right)-v_{i}\left(t\right)\right)\label{eq:human-driver-model-cosine}\\
++\, & \beta_{i}\left(v_{i+1}\left(t\right)-v_{i}\left(t\right)\right)\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{i}\left(h\right)$
+\end_inset
+
+ is the distance-dependent velocity, or range policy, given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+V_{i}\left(h\right) & =\begin{cases}
+0 & \text{if }0\leq h_{i}\leq h_{stop}\\
+\frac{v_{max}}{2}A\left(h_{i}\left(t\right)\right) & \text{if }h_{stop}<h_{i}<h_{go}\\
+v_{max} & \text{if }h_{go}\leq h_{i}
+\end{cases}\label{eq:range-policy}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $A\left(h_{i}\left(t\right)\right)=\left(1-\cos\left(\pi\frac{h_{i}-h_{stop}}{h_{go}-h_{stop}}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $v_{i}\left(t\right)$
+\end_inset
+
+ term of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:human-driver-model-cosine"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the 
+\begin_inset Formula $α_{i}$
+\end_inset
+
+ term can be thought of how much the human driver prefers to match the speed
+ given by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:range-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and the 
+\begin_inset Formula $β_{i}$
+\end_inset
+
+ term can be thought of how much the human driver prefers to match the vehicle
+ immediately ahead of it.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Intelligent Driver Model
+\end_layout
+
+\begin_layout Standard
+Treiber and Kesting describe the Intelligent Driver Model (IDM) as 
+\begin_inset Quotes eld
+\end_inset
+
+probably the simplest complete and accident-free model producing acceleration
+ profiles and a plausible behavior in essentially all single-lane traffic
+ situations
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ The IDM defines a safe headway, 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+, and time gap, 
+\begin_inset Formula $T$
+\end_inset
+
+, respective to the lead vehicle, has soft braking maneuvers, and smooth
+ transitions between driving modes.
+ The mathematical model for the IDM is 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\dot{x}_{i}=\, & v_{i}\\
+\dot{v}_{i}=\, & a\left[1-\left(\frac{v}{v_{0}}\right)^{\delta}-\left(\frac{s^{*}\left(v,\Delta v\right)}{s}\right)^{2}\right]\\
+s^{*}\left(v,\Delta v\right)=\, & s_{0}+max\left(0,vT+\frac{v\Delta v}{2\sqrt{ab}}\right)
+\end{aligned}
+\label{eq:intelligent-driver-model}
+\end{equation}
+
+\end_inset
+
+Treiber and Kesting break 
+\begin_inset Formula $s^{*}$
+\end_inset
+
+ into two components: the equilibrium term 
+\begin_inset Formula $s_{0}+vT$
+\end_inset
+
+ and the dynamical term 
+\begin_inset Formula $\frac{v\Delta v}{2\sqrt{ab}}$
+\end_inset
+
+.
+ The dynamical term takes care of the situation when the vehicle is approaching
+ the lead vehicle
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Desired speed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time gap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Desired headway
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceleration exponent
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceleration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comfortable deceleration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model parameters for the Intelligent Driver Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:headway-velocity-platoon-sim"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ a) and b) show the headways and speeds of three vehicles during simulated
+ traffic shock waves, respectively.
+ 
+\end_layout
+
+\begin_layout Subsection
+Cellular Automata
+\end_layout
+
+\begin_layout Standard
+Cellular automata are simple objects that have cells, grid, and neighborhood
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shiffman2012natureofcode"
+literal "false"
+
+\end_inset
+
+.
+ Cellular automata 
+\begin_inset Quotes eld
+\end_inset
+
+evolve
+\begin_inset Quotes erd
+\end_inset
+
+ by a simple set of rules.
+ Each generation of the cellular automaton updates its state by examining
+ the previous state (generation) and using a simple rule, each cell in the
+ automaton is updated.
+ Each cell represents a position on the road and a 
+\begin_inset Formula $0$
+\end_inset
+
+ represents the lack of a vehicle and a 
+\begin_inset Formula $1$
+\end_inset
+
+ represents a vehicle.
+ A simplistic model of traffic using a cellular automaton is Rule 184 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ Rules are numbered 0 to 255 and are transformed into binary then a simple
+ truth table is used to define the evolution of the automaton.
+ In the new generation, each cell examines its and its neighbors' previous
+ states and, based on the rule's truth table, is either occupied (
+\begin_inset Formula $1$
+\end_inset
+
+) or empty (
+\begin_inset Formula $0$
+\end_inset
+
+).
+ The truth table for Rule 184 is given in Table below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Previous states
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+New state
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+011
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+101
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+110
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+111
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Truth table for Rule 184.
+ The left column is the cell's previous state (center number) and its neighbors
+ states.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rule-184-rule-set"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the simple rule set above with a random initial state, a surprisingly
+ complex simulation of traffic is created and shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:traffic-simulation-using-rule-184"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ It is important to note that each row in the figure is one generation of
+ the traffic simulation.
+ Therefore, one row after another is another time step in the simulation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/ca-rule-184-screen-only.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cellular automaton model of traffic simulation using Rule 184
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:traffic-simulation-using-rule-184"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Connected Cruise Control Model
+\end_layout
+
+\begin_layout Standard
+Consider the system shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ring-road"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ A chain of 
+\begin_inset Formula $n$
+\end_inset
+
+ vehicles, i.e., a platoon of vehicles, traveling on a circular track.
+ The vehicles implement a Connected Cruise Control (CCC) algorithm given
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014optimal"
+literal "false"
+
+\end_inset
+
+.
+ To simplify the model, only drivers with identical (homogeneous) characteristic
+s are considered.
+ In the CCC algorithm, headway and velocity information is shared between
+ all vehicles via a V2V and V2I communication scheme.
+ The dynamics of the CCC vehicles are given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\dot{h}_{i}= & \,v_{i+1}\left(t\right)-v_{i}\left(t\right)\\
+\dot{v}_{i}= & \,u_{i}\left(t\right)
+\end{aligned}
+\label{eq:optimal-control-dynamics}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ is the headway (bumper-to-bumper distance) between the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+ vehicles, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is the control action 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014optimal"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part
+Literature Review
+\end_layout
+
+\begin_layout Standard
+Traffic research with vehicle platoons extends back to at least the 1950s
+ with major development taking off in the 1990s a 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "futuretruckprogram,helly1959simulation"
+literal "false"
+
+\end_inset
+
+.
+ Currently, there has been an interest in research regarding modeling lane
+ changing, control of platoons at intersections, and string stability of
+ platoons.
+ Much work with vehicle platoons has been completed in recent years.
+ There are two different types of methods of coordinating vehicles that
+ have been proposed in current research: centralized and decentralized coordinat
+ion.
+ In decentralized approaches, information is shared from vehicle to vehicle
+ and in centralized approaches information is coordinated through a global
+ coordinator.
+ For example, in highway merging problems decentralized approaches handle
+ each vehicle as an autonomous entity that aims to maximize efficiency.
+ On the other hand, in centralized approaches vehicles are controlled by
+ a global agent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rios2017survey"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The efficiency of traffic flow was quantified by Stern et.
+ al.
+ Experiments were conducted on a circular track as it represents an infinitely
+ long straight track making it simple to identify stop and go waves (i.e.,
+ shock waves).
+ In the experiments, consisting of more than twenty non-autonomous vehicles,
+ uniform speed could not be maintained.
+ With the introduction of an autonomous vehicle at the front of the formation
+ the vehicles reached the uniform, desired speed.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stern2017dissipation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kachroo et.
+ al.
+ used Mean Field Games and Radon measure with connected and normal vehicles
+ to analyze hetergeneous traffic on a circular track.
+ The connected vehicles were treated as discrete agents which could be used
+ to control the overall traffic streams and entropy was used as a measure
+ of traffic flow efficiency.
+ Their analysis included the effect of various penetration levels of CAVs
+ in traffic stream, their placement, and various sizes of circular track.
+ It was shown that the use of connected vehicles improved the efficiency
+ by lowering the entropy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kachroo2017multiscale"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part
+Hardware
+\end_layout
+
+\begin_layout Standard
+Field trials for testing of communication protocols and control algorithms
+ require large-scale setup, posing safety issues for those driving on roads
+ as well as pedestrians, and requires funding to conduct the experimentation.
+ Alternate to actual field setups are simulation studies using virtual micro
+ traffic simulators, or designing a macro simulator in coding environment
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kachroo2017multiscale"
+literal "false"
+
+\end_inset
+
+.
+ Nevertheless, these simulations are associated with shortcomings in terms
+ of actual modeling and conditions.
+ There is a strong need to evaluate potential CAV applications via small-scale
+ testbeds.
+\end_layout
+
+\begin_layout Standard
+Conducting vehicle platooning experiments can be quite expensive and can
+ often require a collaboration or sponsorship from industry.
+ For example, Lidström et.
+ al.
+ collaborated with the Volvo Car Corporation during Grand Cooperative Driving
+ Challenge (GCDC) which took place in the Netherlands in 2011.
+ In their collaboration with the Volvo corporation, Lidström et.
+ al.
+ were lent a recent-generation Volvo S60 with a sensor package including
+ radar, lidar, and a camera which are part of the production vehicle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lidstrom2012modular"
+literal "false"
+
+\end_inset
+
+.
+ This setup is cost prohibitive for small-scall research.
+ The GCDC also takes place on a public road which adds safety as a factor.
+\end_layout
+
+\begin_layout Section
+Raspberry Pi (Controller)
+\end_layout
+
+\begin_layout Subsection
+Why it was chosen
+\end_layout
+
+\begin_layout Subsection
+What I'm trying to do
+\end_layout
+
+\begin_layout Subsection
+What was accomplished
+\end_layout
+
+\begin_layout Section
+Electronics/Sensors
+\end_layout
+
+\begin_layout Standard
+Pictures
+\end_layout
+
+\begin_layout Standard
+Track
+\end_layout
+
+\begin_layout Part
+Software
+\end_layout
+
+\begin_layout Section
+Robot Operating System
+\end_layout
+
+\begin_layout Part
+Control
+\end_layout
+
+\begin_layout Section
+Optimal Control versus Classical Control
+\end_layout
+
+\begin_layout Standard
+Classical control theory concerns itself with the instantaneous control
+ of a system (plant) within design parameters such as rise time, overshoot,
+ etc.
+ Frequency response methods such as Bode plots and root locus are the bread
+ and butter of designing classical control systems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ogata2014moderncontrol"
+literal "false"
+
+\end_inset
+
+.
+ Although these control systems do satisfy the design parameters they are
+ by no means optimal.
+ In fact, the controllers cannot 
+\begin_inset Quotes eld
+\end_inset
+
+see
+\begin_inset Quotes erd
+\end_inset
+
+ what's ahead of them or 
+\begin_inset Quotes eld
+\end_inset
+
+anticipate
+\begin_inset Quotes erd
+\end_inset
+
+ what's coming next as far as state and control action is concerned.
+ This is where optimal controllers come into play.
+\end_layout
+
+\begin_layout Standard
+Optimal controllers have a long and storied history involving some of the
+ greatest minds of mathematics, physics, and engineering spanning over three
+ centuries and ignoring arbitrary national borders 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sussmann1997300"
+literal "false"
+
+\end_inset
+
+.
+ Optimal control provide a guarantee of optimality through well-developed
+ and rigorously proven theorems.
+ Using a performance measure (or cost function) engineers are able to give
+ preference to certain behaviors of the controller and to shape and mold
+ it into giving many different trajectories and thus behaviors.
+\end_layout
+
+\begin_layout Section
+Problem Formulation
+\end_layout
+
+\begin_layout Standard
+The goal is to remove the shock waves created by human drivers in traffic.
+ In order to do so, we must find the optimal control actions that will move
+ the vehicles along the optimal state trajectories so that there is the
+ suppression of the shock waves.
+\end_layout
+
+\begin_layout Subsection
+Modeling
+\end_layout
+
+\begin_layout Standard
+A CCC vehicle, a vehicle in which information is transmitted and shared
+ between other vehicles and sources , is considered.
+ Recall that the platoon of vehicles is on an circular track and each vehicle
+ starts from rest and it is desired to have each vehicle attain its safe
+ headway, 
+\begin_inset Formula $h_{safe}$
+\end_inset
+
+, and the maximum possible speed (the speed limit), 
+\begin_inset Formula $v_{max}$
+\end_inset
+
+, within time 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Therefore, the initial conditions for the system are given below
+\begin_inset Formula 
+\[
+\begin{aligned}h_{i}\left(0\right)= & \,h_{0}^{i}\\
+v_{i}\left(0\right)= & \,0\\
+h_{i}\left(T\right)= & \,h_{safe}\\
+v_{i}\left(T\right)= & \,v_{max}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pontryagin Method for Optimal Control
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:pontryagin-method-ctrl"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section, a controller shall be developed using the Pontryagin method.
+ The cost function is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J=\frac{1}{2}\int_{0}^{T}\sum_{i=1}^{n}\left(e_{i}^{2}\left(t\right)+r_{i}u_{i}^{2}\left(t\right)\right)\,dt\label{eq:optimal-control-cost-function}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $e_{i}\left(t\right)$
+\end_inset
+
+ is the error function and 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ is the weighting constant such that 
+\begin_inset Formula $r_{i}>0$
+\end_inset
+
+.
+ The cost function is designed such that the error and control action are
+ minimized resulting in lower error and smooth accelerations.
+\end_layout
+
+\begin_layout Standard
+The constraints are given such that the control action must be between some
+ predetermined values 
+\begin_inset Formula $U_{min}\leq u\left(t\right)\leq U_{max}$
+\end_inset
+
+ such that 
+\begin_inset Formula $U_{min}$
+\end_inset
+
+ is a negative real number and 
+\begin_inset Formula $U_{max}$
+\end_inset
+
+ is a positive real number.
+ There are also constraints on the states such that the vehicles cannot
+ go backwards (negative velocity) and they cannot exceed the speed limit,
+ 
+\begin_inset Formula $0\leq v_{i}\left(t\right)\leq v_{max}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are various error functions that can be used.
+ Three in particular are of interest for platooning with the testbed due
+ to the variety of behaviors that they encourage and are given in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:error-functions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The first error function, 
+\begin_inset Formula $e_{i}\left(t\right)=h_{i}\left(t\right)-h_{isafe}$
+\end_inset
+
+, penalizes deviations from the desired safety distance and is the error
+ function that will be examined in this paper.
+ The second error function, 
+\begin_inset Formula $e_{i}\left(t\right)=h_{i+1}\left(t\right)-h_{i}\left(t\right)$
+\end_inset
+
+, penalizes differences between headways of consecutive vehicles essentially
+ forcing an even spacing between every car in the platoon.
+ Finally, 
+\begin_inset Formula $e_{i}\left(t\right)=v_{i+1}\left(t\right)-v_{i}\left(t\right)$
+\end_inset
+
+, penalizes deviations in speed between the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+ vehicles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}e_{i}\left(t\right)= & h_{i}\left(t\right)-h_{isafe}\\
+e_{i}\left(t\right)= & h_{i+1}\left(t\right)-h_{i}\left(t\right)\\
+e_{i}\left(t\right)= & v_{i+1}\left(t\right)-v_{i}\left(t\right)
+\end{aligned}
+\label{eq:error-functions}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pontryagin's minimization principle is applied to arrive at an analytical
+ solution of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:optimal-control-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Using the error function 
+\begin_inset Formula $e_{i}\left(t\right)=h_{i}\left(t\right)-h_{isafe}$
+\end_inset
+
+, the Hamiltonian is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\mathcal{H}= & \sum_{i=1}^{n-1}\Big\{\left[\left(h_{i}\left(t\right)-h_{isafe}\right)^{2}+r_{i}u_{i}^{2}\left(t\right)\right]\\
+ & +p_{1}^{i}\left(t\right)\left[v_{i+1}\left(t\right)-v_{i}\left(t\right)\right]^{2}+p_{2}^{i}\left(t\right)u_{i}\left(t\right)\Big\}\\
+ & +\left(h_{n}\left(t\right)-h_{nsafe}\right)^{2}+r_{n}u_{n}^{2}\left(t\right)\\
+ & +p_{1}^{n}\left(t\right)\left[v_{1}\left(t\right)-v_{n}\left(t\right)\right]^{2}+p_{2}^{n}\left(t\right)u_{n}\left(t\right)
+\end{aligned}
+\label{eq:opt-ctrl-hamiltonian}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find the costate equations, first we differentiate 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-hamiltonian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ part with respect to 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+, take the negative.
+ This gives us
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{\partial\mathcal{H}_{i}}{\partial h_{i}}= & \,\dot{p}_{1}^{i*}\left(t\right)=-\left(h_{i}\left(t\right)-h_{safe}^{i}\right)\\
+\frac{\partial\mathcal{H}_{i}}{\partial v_{i}}= & \,\dot{p}_{2}^{i*}\left(t\right)=pi_{1}^{*}\left(t\right)
+\end{aligned}
+\label{eq:opt-ctrl-costate-diff-eqs}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now solve the resulting differential equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}p_{1}^{i*}\left(t\right)= & -\left(h_{i}\left(t\right)-h_{safe}^{i}\right)t+a\\
+p_{2}^{i*}\left(t\right)= & -\frac{1}{2}\left(h_{i}\left(t\right)-h_{safe}^{i}\right)t^{2}+at+b
+\end{aligned}
+\label{eq:opt-ctrl-costate-eqns}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ are constants of integration.
+ Differentiating 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-hamiltonian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ partially with respect to the control action variable 
+\begin_inset Formula $u_{i}\left(t\right)$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\mathcal{H}_{i}}{\partial u_{i}}=r_{i}u_{i}\left(t\right)+p_{2}^{i*}\left(t\right)\label{eq:opt-ctrl-interm-ctrl-act}
+\end{equation}
+
+\end_inset
+
+For the necessary condition, we shall minimize 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-hamiltonian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ which leads to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{\partial\mathcal{H}_{i}}{\partial u_{i}}= & 0\\
+u_{i}\left(t\right)= & -\frac{1}{r_{i}}p_{2}^{i*}\left(t\right)
+\end{aligned}
+\label{eq:opt-ctrl-action-temp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-costate-eqns"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-action-temp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we get
+\begin_inset Formula 
+\begin{equation}
+u_{i}\left(t\right)=-\frac{1}{r_{i}}\left[\frac{1}{2}\left(h_{i}\left(t\right)-h_{safe}^{i}\right)t^{2}-at-b\right]\label{eq:opt-control-control-action}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ is constrained to be 
+\begin_inset Formula $U_{min}^{i}\leq u_{i}\left(t\right)\leq U_{max}^{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{2}^{i*}\left(t\right)$
+\end_inset
+
+ has no such constraints, clearly 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-control-control-action"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ cannot always hold.
+ Therefore, it is necessary to find the conditions in which the relationship
+ does indeed hold and, if it doesn't, what to apply as 
+\begin_inset Formula $u_{i}\left(t\right)$
+\end_inset
+
+.
+ Luckily, this is rather straightforward.
+ If 
+\begin_inset Formula $p_{2}^{i*}\left(t\right)$
+\end_inset
+
+ goes beyond the allowable limits for 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+, then either the maximum or minimum values for 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ can be used, otherwise the relationship described in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-control-control-action"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ holds, as shown below in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:opt-ctrl-final-ctrl-act"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+u_{i}\left(t\right)=\begin{cases}
+U_{max} & \text{if }p_{2}^{i*}\left(t\right)<r_{i}\,U_{min}^{i}\\
+-\frac{1}{r_{i}}p_{2}^{i*}\left(t\right) & \text{if }r_{i}\,U_{min}\leq p_{2}^{i*}\left(t\right)\leq r_{i}\,U_{min}^{i}\\
+U_{min}^{i} & \text{if }r_{i}\,U_{min}^{i}<p_{2}^{i*}\left(t\right)
+\end{cases}\label{eq:opt-ctrl-final-ctrl-act}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Variational Approach
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:variational-approach-ctrl"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Linear Quadratic Tracking Controller
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:lqt-controller-pontryagin"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the same model as before, a Linear Quadratic Tracking (LQT) controller
+ will be developed.
+ The system (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:optimal-control-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is linear, the cost function (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:optimal-control-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is quadratic, and the system is to track a trajectory.
+ In this section, an LQT controller shall be developed using the Pontryagin
+ method.
+\end_layout
+
+\begin_layout Section
+Simulation
+\end_layout
+
+\begin_layout Standard
+To determine the effectiveness of the controllers mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:pontryagin-method-ctrl"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:variational-approach-ctrl"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, simulations were created using Matlab.
+ First, a simulation of three vehicles on a circular track was created in
+ order to simulate traffic shock waves.
+ Then the Pontryagin and LQT controllers were simulated.
+\end_layout
+
+\begin_layout Subsection
+Traffic Shock Wave with Three Vehicles
+\end_layout
+
+\begin_layout Standard
+Traffic shock waves were simulated using three human drivers (as described
+ by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Driver-Models"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) on a circular track with a 70 meter radius.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/headways-sim.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Headways of platooning vehicles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/velocities-sim.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Velocities of platooning vehicles
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:headway-velocity-platoon-sim"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/lqt_headways.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Headways of platooning vehicles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/lqt_velocities.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Velocities of platooning vehicles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename imgs/lqt_control.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Control actions
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lqt-controller"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Subsection
+Pontryagin Controller
+\end_layout
+
+\begin_layout Subsection
+LQT Controller
+\end_layout
+
+\begin_layout Standard
+As seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lqt-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the controller succeeds at removing the 
+\end_layout
+
+\begin_layout Part
+Conclusion
+\end_layout
+
+\begin_layout Part*
+Appendix
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{Appendix}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Table of Symbols
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Symbols used
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:symbols-used-in-math"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="40col%">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SYMBOL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MEANING
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UNITS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\begin_inset Formula $_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Preference of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle to follow range policy
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+second
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Preference of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle to match lead vehicle velocity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+second
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $e_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Error function of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+depends
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Headway of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{go}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Safety distance for the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ car
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{safe}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Safety distance for the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{stop}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Safety distance for the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{ring}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Length of the ring
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of vehicles
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weighting on control action of 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Control action of 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{f}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Final time
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+seconds
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Delay time of 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+seconds
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{max}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum control action of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{min}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum control action of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Instantaneous velocity of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Headway-based velocity of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle (range policy)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{0}^{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Initial velocity of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{max}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum velocity (speed limit)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+meters/second
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "Joshua_References"
+options "bibtotoc,plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
