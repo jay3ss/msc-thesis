@@ -116,7 +116,6 @@ xlabel('Time (s)')
 ylabel('u^*(t) (m/s^2)')
 legend('u_{1}^*(t)', 'u_{2}^*(t)', 'u_{3}^*(t)')
 xlim([0, endtime])
-print -depsc -r300 opt_ctrl_controls.eps
 grid on
 
 function dkdt = kdot(t, K, A, B, Q, R)
