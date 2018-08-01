@@ -44,7 +44,7 @@ syms K S
 [ts, S] = ode45(@(t, S)sdot(t, S, A, B, K, Q, R, r, tk),...
                 [tfinal, tinitial], Sfinal, options);
 
-            
+
 K_new = interp1(tk, K', tu);
 S_new = interp1(ts, S', tu);
 tic
@@ -57,10 +57,10 @@ for i = 1:max_iterations
     p = K_new.*X_new + S_new;
     dH = dhdu(u, p, B, R);
     H_norm(i,1) = dH*dH';
-    
+
     % Find the cost
     J(i,1) = 0.5*((X_new-r)*Q*(X_new-r)'/length(tx) + (u*R*u')/length(tu));
-    
+
     if H_norm(i,1) < eps
         J(i,1)
         break
