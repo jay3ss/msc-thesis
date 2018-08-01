@@ -1,5 +1,6 @@
 % SI units used throughout
 % Initialize three car system
+three_car_init
 
 % Problem parameters
 Q = 2.5e-5*eye(size(A));
@@ -7,21 +8,6 @@ Q(2, 2) = 1e-2; Q(4, 4) = 1e-2; Q(4, 4) = 1e-2;
 H = Q;
 R = 10*eye(3);
 r = [HDES; VMAX; HDES; VMAX; HDES; VMAX];
-
-% Initial positions
-pos3 = RLENGTH;
-pos2 = pos3 + 125 - RLENGTH;
-pos1 = pos2 + 125;
-
-h1_init = pos3 - pos1;
-v1_init = 0;
-h2_init = abs(pos2 - pos1);
-v2_init = 0;
-h3_init = abs(pos3 - pos2);
-v3_init = 0;
-
-X0 = [h1_init; v1_init; h2_init;
-      v2_init; h3_init; v3_init];
 
 % Boundary conditions
 Kfinal = H;
