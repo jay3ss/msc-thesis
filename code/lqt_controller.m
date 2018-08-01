@@ -1,31 +1,5 @@
 % SI units used throughout
-% Constants
-% HDES places the vehicles evenly on the road
-VLENGTH = 5; % m (vehicle length)
-R = 70;
-RLENGTH = R*2*pi; % m (road length)
-VMAX = 5; % m/s (70 mph)
-NUM_VEHICLES = 3;
-HDES = (RLENGTH - NUM_VEHICLES*VLENGTH)/NUM_VEHICLES;
-
-% System parameters
-A = [
- 0, 1, 0,  0, 0, -1;
- 0, 0, 0,  0, 0,  0;
- 0, 0, 0, -1, 0,  1;
- 0, 0, 0,  0, 0,  0;
--1, 0, 1,  0, 0,  0;
- 0, 0, 0,  0, 0,  0
-];
-
-B = [
-0, 0, 0;
-1, 0, 0;
-0, 0, 0;
-0, 1, 0;
-0, 0, 0;
-0, 0, 1
-];
+% Initialize three car system
 
 % Problem parameters
 Q = 2.5e-5*eye(size(A));
@@ -85,7 +59,7 @@ for j = 1:1:sim_time
     t_new=(j-1)*dt;
     K_new = interp1(tk, K, t_new);
     K_new = reshape(K_new, size(A));
-    
+
     S_new = interp1(ts, S, t_new);
     S_new = S_new';
 
@@ -93,7 +67,7 @@ for j = 1:1:sim_time
     X_new = X_new';
 
     u(:,j) = -(R^-1)*B'*K_new*X_new - (R^-1)*B'*S_new;
-   
+
     % Make sure that we don't go backwards!
     if u(1,j) <= 0 && X_new(2,1) <= 0
         u(1,j) = 0;
@@ -175,7 +149,7 @@ end
 function dxdt = xdot(t, X, K, S, R, A, B, tk, ts)
     K = interp1(tk, K, t);
     K = reshape(K, size(A));
-    
+
     S = interp1(ts, S, t);
     S = S';
 
