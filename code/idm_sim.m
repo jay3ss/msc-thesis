@@ -20,7 +20,7 @@ x = [0, 10, 55];        % positions
 s(1) = x(2) - x(1) - d; % headways
 s(2) = x(3) - x(2) - d;
 s(3) = 2*pi*L - x(3) - d;
-    
+
 for j = 1:1:N % Time Loop
     for i  = 1:1:n % Loop for number of cars
         % Find the relative velocity
@@ -40,43 +40,43 @@ for j = 1:1:N % Time Loop
         dvdt(i) = a*(1- (dx(i)/v0))^4 ...
                 - a*(s_star/s(i))^2;
         dx(i) = dx(i) + dvdt(i)*dt;
-        
+
         if dx(i) < 0
             x(i) = x(i) - 0.5*dx(i)*dx(i)/dvdt(i);
             dx(i) = 0;
         else
             x(i) = x(i) + dx(i)*dt + 0.5*dvdt(i)*dt*dt;
         end
-        
+
         theta(i) = x(i)*2*pi/L; % x convert to angle
         % Reset to beginning of ring if necessary
         if theta(i) > 2*pi
-           theta(i) = theta(i) - 2*pi; 
+           theta(i) = theta(i) - 2*pi;
         end
     end
-    
+
     % Calculate the headways
-    s(1) = x(2) - x(1);
-    s(2) = x(3) - x(2);
-    s(3) = x(1) - x(3);
-    
-    % Add the length of the road if the lead 
+    s(1) = x(2) - x(1) - d;
+    s(2) = x(3) - x(2) - d;
+    s(3) = x(1) - x(3) - d;
+
+    % Add the length of the road if the lead
     % vehicle is at the beginning of the
-    % ring and the following vehicle is towards 
-    % the end 
+    % ring and the following vehicle is towards
+    % the end
     if s(1) < 0
         s(1) = s(1) + L;
     end
-    
+
     if s(2) < 0
         s(2) = s(2) + L;
     end
-    
+
     if s(3) < 0
         s(3) = s(3) + L;
     end
     % Take care of states at each time step
-    Theta(j,:) = theta(:);  
+    Theta(j,:) = theta(:);
     X(j,:) = x(:);      % Location
     V(j,:) = dx(:);     % Speed
     S(j,:) = s(:);      % Headways
@@ -101,7 +101,7 @@ grid on
 
 % Plot the headways
 figure('DefaultAxesFontSize',20)
-plot_headways = plot(t, S));
+plot_headways = plot(t, S);
 plot_headways(1).LineWidth = 4;
 plot_headways(1).LineStyle = ':';
 plot_headways(2).LineWidth = 4;
