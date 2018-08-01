@@ -120,6 +120,117 @@ literal "false"
 Description
 \end_layout
 
+\begin_layout Standard
+Recall that the dynamics from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:connected-cruise-control-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, were given as 
+\begin_inset Formula 
+\[
+\begin{aligned}\dot{h}_{i}= & \,v_{i+1}\left(t\right)-v_{i}\left(t\right)\\
+\dot{v}_{i}= & \,u_{i}\left(t\right)
+\end{aligned}
+\]
+
+\end_inset
+
+with the dynamics for the lead vehicle being
+\begin_inset Formula 
+\[
+\begin{aligned}\dot{h}_{1}= & \,v_{3}\left(t\right)-v_{1}\left(t\right)\\
+\dot{v}_{1}= & \,u_{1}\left(t\right)
+\end{aligned}
+\]
+
+\end_inset
+
+from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:circular-track-lead-vehicle-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The vehicles on the track are assumed to be passenger vehicles with human
+ passengers and therefore the controller is designed to command the vehicle
+ to use small accelerations, approximately within the range of 
+\begin_inset Formula $\left[-1.5\frac{m}{s^{2}},2\frac{m}{s^{2}}\right]$
+\end_inset
+
+.
+ This is accomplished by setting the 
+\begin_inset Formula $R$
+\end_inset
+
+ matrix to be relatively large compared to the 
+\begin_inset Formula $Q$
+\end_inset
+
+ matrix in the cost function as shown in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-R-matrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ By doing so, more priority is given to the control action than the states
+ which forces the control action to the main focus of the minimization process.
+ In addition to having a comfortable and safe ride, this has the added benefit
+ of being economical for the owner of the vehicles as well.
+ For the states, the velocities are given more priority than the headways
+ by setting the corresponding entries in the 
+\begin_inset Formula $Q$
+\end_inset
+
+ matrix larger for the velocities than the headways as shown in Equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-Q-matrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+R= & \left[\begin{array}{ccc}
+10 & 0 & 0\\
+0 & 10 & 0\\
+0 & 0 & 10
+\end{array}\right]\label{eq:lqt-problem-R-matrix}\\
+Q= & \left[\begin{array}{cccccc}
+2.5e^{-5} & 0 &  & \cdots &  & 0\\
+0 & 1e^{-2}\\
+ &  & 2.5e^{-5} & \ddots &  & \vdots\\
+\vdots &  & \ddots & 1e^{-2}\\
+ &  &  &  & 2.5e^{-5} & 0\\
+0 &  & \cdots &  & 0 & 1e^{-2}
+\end{array}\right].\label{eq:lqt-problem-Q-matrix}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Simulation and Results
 \end_layout

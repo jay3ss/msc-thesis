@@ -99,6 +99,19 @@ name "chap:problem_formulation"
 \end_layout
 
 \begin_layout Standard
+The need to coordinate autonomous vehicles is an important one to ensure
+ their future success.
+ If autonomous vehicles are not coordinated and are instead driving and
+ maneuvering on their own, then society will not be able to get the full
+ potential of autonomous vehicles.
+ It is therefore important to begin to develop different coordination scenarios
+ and corresponding control methods to enable the coordination scenarios
+ to be realized.
+ Therefore, a problem is posed to spread out autonomous vehicles equidistant
+ on a circular track.
+\end_layout
+
+\begin_layout Standard
 In this problem, three vehicles are on a circular track with a radius of
  
 \begin_inset Formula $70$
@@ -381,7 +394,27 @@ u_{1}\left(t\right) & u_{2}\left(t\right) & u_{3}\left(t\right)\end{array}\right
 
 \end_inset
 
+where 
+\begin_inset Formula $h_{i}\left(t\right)$
+\end_inset
 
+ is the headway, or distance between current and lead vehicles, 
+\begin_inset Formula $v_{i}\left(t\right)$
+\end_inset
+
+ is the velocity of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle, and 
+\begin_inset Formula $u_{i}\left(t\right)$
+\end_inset
+
+ is the control action of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle.
 \end_layout
 
 \begin_layout Standard

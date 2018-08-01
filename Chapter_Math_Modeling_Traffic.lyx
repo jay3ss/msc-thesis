@@ -1398,7 +1398,11 @@ where
 \begin_inset Formula $u_{i}$
 \end_inset
 
- is the control action 
+ is the control action of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jin2014optimal"
@@ -1407,6 +1411,14 @@ literal "false"
 \end_inset
 
 .
+ This model directly controls the acceleration of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle.
+ Because the CCC model directly controls the acceleration of the autonomous
+ vehicle, these can be optimized for higher performance, large and quick
+ accelerations, or for better fuel consumption, small and slow accelerations.
 \end_layout
 
 \begin_layout Standard
