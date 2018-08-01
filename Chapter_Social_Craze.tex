@@ -1,0 +1,112 @@
+\chapter{Control Scenario 1: Advertisement and Social Craze} \label{chapter_control_craze}
+
+\section{Description}
+The spread of information via advertisements is critical for most businesses and organizations that rely on popular participation to succeed. If the population is unaware of a product or service, it will not be purchased or otherwise utilized. As such, the goal of advertising information is to spread said information as effectively as possible within the bounds of the spreading organization's time and resources. How does one group advertise to another? By hiring individuals as information spreaders who then spread that information in the form of an ad on television, social media, or billboards. In addition, recent years have seen paid ads in the form of search engine and online shop search priority to ad purchasers. Without said hired advertisements, the single company spreader would simply never gain enough traction in the public eye to spread to any significant amount of customers.
+
+Ideally, an organization could simply pour an infinite amount of control via ad costs and repetition to the public which would absorb the information and never forget it. Eventually, everyone would know about the product or service and it's benefits, giving the best opportunity for the advertisers to gain as many customers as possible. Unfortunately, this ideal situation is rarely if ever seen realistically. Resources are limited by the pocket depth of the advertisers as well as practical constraints. Additionally, customers are likely to forget an advertisement's message over time and several ads must be spread to maintain attention.
+
+But what happens when advertisements cease? The information does not simply disappear from the public consciousness. In the absence of active advertising, especially in a digital social media world, talk of the product or service will endure, perhaps even thrive and grow into what is known commonly as a ``social craze". If a product, service, social movement, or meme can sustain itself without active advertising, despite decay, it would ultimately prove beneficial and cost effective for the original advertiser.
+
+\section{Problem Formulation}
+The goal to achieve through control of this scenario is to create a self-sustaining social media craze after sufficient active advertising has commenced. Ideally, the advertisers who wish to start this craze want to spend only as much as is required to make the information spread on its own, without requiring additional advertisement resources. At first glance, the problem appears to closely mirror the Ignorant-Spreader-Recovered (ISR) model presented earlier. Alternatively, a spreading rate model with the addition of a decreasing ``forgetting" factor (as product excitement dwindles for a particular model or iteration) can be developed. Both proposed modelings of the advertisement spread account for the main elements of the problem: spreading the information and a natural tendency of interest in the product to diminish. However, the proposed model for social media crazes fits the scenario nicely. 
+
+Recall that the social craze model from Equation \ref{eqn:CrazeModel3} was presented as
+\begin{equation}
+\left.\begin{aligned}
+dX_t=\beta_1 u(t)[1-X_t] + \beta_2 {X_{t}}^{2}-\delta X_t, \nonumber
+\end{aligned}\right.
+\end{equation}
+\noindent where $\beta_1$ is the social marketing campaign constant, $\beta_2$ represents the social craze constant, $\delta$ is the decay constant, and $u(t)$ is the control, expressed through active advertising initiatives.
+
+Recall also that our goal is to ultimately pass the advertising socio-equilibrium threshold in order to ensure the self-sustainability of the social network craze in the absence of active control. Therefore, active control must be maintained until the spreading of the advertisement has reached enough of the population, which is the threshold point:
+\begin{equation}
+\left.\begin{aligned}
+X_t > \frac{\delta}{\beta_2}. \nonumber
+\end{aligned}\right.
+\end{equation}
+Because we wish to minimize the required expenses of the advertisers and accomplish the goal of achieving social craze status as quickly as possible (in this case, a twenty day advertising campaign), we take the cost function to be:
+\begin{equation}
+\left.\begin{aligned}
+J=\int_{0}^{t_f}(u^2(t)+(x-x_d)^2 + \lambda )dt,
+\end{aligned}\right.
+\end{equation}
+\noindent where $\lambda$ is the time to be optimized and $x_d$ is the desired amount of information spreaders, such that the social craze threshold is crossed and the advertisement spread becomes self-sustaining. At this point, there is no further need for control and the control action $u(t)$ will cease.
+
+This scenario is a prime candidate for an optimal control strategy. There are any number of possible ways to achieve the goal, making the least costly, fastest, or most efficient strategy the preferred one. Other research similarly utilizes optimal control principles to find the best solution for a given need \cite{kachroo2017optimal}. The Hamilton-Jacobi-Bellman (HJB) equation, as the basis of optimal control, will be utilized to achieve an optimal control strategy, $u^*(t)$, representing how much advertising should be put out on social media over time. If no analytic solution is attainable, then the Pontryagin minimization principle will be applied to the problem in order to obtain a numeric solution.
+
+\section{Results and Simulations}
+The Hamiltonian was calculated, as follows:
+\begin{equation}
+\left.\begin{aligned}
+H = u^2(t) + (x(t)-x_d)^2 + \lambda +J_x[\beta_1(1-x(t))u(t) + \beta_2 x^2(t) - \delta x(t)].
+\end{aligned}\right.
+\end{equation}
+By differentiating the Hamiltonian, with respect to the control $u(t)$ and setting the result equal to zero, the optimal control action can be found by solving for $u^*(t)$:
+\begin{equation}
+\left.\begin{aligned}
+u^*(t) = \frac{J_x \beta_1 (1-x(t))}{2}.
+\end{aligned}\right.
+\end{equation}
+Finally, the resulting $u^*(t)$ control action was used to determine the Hamilton-Jacobi-Bellman partial differential equation,
+\begin{equation}
+\left.\begin{aligned}
+0 = \frac{J_x^2 \beta_1^2 (1-x(t))^2}{4} + J_x x(t)(\beta_2 x(t)-\delta).
+\end{aligned}\right.
+\end{equation}
+
+Because there is no clear analytic solution from the resulting HJB partial differential equation, another method is required. The Pontryagin minimization principle was applied to the same dynamics and cost function. The Hamiltonian was calculated using the new method:
+\begin{equation}
+\left.\begin{aligned}
+H = g + p^T[a] = Ru^2(t)+ M(x(t)-x_d)^2 + \lambda + p[\beta_1 u(t)(1-x) + \beta_2 x^2(t) - \delta x(t)],
+\end{aligned}\right.
+\end{equation}
+\noindent where $R$ and $M$ are weight constants for the control and tracking elements of the cost function, respectively. From the Hamiltonian, the state and co-state equations were determined as follows:
+\begin{equation}
+\left.\begin{aligned}
+\dot{x}(t) = \frac{\delta H}{\delta p} = \beta_1 u(t)(1-x(t)) + \beta_2 x^2(t) - \delta x(t)\\
+\dot{p}(t) = -\frac{\delta H}{\delta x} = 2M(x_d - x(t)) + p(\beta_1 u(t) - 2 \beta_2 x(t) + \delta).
+\end{aligned}\right.
+\end{equation}
+Again, by differentiating the Hamiltonian with respect to the control $u(t)$ and setting the result equal to zero, the optimal control action was found to be
+\begin{equation}
+\left.\begin{aligned}
+u^*(t) = \frac{-p^* \beta_1(1-x^*(t))}{2R}.
+\end{aligned}\right.
+\end{equation}
+Using the calculated $u^*(t)$, along with the state and co-state equations, the necessary conditions can be expressed as follows:
+\begin{equation}
+\left.\begin{aligned}
+\dot{x}^*(t) = \frac{-p^*(t) \beta_1^2}{2}(x^{*2}(t)-2x^*(t)+1) +\beta_2 x^{*2} - \delta x^*(t)\\
+\dot{p}^*(t) = \frac{p^{*2}(t) \beta_1^2}{2}(x^*(t) - 1) - 2p^*(t)\beta_2 x^{*2}(t) - p^{*2}(t) \lambda +2x_d.
+\end{aligned}\right.
+\end{equation}
+
+Using MATLAB, the boundary value problem was simulated with the \textit{bvp4c} function. The resulting plots of states versus time at various parameters are shown in Figure \ref{fig:Social_Craze_1}, Figure \ref{fig:Social_Craze_2}, Figure \ref{fig:Social_Craze_3}, and Figure \ref{fig:Social_Craze_4}.
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Social_Craze_1_u.eps}
+  \caption{Social craze control: $\beta_1=0.1,\beta_2=0.5,d=0.1,x_d=0.2$}
+  \label{fig:Social_Craze_1}
+\end{figure}
+
+The parameters in Figure \ref{fig:Social_Craze_1} simulate a minor business advertiser whose advertisements only influence a small portion of those who view it. However, the social media group to which the advertisement is targeted is highly interactive and connected. If someone likes the product, they will be very likely to share that information with their friends. It is easy to observe the need for significant control initially, as the social media advertisement system is sustained by the active advertisements. As the system progresses over time, less active advertisement control is needed as more social media ``buzz" is accruing and spreading the advertisement information. Eventually, no active control (and hence, advertisement effort and cost) are required to sustain the social media information. It becomes a ``craze" and is self-sustaining without additional control requirements upon reaching the desired end time. 
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Social_Craze_2_u.eps}
+  \caption{Social craze control: $\beta_1=0.6,\beta_2=0.5,d=0.1,x_d=0.2$}
+  \label{fig:Social_Craze_2}
+\end{figure}
+
+In Figure \ref{fig:Social_Craze_2}, the advertiser has significantly more sway over people through its advertisement actions, as denoted by the $\beta_1$ parameter. All other parameters are identical to the previous case. Here, the advertiser reaches the desired social media craze threshold much faster. In fact, as shown in Figure \ref{fig:Social_Craze_3}, halving the amount of control weight via $R$, gives similar results with less control requirements, which generally translates to less expenditure. 
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Social_Craze_3_u.eps}
+  \caption{Social craze control: $R=.5,\beta_1=0.6,\beta_2=0.5,d=0.1,x_d=0.2$}
+  \label{fig:Social_Craze_3}
+\end{figure}
+
+The impact of the decay factor cannot be understated. Figure \ref{fig:Social_Craze_4} follows the same parameters as the second case, but increases the decay rate, $\delta$. In other words, a popular advertiser is advertising to a receptive group that will readily post and share the product, social cause, etc. However, this group grows disinterested or bored quickly. As a result, significantly more control is required when attempting to form a social media craze out of no initial group information.
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Social_Craze_4_u.eps}
+  \caption{Social craze control: $\beta_1=0.6,\beta_2=0.5,d=0.3,x_d=0.6$}
+  \label{fig:Social_Craze_4}
+\end{figure}
+
+Using the above simulations, it is not difficult to imagine the types of companies that can be similarly modeled and simulated by changing the parameters. Apple, for example, has a strong enough brand following that very little active advertisement is needed to create a group obsession over the latest device. In contrast, governmental health organizations may pour massive amounts of advertising into changing public opinion over bad health habits and achieve very slow progress.

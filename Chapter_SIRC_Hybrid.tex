@@ -1,0 +1,73 @@
+\chapter{THE PROPOSED SIRC HYBRID MODEL} \label{ch:SIRC_HYBRID} %Titles must be capitalized.
+
+Often times, situations arise where two (or more) primary group ``communities" dominate in their view and spread of a certain type of information. In the real world, this is a very common situation. For example, in the United States, conservatives and liberals often form information communities that oppose one another on political information and interpretation. One country may be a mega-community and oppose a similar community from another country in how they are accepting and spreading news relating to inter-country relations. The SIRC model covers situations where potentially contentious information is being spread within a mostly homogeneous population. What it does not do well, however, is describe how information spreads or diffuses between two different, especially polarized groups. It is therefore necessary to modify the SIRC model to account for a hybrid case.
+
+In the hybrid model, we assume two main polarized communities for simplicity, $SIRC_1$ and $SIRC_2$, which can be extended to any number of polarized groups. We assume there are some individuals within each community that has contact with the other. Perhaps they are moderates or friends who subscribe to a different political view or family members from a home country who are not part of one's current information community, but act as a link to another country-community. No matter the reason, some individuals act as diffusion elements of information between the two communities. The influence and connection strength of the overall collection of these individuals is denoted by a pair of directional constants $a_{12}$ and $a_{21}$, where $a_{12}$ is the is the strength of information flow from group $SIRC_1$ to  group $SIRC_2$ and $a_{21}$ is the is the strength of information flow from group $SIRC_2$ to  group $SIRC_1$. For highly polarized groups, these constants will be very small and for completely isolated communities equal to zero, reducing the hybrid model to the standard SIRC model discussed previously. 
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{drawings/SIRC_Hybrid_Model.eps}
+  \caption{Flow Diagram for SIRC Two-Community Interactions.}
+  \label{fig:sirc__hybrid_flow}
+\end{figure}
+
+\noindent Modifying the previous SIRC model system dynamics for one group, we obtain:\\
+\begin{equation}\label{eqn:SIRC1_dynamics}
+\left.\begin{aligned}
+\dot{i}_1 = -\beta_1 i_1(t)s_1(t) - \alpha_1 i_1(t)c_1(t) - a_{21} \beta_2 i_1(t)s_2(t) - a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{s}_1 = \beta_1 i_1(t)s_1(t) - \omega_{11} s_1(t)c_1(t) + \omega_{12} s_1(t)c_1(t) - \gamma_1 s_1(t) + a_{21} \beta_2 i_1(t)s_2(t)\\
+\dot{c}_1 = \alpha_1 i_1(t)c_1(t) + \omega_{11} s_1(t)c_1(t) - \omega_{12} s_1(t)c_1(t) - \mu_1 c_1(t) + a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{r}_1 = \gamma_1 s_1(t) + \mu_1 c_1(t)
+\end{aligned}\right.
+\end{equation}
+
+\noindent Likewise for the second SIRC group:\\
+
+\begin{equation}\label{eqn:SIRC2_dynamics}
+\left.\begin{aligned}
+\dot{i}_2 = -\beta_2 i_2(t)s_2(t) - \alpha_2 i_2(t)c_2(t) - a_{12} \beta_1 i_2(t)s_1(t) - a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{s}_2 = \beta_2 i_2(t)s_2(t) - \omega_{21} s_2(t)c_2(t) + \omega_{22} s_2(t)c_2(t) - \gamma_2 s_2(t) + a_{12} \beta_1 i_2(t)s_1(t)\\
+\dot{c}_2 = \alpha_2 i_2(t)c_2(t) + \omega_{21} s_2(t)c_2(t) - \omega_{22} s_2(t)c_2(t) - \mu_2 c_2(t) + a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{r}_2 = \gamma_2 s_2(t) + \mu_2 c_2(t)
+\end{aligned}\right.
+\end{equation}
+
+Following the diffusion terms in the dynamics, the system can be loosely described as individuals from one group spreading their group's information and opinions on a topic to an opposing community via their friends, relatives. The receptiveness of one group to believe and accept the views of another will determine how much the extra-group spreader influences the opposing group.
+
+Consider the two $SIRC$ groups shown in Figure \ref{fig:hybrid_sirc_initial}. The $SIRC_1$ community is predominantly influenced by the Spreader information with minor Counter-spreader information influence, while the opposite is true for the $SIRC_2$ community, being influenced mostly by the Counter-spreader information (generally the information that contradicts or opposes the Spreader information). As an example, $SIRC_1$ Spreaders might be mainly spreading an unverified rumor about an opposing political party candidate in the $SIRC_2$ community. Some members of $SIRC_1$ believe the initial information is a lie and are Counter-spreaders in that community. The $SIRC_2$ community has their own contentious information concerning an opposing candidate from the $SIRC_1$ community with similar levels of dissent within their own group. Since the  $a_{12}$ and $a_{21}$ constants are zero, there is no diffusion with which to cause interaction between the communities. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_initial.eps}
+  \caption{Two Initial SIRC Groups: Spreader dominant and Counter-spreader dominant}
+  \label{fig:hybrid_sirc_initial}
+\end{figure}
+
+With an equal amount of cross-interactions between the two communities (Figure \ref{fig:hybrid_sirc_equal}), the influence of Counter-spreaders from $SIRC_2$ counteracts the influence of $SIRC_1$ Spreaders and vice-versa. This, of course, assumes that in the polarized groups, the information of $SIRC_1$ Spreaders is the same message as $SIRC_2$ Counter-spreaders. This need not be the case, but serves to simplify the system for example purposes. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_equal.eps}
+  \caption{Two SIRC Groups: Equal Bidirectional Diffusion}
+  \label{fig:hybrid_sirc_equal}
+\end{figure}
+
+When there is mismatched receptivity between the communities, dramatic shifts can occur in the way popular beliefs are altered via information spread. In Figure \ref{fig:hybrid_sirc_a21} the $SIRC_1$ community is more receptive to the $SIRC_2$ community and is hence more likely to listen to the messages of the diffuser Spreaders and Counter-Spreaders. In this case, because the Counter-Spreaders are dominant in the $SIRC_2$ group (and many of these Counter-Spreaders are being heard), there is a large resurgence of Counter-Spreaders in $SIRC_1$, while keeping the Spreaders of $SIRC_2$ relatively low (as they are not nearly as receptive to outside influence). 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21.eps}
+  \caption{Two SIRC Groups: Skewed Receptivity Between Groups}
+  \label{fig:hybrid_sirc_a21}
+\end{figure}
+
+As skewed receptivity mismatching increases to where one group is about seven times as receptive as the other, we find a cancellation point where (all else being equal) the opposing community's information beliefs equal that of the primary community (Figure \ref{fig:hybrid_sirc_a21_cancel}). After this point, the information beliefs of the opposition group begin to dominate both groups (Figure \ref{fig:hybrid_sirc_a21_plus}). It should be noted that there are significant diminishing returns on the effect of receptivity to opposing polarized communities. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21_cancel.eps}
+  \caption{Two SIRC Groups: Receptivity Cancellation Point}
+  \label{fig:hybrid_sirc_a21_cancel}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21_plus.eps}
+  \caption{Two SIRC Groups: Dominant Inter-Community Belief}
+  \label{fig:hybrid_sirc_a21_plus}
+\end{figure}
+
+Clearly, between polarized groups, diffusion plays a significant role in changing the dominant information beliefs of a community. Generally speaking, if two groups are truly polarized outside influences will be felt but the impact will be minor. A fairly strong amount of receptiveness to outside opposing communities would be required to have lasting change and a situation in which one group is several times more receptive than the other is unlikely. Still, it is of value to objectively observe and model the influence groups have on one another along a spectrum of non-mutual receptibility levels.

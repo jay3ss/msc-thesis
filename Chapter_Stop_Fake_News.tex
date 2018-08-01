@@ -1,0 +1,89 @@
+\chapter{Control Scenario 2: Stopping a Fake News Outbreak} \label{chapter_control_fake}
+
+\section{Description}
+Consider a scenario similar to China's Salt Panic in which false news is being spread along not only rumor channels, but also trusted internet news sources. The government is aware of the threat that the news may pose to the community and must take steps to prevent it from becoming an information epidemic, as it may cause mass public panic. The fake news of this type is traditionally fast spreading and the damage from it will be done in short order if the information is not quelled. Obviously, this potential information epidemic has already been spreading around the population before the government became aware of its growing popularity.
+
+Luckily, the government has access to modern emergency alert information and official and direct news distribution over the internet. ``Tweets", live YouTube press conferences, and cell phone alerts similar to common ``amber alerts" are all options of quick communication to help stifle the false news. Note that in many ways, it does not matter if the news is real or fake or if the government wishes to spread or diminish the news. The core formulation and strategy of control here are analogous.
+
+\section{Problem Formulation}
+The goal of the control action is to ultimately prevent the fake news from taking on a substantial life of its own within the public's social media networks. Recall the concept of herd immunity, where if a sufficient percentage of the population is immunized from the fake news, it will never be able to ``take off" into becoming an information epidemic. The idea of a control condition for regulating a desired property at critical point is a powerful tool in dealing with problems such as this \cite{agarwal2015feedback}. One strategy by which to do this is to educate the population before they receive word of the fake news. This method effectively shrinks the pool from which spreaders of fake news can pull (the ignorant individuals) such that they are unable to create as many future spreaders of the fake news because there are simply not enough members of the ignorant class remaining to convert. With a sufficiently low number of spreaders and, hence, high number of educated ignorants, the fake news information can never reach an epidemic state.
+
+Recall first the basic ISR model, focusing attention on the dynamics of the ignorant and spreader classes, modified here as:
+\begin{equation}
+\left.\begin{aligned}
+\dot{x}_1(t) = -\beta x_1(t)x_2(t) - \beta u(t)x_1(t)\\
+\dot{x}_2(t) = \beta x_1(t)x_2(t) - \gamma s(t).
+\end{aligned}\right.
+\end{equation}
+\noindent where $x_1(t)$ and $x_2(t)$ are ignorants and spreaders of the fake news, respectively, and the term $-\beta u(t)x_1(t)$ is the attempt to take away ignorant individuals by educating them on the false nature of the news.
+Also recall from herd immunity theory, that the basic reproductive number $R_0$ is essentially the ratio of the spreading rate and stifling rate and that for no information epidemic to occur, we must satisfy
+\begin{equation}
+\left.\begin{aligned}
+R_0 < \frac{1}{1-p},
+\end{aligned}\right.
+\end{equation}
+\noindent where $p$ is the percentage of the population that must be immunized (through education in this case) for the fake news epidemic to not take hold. Since the percent recovered population in the ISR model is equal to $1-I-S$, which is also equal to the desired percentage of group education against the fake news, the equation can be expressed as
+\begin{equation}
+\left.\begin{aligned}
+x_1(t) + x_2(t) < \frac{\gamma}{\beta}.
+\end{aligned}\right.
+\end{equation}
+\noindent which is the control objective.
+The Pontryagin minimization method will be used to optimize both the amount of control exerted, the sum of the ignorant and spreading individuals, and time. The cost function is chosen as
+\begin{equation}
+\left.\begin{aligned}
+J=\int_{0}^{t_f}(Ru^2(t)+Q(x_1(t)+x_2(t))^2 + \lambda )dt,
+\end{aligned}\right.
+\end{equation}
+\noindent where $\lambda$ is the time to be optimized and $u(t)$ is the control exercised by public social media posts, announcements, advertisements, text alerts, etc. The constants $R$ and $Q$ are adjustment weight factors to put stronger or weaker emphasis on each element of the cost function.
+
+\section{Results and Simulations}
+The Hamiltonian was calculated, as follows:
+\begin{equation}
+\left.\begin{aligned}
+H = (Ru^2(t)+Q(x_1(t)+x_2(t))^2 + \lambda ) +p_1[- \beta x_1(t)x_2(t) - \beta u(t)x_1(t)]\\ + p_2[\beta x_1(t)x_2(t) - \gamma x_2(t)].
+\end{aligned}\right.
+\end{equation}
+The state and co-state equations are calculated from the dynamics, the cost function, and the Hamiltonian:
+\begin{equation}
+\left.\begin{aligned}
+\dot{x}_1(t) = \frac{\delta H}{\delta p_1} = -\beta x_1(t)x_2(t) - \beta u(t)x_1(t)\\
+\dot{x}_2(t) = \frac{\delta H}{\delta p_2} = \beta x_1(t)x_2(t) - \gamma s(t)\\
+\dot{p}_1(t) = -\frac{\delta H}{\delta x_1(t)} = -2Q(x_1(t)+x_2(t)) + p^*_1 \beta (x_2(t)+u(t)) - p^*_2 \beta x_2(t)\\
+\dot{p}_2(t) = -\frac{\delta H}{\delta x_2(t)} = -2Q(x_1(t)+x_2(t)) + p^*_1- p^*_2) \beta x_1(t) + p^*_2 \gamma.
+\end{aligned}\right.
+\end{equation}
+By differentiating the Hamiltonian with respect to the control $u(t)$ and setting the result equal to zero, the optimal control action was found to be:
+\begin{equation}
+\left.\begin{aligned}
+u^*(t) = \frac{-p^*_1 \beta x_1(t))}{2R}.
+\end{aligned}\right.
+\end{equation}
+
+Using MATLAB, the boundary value problem was simulated with the \textit{bvp4c} function. With initial conditions $x_1(0)$ and $x_2(0)$ as the initial percent of the population ignorant of the fake news and percentage of the population already actively spreading it, respectively. Values for $x_1(t_f)$ and $x_2(t_f)$ will tend towards zero, as the entire population is either educated or stifled from spreading the fake news. Their sum must be below the information epidemic threshold stated in the control objective. The resulting plots of states versus time are shown in pairs for ease of visual understanding, the first displaying the states $x_1(t)$ and $x_2(t)$ and the second displaying $x_1(t)+x_2(t)$, the objective it must achieve, and the control $u(t)$ used to meet the objective.
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Fake_News_1a_u.eps}
+  \caption{Fake news control with many spreaders: $x_2(0)=0.30$}
+  \label{fig:Fake_News_1a}
+\end{figure}
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Fake_News_1b_u.eps}
+  \caption{Fake news control with many spreaders: $(x_1(t)+x_2(t))_{desired}<0.25$}
+  \label{fig:Fake_News_1b}
+\end{figure}
+
+In the first simulated case, shown in Figure \ref{fig:Fake_News_1a} and Figure \ref{fig:Fake_News_1b}, a fake news story with a spreading rate of $\beta=0.004$ and a stifling rate of $\gamma=0.001$ has already been picked up by thirty percent of the population before action is taken to stop it. This is dangerously close to the required twenty-five percent of spreaders needed to achieve an information epidemic state (in which everyone at some point believes in the fake news, however briefly). As such, the most control is required at the earliest time possible. Spending resources on advertisements, paid social media posts, and public service alert texts would be ineffective if the allowable resources were spent at regular intervals instead of being front weighted. Once the total percentage of spreaders begins to decline, then control can be eased considerably. Ultimately, no control is necessary once there are insufficient ignorants left to learn the fake news story and the remaining information spreaders will naturally decay with no receptive audience left.
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Fake_News_2a_u.eps}
+  \caption{Fake news control with few spreaders: $x_2(0)=0.10$}
+  \label{fig:Fake_News_2a}
+\end{figure}
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/Fake_News_2b_u.eps}
+  \caption{Fake news control with few spreaders: $(x_1(t)+x_2(t))_{desired}<0.25$}
+  \label{fig:Fake_News_2b}
+\end{figure}
+
+In a second case, shown in Figure \ref{fig:Fake_News_2a} and Figure \ref{fig:Fake_News_2b}, the same story with an identical spreading and stifling rate has only initially spread to ten percent of the population before the government becomes aware of the fake news and decides to take action. Again, the same pool of control resources should be spent as soon as possible, but in this case, there is less urgency since the spreaders begin at a lower level. Resources can be spent less steeply than in the previous case (as shown by $u(t)$). Additionally, the potential fake news epidemic is stopped considerably earlier as one might expect with the spreaders having less initial time to spread the information to ignorants before a control is applied. Depending on the weights placed on the cost function constants, $R$ and $Q$, the problem solution can be modified to optimize total control over quick group immunity to the fake news or strive for a balance between the two. 
+
+If one wished instead to encourage a fake news information epidemic, such that everyone at some point learns it, the problem would be performed similarly, but with a reversed control objective and actively advertising false information to the ignorant class.

@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\pgfrealjobname{test_subfig_tikz}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usetikzlibrary{arrows,automata}
+
+\begin{document}
+
+\begin{figure}[htbp]
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\beginpgfgraphicnamed{levels}
+\begin{tabular}{C{.45\textwidth}C{.45\textwidth}}
+%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfigure [Speed-density graph] {
+    \resizebox{0.4\textwidth}{!}{%
+    \begin{tikzpicture}
+        % Draw axes
+        \draw[thick,->] (0,0) -- (4.5,0) node (xaxis1) [right] {$\rho$};
+        \draw[thick,->] (0,0) -- (0,4.5) node (yaxis1) [above] {V};
+
+        % Draw line and store intersection with axes as coordinates
+        \draw (0,4) -- (4,0);
+        \draw (0,4) node[left] {$V_{max}$};
+        \draw (4,0) node[below] {$\rho_{max}$};
+
+        %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+        %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+    \end{tikzpicture}
+    }
+} & 
+%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfigure [Subfigure 2] {
+  \resizebox{0.4\textwidth}{!}{%
+    \begin{tikzpicture}
+        % Draw axes
+        \draw[thick,->] (0,0) -- (4.5,0) node (xaxis2) [right] {$\rho$};
+        \draw[thick,->] (0,0) -- (0,4.5) node (yaxis2) [above] {V};
+
+        % Draw line and store intersection with axes as coordinates
+        \draw (0,4) -- (4,0);
+        \draw (0,4) node[left] {$V_{max}$};
+        \draw (4,0) node[below] {$\rho_{max}$};
+
+        %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+        %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+    \end{tikzpicture} 
+    }
+} \\
+
+%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfigure [Subfigure 3] {
+  \resizebox{0.4\textwidth}{!}{%
+    \begin{tikzpicture}
+        % Draw axes
+        \draw[thick,->] (0,0) -- (4.5,0) node (xaxis3) [right] {$\rho$};
+        \draw[thick,->] (0,0) -- (0,4.5) node (yaxis3) [above] {V};
+
+        % Draw line and store intersection with axes as coordinates
+        \draw (0,4) -- (4,0);
+        \draw (0,4) node[left] {$V_{max}$};
+        \draw (4,0) node[below] {$\rho_{max}$};
+
+        %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+        %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+    \end{tikzpicture} 
+   }
+} & 
+ \\
+\end{tabular}}
+\end{figure}
+\endpgfgraphicnamed
+\end{document}

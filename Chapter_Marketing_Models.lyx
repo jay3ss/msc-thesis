@@ -1,0 +1,481 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/jose-chung/school/thesis/thesis-mike-version/
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation .5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Social Marketing Models
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "chapter_marketing"
+
+\end_inset
+
+ In a typical advertising or marketing model, the marketer sends out constant advertisements to a population to encourage individuals to purchase a product or generally subscribe to the advertisement's suggestion. Over the years, several important models have been presented and utilized toward this end. However, with the advent of social media, a new phenomenon of people converting themselves into marketing agents after viewing one or more initial advertisements has arisen.
+\end_layout
+
+\begin_layout Standard
+Consider the case of a new gadget, vacation destination, or event (such as sky diving). In many real-life instances, these products and activities take on a life of their own as a 
+\begin_inset Quotes eld
+\end_inset
+
+social craze". If you sees friends and acquaintances pushing the value of these things on social media sites, you would be more inclined to try them out yourself and spread them to other members of your social network. Traditional marketing models do not handle the impact of social media on marketing as effectively as traditional marketing environments and a new approach is desirable. Three popular and fundamental models from marketing are examined in this chapter: the Vidale-Wolfe model, the Bass model, and the Sethi model. Finally, a new social media craze model is proposed.
+\end_layout
+
+\begin_layout Section
+Vidale-Wolfe Model
+\end_layout
+
+\begin_layout Standard
+To establish a modern social marketing model, let us first examine the traditional and well established Vidale-Wolfe model. The Vidale-Wolfe model is one of the earliest continuous-time advertising models and is given by 
+\begin_inset Formula \begin{equation} \label{eqn:VidaleWolfe1}
+\left.\begin{aligned}
+\frac{dS(t)}{dt}=\beta u(t)[M(t)-S(t)]-\delta S(t),
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+ are the brand sales and market size, respectively, and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the rate of brand sale decay when there is no advertising 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "naik2015marketing"
+literal "true"
+
+\end_inset
+
+. Simply put, when advertisements target untapped markets, growth occurs and when advertising is absent, growth decreases.
+\end_layout
+
+\begin_layout Section
+Bass Model
+\end_layout
+
+\begin_layout Standard
+\noindent
+As one of the most cited authors in management science, Bass models the interaction between buyers and an untapped market via word of mouth information spread. His model describes the diffusion of new technology, innovations, and products 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "naik2015marketing"
+literal "true"
+
+\end_inset
+
+. Bass's differential equation model is specified as: 
+\begin_inset Formula \begin{equation} \label{eqn:Bass1}
+\left.\begin{aligned}
+\frac{dN(t))}{dt}=(p+\frac{q}{M}N(t))(M-N(t)),
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the time-dependent cumulative buyers, 
+\begin_inset Formula $p$
+\end_inset
+
+ is the coefficient of innovation, and 
+\begin_inset Formula $q$
+\end_inset
+
+ is the coefficient of imitation. Notice that the 
+\begin_inset Formula $(M-N(t))$
+\end_inset
+
+ term is reminiscent of the buyer-market interaction in the Vidale-Wolfe model.
+\end_layout
+
+\begin_layout Standard
+\noindent
+The Bass model has since been generalized to account for advertising and price inputs with the addition of 
+\begin_inset Formula $F(t)$
+\end_inset
+
+ on the right-hand side of the differential equation, as follows: 
+\begin_inset Formula \begin{equation} \label{eqn:Bass2}
+\left.\begin{aligned}
+\frac{dN(t))}{dt}=(p+\frac{q}{M}N(t))(M-N(t))F(t),
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ where 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+1-\alpha \{[\frac{\dot{p}(t)}{p(t)}]+\beta[\frac{\dot{a}(t)}{a(t)}]\},
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are the sensitivity parameters for price and advertising price, respectively.
+\end_layout
+
+\begin_layout Section
+Sethi Model
+\end_layout
+
+\begin_layout Standard
+\noindent
+Expanding upon the Vidale-Wolfe model, the Sethi advertising model dynamics take the form of a stochastic differential equation as 
+\begin_inset Formula \begin{equation} \label{eqn:Sethi1}
+\left.\begin{aligned}
+dX_t=(rU_t \sqrt{1-X_t}-\delta X_t)dt + \sigma (X_t)dz_t,
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $X_t$
+\end_inset
+
+ is the market share at time 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $U_t$
+\end_inset
+
+ is the rate of advertising at time 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $r$
+\end_inset
+
+ is the coefficient of the effectiveness of advertising, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the decay constant, 
+\begin_inset Formula $\sigma (X_t)$
+\end_inset
+
+ is the diffusion coefficient, and 
+\begin_inset Formula $z_t$
+\end_inset
+
+ is the Wiener process.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Note, that Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:Sethi1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be expanded via the Sorger 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "sorger1989competitive"
+literal "true"
+
+\end_inset
+
+ approximation where 
+\begin_inset Formula $\sqrt{1-X_t}\approx (1-X_t)+(1-X_t)X_t$
+\end_inset
+
+, where the first term is the untapped market effect and the second term is the word-of-mouth effect, leading us to the following expanded form of the Sethi model where the stochastic term is omitted for simplicity: 
+\begin_inset Formula \begin{equation} \label{eqn:Sethi2}
+\left.\begin{aligned}
+dX_t=(rU_t (1-X_t)+rU_t(1-X_t)X_t-\delta X_t)dt.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proposed Social Media Craze Model
+\end_layout
+
+\begin_layout Standard
+Because none of the current marketing models appear entirely able to adapt to the phenomenon of online social media advertisements that become self-sustaining 
+\begin_inset Quotes eld
+\end_inset
+
+crazes", a new model must be formulated. Naturally, the best place to start in such an endeavor is to examine existing models and see where they succeed and where they fall short of our needs.
+\end_layout
+
+\begin_layout Standard
+If we apply the Vidale-Wolfe model toward social marketing and set 
+\begin_inset Formula $M=1$
+\end_inset
+
+ to normalize the 
+\begin_inset Quotes eld
+\end_inset
+
+market" as the total population size of all users within a particular online social media network and set 
+\begin_inset Formula $S$
+\end_inset
+
+ to be a more general term, 
+\begin_inset Formula $X_t$
+\end_inset
+
+ for a given social media craze that is to be spread, we can see that 
+\begin_inset Formula \begin{equation} \label{eqn:CrazeModel1}
+\left.\begin{aligned}
+dX_t=\beta u(t)[1-X_t]-\delta X_t.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we now compare the normalized Vidale-Wolf model in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:CrazeModel1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to the Sethi model in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:Sethi2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we can see that the Sethi model would be inappropriate for an online social media advertising campaign if the goal was to achieve a social craze that was self-sustaining, as term 
+\begin_inset Formula $rU_t(1-X_t)X_t$
+\end_inset
+
+ will vanish as soon as advertising ends. In an online social media community, individuals continue to discuss and spread a product's information that has been sufficiently advertised, even if it doesn't reach 
+\begin_inset Quotes eld
+\end_inset
+
+social craze" status.
+\end_layout
+
+\begin_layout Standard
+Returning to the normalized Vidale-Wolfe model, the constant 
+\begin_inset Formula $\beta$
+\end_inset
+
+ can be subdivided into two components, where 
+\begin_inset Formula $\beta_1$
+\end_inset
+
+ is the social marketing campaign constant and 
+\begin_inset Formula $\beta_2$
+\end_inset
+
+ represents what we shall call the 
+\begin_inset Quotes eld
+\end_inset
+
+social craze" constant. The social marketing campaign effectiveness is influenced by active spending and advertising over the network to convince people to join in an activity, buy a product, or support a cause. The social craze constant can be seen as the natural inclination of the social media network to effectively advertise to itself via tweets, posts, and likes once people become exposed to an advertisement and decide to spread and share it with others in the social network. Incorporating these refinements for a social craze scenario, we find that 
+\begin_inset Formula \begin{equation} \label{eqn:CrazeModel2}
+\left.\begin{aligned}
+dX_t=\beta_1 u(t)[1-X_t] + \beta_2[1-X_t]-\delta X_t.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is worth noting that the control 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ is linked to the advertising campaign effectiveness constant 
+\begin_inset Formula $\beta_1$
+\end_inset
+
+ because only active advertising can be practically controlled in this model. The whims and virility of social media networks are both difficult to predict for any given group and trying to exercise an effective control over said group must likewise be tailored individually to each network group. This model, however, has a negative-slope decay of the second term and will never reach an online viral state.
+\end_layout
+
+\begin_layout Standard
+Consider a final model in which the second term (the social craze term) increases (in a squared fashion here), as is often observed in a social craze, product, or advertisement that goes viral: 
+\begin_inset Formula \begin{equation} \label{eqn:CrazeModel3}
+\left.\begin{aligned}
+dX_t=\beta_1 u(t)[1-X_t] + \beta_2 {X_{t}}^{2}-\delta X_t.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This model allows for advertisement to effect an initial spreading of information via a control, but as the number of spreading agents increases, the spreading becomes self-sustaining provided that the social craze parameter is sufficiently large compared to the decay factor, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, as people naturally grow bored, as with any information over time.
+\end_layout
+
+\begin_layout Subsection
+Socio-Equilibrium Threshold
+\end_layout
+
+\begin_layout Standard
+In order for a social craze to 
+\begin_inset Quotes eld
+\end_inset
+
+take hold" and become self-sustaining, it must be able to maintain itself after exterior and forced advertising ceases. As such, when the control 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ reaches zero, advertising has ceased, leaving only the second two terms of Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:CrazeModel3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the sum of which must be greater than zero in order to continue spreading the information. It follows that 
+\begin_inset Formula \begin{equation} \label{eqn:SE_Threshold}
+\left.\begin{aligned}
+X_t > \frac{\delta}{\beta_2}
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+is the threshold for a social-craze type spreading of information to maintain itself after advertising ends.
+\end_layout
+
+\end_body
+\end_document

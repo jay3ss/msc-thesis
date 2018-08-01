@@ -1,0 +1,41 @@
+\chapter{INTRODUCTION}% Chapter titles are capitalized -- UNLV rule.
+
+
+%Campaign Optimization through Behavioral Modeling and Mobile Network Analysis
+My general topic introduction and applications go here (To be done).
+
+
+
+
+\noindent Information Categories:
+
+Information can be broken down into three main categories: pure information, ``opinionable" information, and contentious information as shown in figure \ref{fig:Info_Categories}.
+
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{drawings/Info_Categories.eps}
+  \caption{Information Categories: Overview}
+  \label{fig:Info_Categories}
+\end{figure}
+
+1. Pure information is essentially raw data. It includes statistics, the presence of an event happening, natural disasters, and other generally undisputed facts. Pure information is an excellent candidate to be described by typical SI, SIR, SIS, and Maki-Thomson models. There is a message, the message is spread throughout the population, and the message eventually reaches a saturation point where a certain percentage of people are aware of the message. This form of information flow has been widely studied.
+
+2. Opinionable information is ``pure information" that leads to a message division between one or more groups, each interpreting the qualitative elements of the pure message differently. Often, these divisions occur between two camps who may argue over a policy, advertisement, political candidate, or unverified discovery. Occasionally, several factions of opinion can exist, but opinion clustering is inevitable. A special model is required for this type of information, where there are two or more core belief camps, but diffusion exists amongst them to spread opposing beliefs from each cluster's ``bubble". Here, an SIR type model can be used, but a diffusor element must be introduced to account for cross-bubble information spread.
+
+3. Contentious information is information where the ``pure information" itself is debated as to its validity, authenticity, or truth. Common examples of contentious information can include organic versus GMO food safety, celebrity death rumors, internet images which may or may not have been doctored between distribution, ``fake news", and images, quotes, and isolated data taken out of context. There is a not a great deal of research done in this area, so a new model based on the common SIR model with an additional ``counter-spreader" state is utilized to describe this form for information spread. Here, this model will be called the ``SIRC" model.
+
+
+
+\noindent Micro and Macro Model Levels:
+
+Information spread can be seen in two primary ways: as a spread from one individual to another, or as a propagation of information throughout the entire population. The former is known as a micro model and the latter as a macro model. By assuming a mean field population behavior, the two models can be linked. According to mean field theory, an individual acts as an element of a group. While there can be variance from one individual to the next when the group behavior is taken as a whole, the average or typical group behavior follows a specific set of dynamics.
+
+On the micro level, each element (individual) in the system exists in a particular state class and pairwise interactions determine the state-evolution of the system. In information spread, these state classes can include those ignorant of a message, those who active spread the information, those who actively spread a counter message to the information (in some systems), and those who have recovered from the interest in the message and while they are aware of the message, refuse to further spread it for various reasons. The micro-level system can be modeled using Markov Chains, where class state changes or remains in their current state based on a transfer probability. The probability of changing states will vary based on the parameters of the specific system in question.
+
+On the macro level, the population as a whole is examined and follows overall trend evolutions based on information disbursement models such as the SI, SIS, SIR, and Maki-Thomson models. Each class state in these models represent a segment of the population (as opposed to a single individual), who is categorized as an ignorant, spreader, stifler, and (sometimes) counter-stifler. A set of differential equations typically represents the dynamics of these classes and is manipulated to analyze the entire population, along its evolution period. Additionally, higher-order models can be used to examine the interactions between population clusters as to how information is spread between these groups.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{drawings/SIRC_Markov_Chain.eps}
+  \caption{SIRC Model as a Markov-Chain}
+  \label{fig:SIRC_Markov_Chain}
+\end{figure}

@@ -1,0 +1,3081 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/jose-chung/school/thesis/thesis-mike-version/
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation .5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Deterministic Models
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:DETERMINISTIC"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Epidemic and Information Spread Models: Overview and Conventions
+\end_layout
+
+\begin_layout Standard
+Many deterministic models focus on a system's mathematical dynamics. That is, it describes the time dependence of a point in relation to its position (though it need not be a physical position). Examples of this can include a simple system like a swinging pendulum or complex systems such as the traffic flow on a highway 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "contreras2016observability"
+literal "true"
+
+\end_inset
+
+. In deterministic dynamical models, only one future state can follow from the current state. Simple deterministic models of information spread have their mathematical dynamics origins as applications of epidemiology disease spread models. As such, much of the epidemiology terminology requires modification for ease of use and understanding in the context of information spread. The essential variables and parameters used here are outlined in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:essential_terms"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. Additionally, note that some of the common epidemic model acronyms are replaced in this text to properly reference them in the context of information spread applications. Specifically, epidemic spreaders, infected, and removed classes have been renamed as ignorants, spreaders, and recovered, respectively.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Term
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Meaning
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ignorants: Class which does not know the information 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $S$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Spreaders: Class which is spreading the information 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Recovered: Class which no longer spreads the information 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Information spreading rate 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\gamma$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Information recovery rate 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Average connectedness of individuals 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Essential Variables and Parameters
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:essential_terms"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In the simple deterministic models presented, a number of assumptions are made as follows:
+\begin_inset Newline newline
+\end_inset
+
+ (i) Information is transmitted via spreader contact with an ignorant individual.
+\begin_inset Newline newline
+\end_inset
+
+ (ii) Information is transmitted instantaneously upon contact.
+\begin_inset Newline newline
+\end_inset
+
+ (iii) All ignorant and spreading individuals are equally susceptible and transmittable, respectively.
+\begin_inset Newline newline
+\end_inset
+
+ (iv) The population is fixed in size.
+\begin_inset Newline newline
+\end_inset
+
+ Several models and proposed models are introduced in this chapter. The model, its application uses, and some examples of application are presented. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%in Table %
+\backslash
+ref{}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Ignorant-Spreader Model (IS)
+\end_layout
+
+\begin_layout Standard
+Consider the most simple case of information spread in which everyone in the population is either ignorant of the information or has heard of it and spreads it around to other members of the population. The Ignorant-Spreader model flow diagram is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:IS_model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. Intuitively, applications of this model may not make sense at first glance, as one would imagine people to eventually lose interest in spreading a particular piece of information or new story. While this is typically true eventually, over a specified time-span, information can spread without stop. Good examples of this type of spreading would be long-term militant social or cultural movements or important news that everyone would care about over a short span of time like a local natural disaster alert. For the purposes here, one can think of the Ignorant-Spreader model as a subset of the Ignorant-Spreader-Recovered model discussed later, but with limitations. In the IS model, ignorants are always decreasing while spreaders are increasing as the information spreads throughout the population.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/IS_model.eps
+	width 50line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flow diagram for the Ignorant-Spreader model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:IS_model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The system dynamics of the IS model are taken to be: 
+\begin_inset Formula \begin{equation}\label{eqn:IS_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Plotting the system dynamics under typical parameters shows the following results:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/IS_example.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Time Evolution of IS Model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:IS"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:IS"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ it is obvious that the spreaders eventually overtake the entire population at which point everyone is aware of the information and actively spreading it.
+\end_layout
+
+\begin_layout Section
+The Ignorant-Spreader-Ignorant Model (ISI)
+\end_layout
+
+\begin_layout Standard
+Building upon the Ignorant-Spreader model, consider now the case in which ignorants become spreaders as they learn information, as before, but then recover from the information spreading state (due to disinterest over 
+\begin_inset Quotes eld
+\end_inset
+
+old news", for example) and return to a state at which the individual can became re-exposed to the information in order to again gain interest and spread it. Typical examples of this include the latest celebrity gossip or renewed interest in a technology product due to a new design. The flow diagram for the ISI model is presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISI_model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISI_model.eps
+	width 50line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flow diagram for the Ignorant-Spreader-Ignorant model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISI_model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The system dynamics of the ISI model are taken to be: 
+\begin_inset Formula \begin{equation}\label{eqn:ISI_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta i(t) s(t)+\gamma s(t)\\
+\dot{s}(t) = \beta i(t) s(t)-\gamma s(t).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Note that the main difference between the ISI model and the previous IS model dynamics is the addition of a stifling parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ which represents spread information stagnating, causing the spreaders to return to the ingnorant class for a particular topic or topic set.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+section{Special Case: The Ignorant-Spreader-Ignorant Model With Carriers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Ignorant-Spreader-Recovered Model (ISR Maki-Thomson)
+\end_layout
+
+\begin_layout Standard
+Often times, information that is learned and spread is eventually simply forgotten as interest in the subject fades and people are not re-exposed to the same information. The flow diagram for the ISI model is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISR_model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. Once a former spreader becomes recovered they are bored with spreading the information, disinterested in it, or is perhaps even aware of its true-false value and feels no need to further spread it. While in this state, individuals continue to interact pair-wise with other members of the network. Recovered individuals interacting with spreaders can sometimes signal to the spreader that the news being spread in that interaction is 
+\begin_inset Quotes eld
+\end_inset
+
+old news" and not worth spreading, hence converting the spreader to the recovered class. Likewise, two spreaders interacting can indicate that the information is already known and widespread and no longer warrants spreading, turning one of the pair into a Recovered state. Naturally, the chance of these state changes happening with any given pair are probabilistic and based on the stifling rate of the news. Examples of ISR types of information spread include factual news such as an earthquake occurring or even wide-spread universal reactions to a popular television program episode. It should be noted that ISI types of information spread can be viewed in the ISR form if one takes each new piece of information about a topic independently and specifically. While the screen size of the latest cellphone product might be modeled as an ISR system with its information propagation, the product brand as a whole could follow the ISI model as interest is renewed the the latest brand iteration.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_model.eps
+	width 50line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flow diagram for the Ignorant-Spreader-Recovered model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISR_model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="5" columns="2">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Interaction
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Result
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I + S + R = 1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Conservation of individuals in the population 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I + S \rightarrow 2S$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Spreader will infect an ignorant with the message 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $S + S \rightarrow S + R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+One spreader will recover if two interact 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $S + R \rightarrow 2R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Spreader will recover if contacting a recovered 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ISR Class Interactions
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:sir_interactions"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The system dynamics of the ISR model are taken to be: 
+\begin_inset Formula \begin{equation}\label{eqn:ISR_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)+r(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)+r(t)].
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_example.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sample Time Evolution of the ISR Model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISR"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Basic Reproductive Number: Spreading or Forgotten?
+\end_layout
+
+\begin_layout Standard
+One useful metric for examining whether or not information will spread through a population or dissipate before any significant number of people become aware of it is the basic reproductive number, denoted by 
+\begin_inset Formula $R_0$
+\end_inset
+
+. It was first used in its modern form in 1952 by George MacDonald to model the spread of malaria throughout a population, but can easily be applied and envisioned in a variety of systems in which a growth and decay factor are at odds with one another. To imagine it simply, if information is being spread with more 
+\begin_inset Quotes eld
+\end_inset
+
+force" than it is being quelled or forgotten, then the information takes on epidemic properties and spreads throughout the population, otherwise the information will die out in the long run. 
+\begin_inset Formula $R_0$
+\end_inset
+
+ is a threshold condition. Formally, 
+\begin_inset Formula $R_0$
+\end_inset
+
+ is defined as the expected number of secondary cases that arise from a single spreader in a population that is otherwise ignorant of the information. 
+\begin_inset Formula $R_0$
+\end_inset
+
+ is not a rate, but instead dimensionless. In general, the basic reproductive number for information spread is defined as:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula \begin{equation}\label{eqn:reproductive_number}
+\left.\begin{aligned}
+R_0 = \frac{\gamma + \beta}{\gamma} > 1 \\
+\frac{\beta }{\gamma } > 0
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The value of the basic reproduction number can have a large effect on the extent to which news and information spreads, if at all. Note in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:IRC_R0_low"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the reproductive number of the information does not allow it to reach the entire Ignorant class, but in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:IRC_R0_high"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the information spreads to most of the population quickly followed by a fast recovery.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_R0_low.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset Formula $R_0$
+\end_inset
+
+ Comparison: Low 
+\begin_inset Formula $R_0$
+\end_inset
+
+ value
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:IRC_R0_low"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_R0_high.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset Formula $R_0$
+\end_inset
+
+ Comparison: High 
+\begin_inset Formula $R_0$
+\end_inset
+
+ value
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:IRC_R0_high"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proposed Ignorant-Spreader-Recovered Model in Social Media
+\end_layout
+
+\begin_layout Standard
+While the ISR information spread model works well for 
+\begin_inset Quotes eld
+\end_inset
+
+traditional" forms of pairwise interactions, special considerations must be made when it concerns modern social media networks. What makes digital social media so special? Because interactions occur very rapidly and deliberately. When one is immediately notified of an inter-network social media posting and opts to re-post or otherwise spread the information, the spreading and stifling parameters can swing wildly based on cultural whims. Additionally, when an individual in a social network has recovered a specific news or information item, that individual is not putting themselves in a position to actively have a pairwise contact the spreader class (at least concerning that news). This results in the spreader class being unchecked from recovered class members and hence spreaders only realizing that the news they spread is widely known upon contact with other spreaders.
+\end_layout
+
+\begin_layout Standard
+\noindent
+The resulting equations for an ISR system in social media are as follows: 
+\begin_inset Formula \begin{equation}\label{eqn:ISR_dynamics_sm}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)].
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_sm.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sample time evolution of the ISR model for social media
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISR_sm"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+It is noteworthy to observe that typically in digital social media systems, information spreads more rapidly and decays at a slower rate than traditional non-digital network rates, partially due to the lack of recovered class stifling factors.
+\end_layout
+
+\begin_layout Section
+Proposed Ignorant-Spreader-Recovered Model in Social Media with Decay
+\end_layout
+
+\begin_layout Standard
+Consider the situation in which digital social media information or news is drawn out over a long period of time. Information will be learned, spread, and recovered from as before, but a natural human disinterest of dated news becomes a significant factor. To model this behavior, a simple exponential forgetting factor is added to the spreader dynamics, similar to the Vidale-Wolfe advertising model 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "vidale1957operations"
+literal "true"
+
+\end_inset
+
+. The decay is balanced by the dynamics of the recovered class, as individuals who stop caring about a topic over time effectively act as recovered.
+\end_layout
+
+\begin_layout Standard
+\noindent
+The dynamics equations for a social media ISR system with decay are as follows: 
+\begin_inset Formula \begin{equation}\label{eqn:ISR_dynamics_decay}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)]-\delta s(t)\\
+\dot{r}(t) = \gamma k s(t)[s(t)]+ \delta s(t).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISR_d.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sample time evolution of the ISR model for social media with decay
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISR_d"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Over long periods of digital media information spreading throughout a network, spreader decay reshapes spreader behavior to more closely resemble traditional ISR information spread curves. Obviously, the relevance and 
+\begin_inset Quotes eld
+\end_inset
+
+juiciness" of the news or information will greatly influence the rate of natural spreading decay.
+\end_layout
+
+\begin_layout Section
+Proposed ISCR Model for Contentious Information Spread
+\end_layout
+
+\begin_layout Standard
+In order to describe a single group where 
+\begin_inset Quotes eld
+\end_inset
+
+contentious information" is being distributed, a special model is required to account for not only spreaders, but also counter spreaders of the information. The traditional ISR model serves as a good base for the new model, but has its shortcomings when examining the spread of contentious information. Examples of when to apply this ISCR model include populations where 
+\begin_inset Quotes eld
+\end_inset
+
+fake news" is being spread, public panics have started over false information that must be quelled by the government, and the spreading of false celebrity death announcements on social media. At the core of this modified model is the idea of a 
+\begin_inset Quotes eld
+\end_inset
+
+counter spreader" which acts just like the spreader, but is pushing against the spreader information with an opposite message. As such, the pairwise interactions of an information based ISR model (such as the popular Maki-Thomson model) still apply in the ISCR model, but with a new class of individual present in the population as a possible state. Here, 
+\begin_inset Formula $I$
+\end_inset
+
+ represents the ignorant class, which is unfamiliar with the information. 
+\begin_inset Formula $S$
+\end_inset
+
+ represents the spreader class, which knows the information and is actively spreading it to each contacted class. 
+\begin_inset Formula $C$
+\end_inset
+
+ represents the counter-spreader class, which knows the information and is actively spreading a counter-information campaign against the information being spread by the spreader class. Finally, 
+\begin_inset Formula $R$
+\end_inset
+
+ represents the recovered class, which knew about the information at one time, possibly spread or counter-spread it, but has become uninterested in further spreading of the information due to simple disinterest, a belief that the information is already widely known, or because the class has determined that the information is proven false and should not be spread further. Inter-class interactions evolve as shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:sirc_interactions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="8" columns="2">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Interaction
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Result
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I + (S + C) + R = 1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Conservation of individuals in the population 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I + S \rightarrow 2S$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Spreader will infect an ignorant with the message 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $I + C \rightarrow 2C$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Counter will infect an ignorant with the message 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $S + S \rightarrow S + R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+One spreader will recover if two interact 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $C + C \rightarrow C + R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+One counter will recover if two interact 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $S + R \rightarrow 2R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Spreader will recover if contacting a recovered 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $C + R \rightarrow 2R$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Counter will recover if contacting a recovered 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ISCR class interactions
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:sirc_interactions"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename drawings/SIRC_Model.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flow diagram for ISCR model class interactions.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_flow"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sirc_flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows a flow diagram for the class interactions, where parameters 
+\begin_inset Formula $\beta$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ represent spread rate, counter-spread rate, stifle rate, and counter stifle rate, respectively. The parameter 
+\begin_inset Formula $\omega$
+\end_inset
+
+ represents the willingness of spreaders to listen to counter-spreader information (
+\begin_inset Formula $\omega_1$
+\end_inset
+
+) and vice-versa (
+\begin_inset Formula $\omega_2$
+\end_inset
+
+), which can take a positive or zero value in the case of completely hardline spreader and counter-spreader views. These parameters allow for spreaders and counter-spreaders to potentially examine the opposite viewpoint and 
+\begin_inset Quotes eld
+\end_inset
+
+change sides."
+\end_layout
+
+\begin_layout Standard
+\noindent
+The system dynamics of the model can now be given as: 
+\begin_inset Formula \begin{equation}\label{eqn:SIRC_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t) - \alpha k i(t)c(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \omega_1 k s(t)c(t) + \omega_2 k s(t)c(t) - \gamma k s(t)[s(t)+r(t)]\\
+\dot{c}(t) = \alpha k i(t)c(t) + \omega_1 k s(t)c(t) - \omega_2 k s(t)c(t) - \mu k c(t)[c(t)+r(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)+r(t)] + \mu k c(t)[c(t)+r(t)].
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Plotting the system dynamics and varying the parameters leads to the results in the proceeding figures.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_no_counters.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No counter-spreaders
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_no_counters"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_spread_dominant.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Spreaders dominate
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_spread_dominant"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_counter_dominant.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Counter-spreaders dominate
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_counter_dominant"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_even.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Even mix of spreaders and counter-spreaders
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_even"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_even_S_2x_receptive.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Spreader twice as receptive to outside influence as counter-spreader
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_even_S_2x_receptive"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_spreader_dominant_receptive.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dominant spreader is 4.6 times as receptive to outside influence as counter-spreader
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_spreader_dominant_receptive"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_S_2x_stifle.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Spreader is stifled twice as strongly as counter-spreader
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_S_2x_stifle"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/sirc_C_2x_spread.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Counter-spreader is spreading twice as strongly as spreader
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sirc_C_2x_spread"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is observable that spreading strength changes have the greatest effect, followed by stifling strength. Receptivity to an opposing view has a smaller, but still significant effect on information spread. Counter-spread information effectively overtakes (counters) the initial spreading view once the receptivity to outside views reaches approximately 4.6 times the receptivity of the counter-spreaders to agreeing with the initial information.
+\end_layout
+
+\begin_layout Standard
+It should be noted that counter-spreaders are naturally unlikely to be receptive to information that has been proven objectively false. As such, they will have a favorable spreader to counter-spreader conversion rate compared to the spreaders when there are no remaining members of the ignorant class to become spreaders of information that has not been researched or fully absorbed, as in the case of 
+\begin_inset Quotes eld
+\end_inset
+
+fake news" and similar contentious information scenarios.
+\end_layout
+
+\begin_layout Section
+Proposed Hybrid ISCR Model
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+label{ch:SIRC_HYBRID} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Often times, situations arise where two (or more) primary group 
+\begin_inset Quotes eld
+\end_inset
+
+communities" dominate in their view and spread of a certain type of information. In the real world, this is a very common situation. For example, in the United States, conservatives and liberals often form information communities that oppose one another on political information and interpretation. One country may be a mega-community and oppose a similar community from another country in how they are accepting and spreading news relating to inter-country relations. The ISCR model covers situations where potentially contentious information is being spread within a mostly homogeneous population. What it does not do well, however, is describe how information spreads or diffuses between two different, especially polarized groups. It is therefore necessary to modify the ISCR model to account for a hybrid case.
+\end_layout
+
+\begin_layout Standard
+In the hybrid model, we assume two main polarized communities for simplicity, 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ and 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+, which can be extended to any number of polarized groups. We assume there are some individuals within each community that has contact with the other. Perhaps they are moderates or friends who subscribe to a different political view or family members from a home country who are not part of one's current information community, but act as a link to another country-community. No matter the reason, some individuals act as diffusion elements of information between the two communities. The influence and connection strength of the overall collection of these individuals is denoted by a pair of directional constants 
+\begin_inset Formula $a_{12}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{21}$
+\end_inset
+
+, where 
+\begin_inset Formula $a_{12}$
+\end_inset
+
+ is the strength of information flow from group 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ to group 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{21}$
+\end_inset
+
+ is the strength of information flow from group 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ to group 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+, expressed as a percentage of cross-group receptivity. For highly polarized groups, these constants will be very small fractions of one and for completely isolated communities they will be equal to zero, reducing the hybrid model to the standard ISCR model discussed previously. Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISCR__hybrid_model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the high-level flow diagram for the proposed hybrid ISCR model. 
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISCR_hybrid_model.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flow diagram for ISCR two-community interactions.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISCR__hybrid_model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Modifying the previous ISCR model system dynamics for one group, we obtain: 
+\begin_inset Formula \begin{equation}\label{eqn:SIRC1_dynamics}
+\left.\begin{aligned}
+\dot{i}_1(t) = -\beta_1 i_1(t)s_1(t) - \alpha_1 i_1(t)c_1(t) - a_{21} \beta_2 i_1(t)s_2(t) - a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{s}_1(t) = \beta_1 i_1(t)s_1(t) - \omega_{11} s_1(t)c_1(t) + \omega_{12} s_1(t)c_1(t) - \gamma_1 s_1(t) + a_{21} \beta_2 i_1(t)s_2(t)\\
+\dot{c}_1(t) = \alpha_1 i_1(t)c_1(t) + \omega_{11} s_1(t)c_1(t) - \omega_{12} s_1(t)c_1(t) - \mu_1 c_1(t) + a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{r}_1(t) = \gamma_1 s_1(t) + \mu_1 c_1(t).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Likewise, for the second ISCR group the following dynamics are obtained:
+\begin_inset Formula \begin{equation}\label{eqn:SIRC2_dynamics}
+\left.\begin{aligned}
+\dot{i}_2(t) = -\beta_2 i_2(t)s_2(t) - \alpha_2 i_2(t)c_2(t) - a_{12} \beta_1 i_2(t)s_1(t) - a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{s}_2(t) = \beta_2 i_2(t)s_2(t) - \omega_{21} s_2(t)c_2(t) + \omega_{22} s_2(t)c_2(t) - \gamma_2 s_2(t) + a_{12} \beta_1 i_2(t)s_1(t)\\
+\dot{c}_2(t) = \alpha_2 i_2(t)c_2(t) + \omega_{21} s_2(t)c_2(t) - \omega_{22} s_2(t)c_2(t) - \mu_2 c_2(t) + a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{r}_2(t) = \gamma_2 s_2(t) + \mu_2 c_2(t).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Following the diffusion terms in the dynamics, the system can be loosely described as individuals from one group spreading their group's information and opinions on a topic to an opposing community via their friends or relatives. The receptiveness of one group to believe and accept the views of another will determine how much the extra-group spreader influences the opposing group.
+\end_layout
+
+\begin_layout Standard
+Consider the two 
+\begin_inset Formula $ISCR$
+\end_inset
+
+ groups shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hybrid_sirc_initial"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. The 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ community is predominantly influenced by the spreader information with minor counter-spreader information influence, while the opposite is true for the 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ community, being influenced mostly by the counter-spreader information (generally the information that contradicts or opposes the Spreader information). As an example, 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ spreaders might be mainly spreading an unverified rumor about an opposing political party candidate in the 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ community. Some members of 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ believe the initial information is a lie and are counter-spreaders in that community. The 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ community has their own contentious information concerning an opposing candidate from the 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ community with similar levels of dissent within their own group. Since the 
+\begin_inset Formula $a_{12}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{21}$
+\end_inset
+
+ constants are zero, there is no diffusion with which to cause interaction between the communities.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/hybrid_sirc_initial.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two Initial ISCR Groups: Spreader dominant and Counter-spreader dominant
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid_sirc_initial"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With an equal amount of cross-interactions between the two communities (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hybrid_sirc_equal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), the influence of counter-spreaders from 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ counteracts the influence of 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ spreaders and vice-versa. This, of course, assumes that in the polarized groups, the information of 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ spreaders is the same message as 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ counter-spreaders. This need not be the case, but serves to simplify the system for example purposes.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/hybrid_sirc_equal.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two ISCR Groups: Equal Bidirectional Diffusion
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid_sirc_equal"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When there is mismatched receptivity between the communities, dramatic shifts can occur in the way popular beliefs are altered via information spread. In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hybrid_sirc_a21"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+ community is more receptive to the 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ community and is hence more likely to listen to the messages of the diffuser spreaders and counter-spreaders. In this case, because the counter-spreaders are dominant in the 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ group (and many of these counter-spreaders are being heard), there is a large resurgence of counter-spreaders in 
+\begin_inset Formula $ISCR_1$
+\end_inset
+
+, while keeping the spreaders of 
+\begin_inset Formula $ISCR_2$
+\end_inset
+
+ relatively low (as they are not nearly as receptive to outside influence).
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/hybrid_sirc_a21.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two ISCR Groups: Skewed receptivity between groups
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid_sirc_a21"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As skewed receptivity mismatching increases to where one group is about seven times as receptive as the other, we find a 
+\begin_inset Quotes eld
+\end_inset
+
+tip over point" where (all else being equal) the opposing community's information beliefs equal that of the primary community (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hybrid_sirc_a21_cancel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+). After this point, the information beliefs of the opposition group begin to dominate both groups (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hybrid_sirc_a21_plus"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+). It should be noted that there are significant diminishing returns on the effect of receptivity to opposing polarized communities.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/hybrid_sirc_a21_cancel.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two ISCR groups: receptivity tipping point
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid_sirc_a21_cancel"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/hybrid_sirc_a21_plus.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two ISCR groups: dominant inter-community belief
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid_sirc_a21_plus"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly, between polarized groups, diffusion plays a significant role in changing the dominant information beliefs of a community. Generally speaking, if two groups are truly polarized, outside influences will be felt but the impact will be minor. A fairly strong amount of receptiveness to outside opposing communities would be required to have lasting change, and a situation in which one group is several times more receptive than the other is unlikely. Still, it is of value to objectively observe and model the influence groups have on one another along a spectrum of non-mutual receptivity levels.
+\end_layout
+
+\begin_layout Section
+Proposed ISSRR Model for Contentious Information
+\end_layout
+
+\begin_layout Standard
+While the proposed ISCR model describes two primary groups in which opposing class members seek to turn the other to their side of belief of contentious information, it does not describe a situation in which there are multiple final recovered states of contentious information belief. A new model must be proposed to handle this type of social network contentious information spread.
+\end_layout
+
+\begin_layout Standard
+Consider a basic ISR modeling of a polarized social network group that is presented with contentious information, leading to two final recovered beliefs, representing individuals who eventually make up their mind concerning the information and have lost interest in it, pending any relevant new information. As the new information is discovered by the network population, individuals form an initial opinion and many will choose to begin to spread the information opinion stance they have decided to follow among their friends and fellow social network members. At this point, two such spreader groups will arise, each pushing people via online social media tweets and posts to come to their 
+\begin_inset Quotes eld
+\end_inset
+
+side" of the contentious information in the hopes of gaining additional spreaders who, hopefully, finally settle on their preferred of the two recovered states. We shall call this the Ignorant-Spreader-Spreader-Recovered-Recovered (ISSRR) model, which is visually depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISSRR_Model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISSRR_Model.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proposed ISSRR model class interaction overview
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISSRR_Model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that in this model, after informed individuals split into their respective spreader groups, they will reciprocally interact with varying levels of balance with spreaders of the opposing viewpoint and eventually settle into a recovered state of one of the two contentious sides. Aside from the typical ignorant class becoming spreaders interactions from previous models, we must account for spreader-spreader interactions and the strength of tendency to achieve one of the two recovered states, based on that interaction. In other words, which side has the greater ability to compel the other, based on a demonstrable truth discovered to resolve the contention, assumed authority of the spreaders, and other factors when compared to the tendency of a group to stay with their original line of thinking will ultimately determine the relative outcome of the two competing sides of information distribution and belief.
+\end_layout
+
+\begin_layout Standard
+The practicality of an ISSRR model is evident in several real world situations. Social and cultural issues a community must agree upon with no clear objective right or wrong answer is one candidate for such a model. Political campaigning between candidates or measures that represent differences in ideologies, not necessarily value, can also be described with an ISSRR model. Even the concept of fake news mentioned in previous sections can be modeled under this model, provided the competing news stories are supported by highly polarized primary groups, where final-state recovered individuals settle on a belief in the actual or fake news.
+\end_layout
+
+\begin_layout Standard
+The proposed ISSRR model takes the form of the following set of differential equations: 
+\begin_inset Formula \begin{equation}\label{eqn:ISSRR_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta_1 i(t)s_1(t) - \beta_2 i(t)s_2(t)\\
+\dot{s}_1(t) = \beta_1 i(t)s_1(t) + (d_{12}-d_{21})s_1(t)s_2(t) - (\gamma_{11}+ \gamma_{12})s_1^2(t)\\
+\dot{s}_2(t) = \beta_2 i(t)s_2(t) + (d_{21}-d_{12})s_1(t)s_2(t) - (\gamma_{22}+ \gamma_{21})s_2^2(t)\\
+\dot{r}_1(t) = \gamma_{11}s_1^2(t) + \gamma_{21} s_2^2(t)\\
+\dot{r}_2(t) = \gamma_{22}s_2^2(t) + \gamma_{12} s_1^2(t),
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $d$
+\end_inset
+
+ is the relative strength of influence and connection of one information-spreading group over the other. Note that this model assumes a lack of active online social media interactions on the part of the recovered class under the assumption that those who are bored, convinced of, or 
+\begin_inset Quotes eld
+\end_inset
+
+over" a topic will not be reaching out online to further engage the social network and at best will merely spectate or 
+\begin_inset Quotes eld
+\end_inset
+
+lurk" as spreaders continue to spread and argue positions. This departs from traditional rumor spread models.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Two sample scenarios were simulated using the presented ISSRR dynamics. In the first scenario, presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISSRR_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the first group has a greater ability to spread information via online social networks compared to the second group. Perhaps the first group is generally more internet savvy or culturally willing to share information over the internet, such as is often the case with younger versus older internet users. The two groups are equally likely to cease caring about the topic once they have made up their minds on a stance and are also both likely to favor their initial group's opinion trend over the opposing side. Finally, neither group has significant social network influence over the other. Note that the simple ability to spread more effectively than the side of an opposing opinion has a major influence over the eventual total group recovered opinion distribution, all else being equal.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISSRR_1.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proposed ISSRR: Scenario 1
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISSRR_1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the second scenario, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ISSRR_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, both subgroups are equally effective at spreading their opinion and equally likely to grow disinterested in any given opinion, once they have made up their mind on the topic. Unlike in the first scenario, here the second group has greater influence over the first group. This quickly leads the dynamics to result in much greater numbers of individuals to ultimately settle on the second group's information-opinion.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/ISSRR_2.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proposed ISSRR: Scenario 2
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ISSRR_2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

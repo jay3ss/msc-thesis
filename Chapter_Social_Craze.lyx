@@ -1,0 +1,662 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/jose-chung/school/thesis/thesis-mike-version/
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation .5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Control Scenario 1: Advertisement and Social Craze
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "chapter_control_craze"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Description
+\end_layout
+
+\begin_layout Standard
+The spread of information via advertisements is critical for most businesses and organizations that rely on popular participation to succeed. If the population is unaware of a product or service, it will not be purchased or otherwise utilized. As such, the goal of advertising information is to spread said information as effectively as possible within the bounds of the spreading organization's time and resources. How does one group advertise to another? By hiring individuals as information spreaders who then spread that information in the form of an ad on television, social media, or billboards. In addition, recent years have seen paid ads in the form of search engine and online shop search priority to ad purchasers. Without said hired advertisements, the single company spreader would simply never gain enough traction in the public eye to spread to any significant amount of customers.
+\end_layout
+
+\begin_layout Standard
+Ideally, an organization could simply pour an infinite amount of control via ad costs and repetition to the public which would absorb the information and never forget it. Eventually, everyone would know about the product or service and it's benefits, giving the best opportunity for the advertisers to gain as many customers as possible. Unfortunately, this ideal situation is rarely if ever seen realistically. Resources are limited by the pocket depth of the advertisers as well as practical constraints. Additionally, customers are likely to forget an advertisement's message over time and several ads must be spread to maintain attention.
+\end_layout
+
+\begin_layout Standard
+But what happens when advertisements cease? The information does not simply disappear from the public consciousness. In the absence of active advertising, especially in a digital social media world, talk of the product or service will endure, perhaps even thrive and grow into what is known commonly as a 
+\begin_inset Quotes eld
+\end_inset
+
+social craze". If a product, service, social movement, or meme can sustain itself without active advertising, despite decay, it would ultimately prove beneficial and cost effective for the original advertiser.
+\end_layout
+
+\begin_layout Section
+Problem Formulation
+\end_layout
+
+\begin_layout Standard
+The goal to achieve through control of this scenario is to create a self-sustaining social media craze after sufficient active advertising has commenced. Ideally, the advertisers who wish to start this craze want to spend only as much as is required to make the information spread on its own, without requiring additional advertisement resources. At first glance, the problem appears to closely mirror the Ignorant-Spreader-Recovered (ISR) model presented earlier. Alternatively, a spreading rate model with the addition of a decreasing 
+\begin_inset Quotes eld
+\end_inset
+
+forgetting" factor (as product excitement dwindles for a particular model or iteration) can be developed. Both proposed modelings of the advertisement spread account for the main elements of the problem: spreading the information and a natural tendency of interest in the product to diminish. However, the proposed model for social media crazes fits the scenario nicely.
+\end_layout
+
+\begin_layout Standard
+Recall that the social craze model from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:CrazeModel3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ was presented as 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+dX_t=\beta_1 u(t)[1-X_t] + \beta_2 {X_{t}}^{2}-\delta X_t, \nonumber
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $\beta_1$
+\end_inset
+
+ is the social marketing campaign constant, 
+\begin_inset Formula $\beta_2$
+\end_inset
+
+ represents the social craze constant, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the decay constant, and 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ is the control, expressed through active advertising initiatives.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Recall also that our goal is to ultimately pass the advertising socio-equilibrium threshold in order to ensure the self-sustainability of the social network craze in the absence of active control. Therefore, active control must be maintained until the spreading of the advertisement has reached enough of the population, which is the threshold point: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+X_t > \frac{\delta}{\beta_2}. \nonumber
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Because we wish to minimize the required expenses of the advertisers and accomplish the goal of achieving social craze status as quickly as possible (in this case, a twenty day advertising campaign), we take the cost function to be: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+J=\int_{0}^{t_f}(u^2(t)+(x-x_d)^2 + \lambda )dt,
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the time to be optimized and 
+\begin_inset Formula $x_d$
+\end_inset
+
+ is the desired amount of information spreaders, such that the social craze threshold is crossed and the advertisement spread becomes self-sustaining. At this point, there is no further need for control and the control action 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ will cease.
+\end_layout
+
+\begin_layout Standard
+\noindent
+This scenario is a prime candidate for an optimal control strategy. There are any number of possible ways to achieve the goal, making the least costly, fastest, or most efficient strategy the preferred one. Other research similarly utilizes optimal control principles to find the best solution for a given need 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "kachroo2017optimal"
+literal "true"
+
+\end_inset
+
+. The Hamilton-Jacobi-Bellman (HJB) equation, as the basis of optimal control, will be utilized to achieve an optimal control strategy, 
+\begin_inset Formula $u^*(t)$
+\end_inset
+
+, representing how much advertising should be put out on social media over time. If no analytic solution is attainable, then the Pontryagin minimization principle will be applied to the problem in order to obtain a numeric solution.
+\end_layout
+
+\begin_layout Section
+Results and Simulations
+\end_layout
+
+\begin_layout Standard
+The Hamiltonian was calculated, as follows: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+H = u^2(t) + (x(t)-x_d)^2 + \lambda +J_x[\beta_1(1-x(t))u(t) + \beta_2 x^2(t) - \delta x(t)].
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+By differentiating the Hamiltonian, with respect to the control 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ and setting the result equal to zero, the optimal control action can be found by solving for 
+\begin_inset Formula $u^*(t)$
+\end_inset
+
+: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+u^*(t) = \frac{J_x \beta_1 (1-x(t))}{2}.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Finally, the resulting 
+\begin_inset Formula $u^*(t)$
+\end_inset
+
+ control action was used to determine the Hamilton-Jacobi-Bellman partial differential equation, 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+0 = \frac{J_x^2 \beta_1^2 (1-x(t))^2}{4} + J_x x(t)(\beta_2 x(t)-\delta).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no clear analytic solution from the resulting HJB partial differential equation, another method is required. The Pontryagin minimization principle was applied to the same dynamics and cost function. The Hamiltonian was calculated using the new method: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+H = g + p^T[a] = Ru^2(t)+ M(x(t)-x_d)^2 + \lambda + p[\beta_1 u(t)(1-x) + \beta_2 x^2(t) - \delta x(t)],
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $R$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+ are weight constants for the control and tracking elements of the cost function, respectively. From the Hamiltonian, the state and co-state equations were determined as follows: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+\dot{x}(t) = \frac{\delta H}{\delta p} = \beta_1 u(t)(1-x(t)) + \beta_2 x^2(t) - \delta x(t)\\
+\dot{p}(t) = -\frac{\delta H}{\delta x} = 2M(x_d - x(t)) + p(\beta_1 u(t) - 2 \beta_2 x(t) + \delta).
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Again, by differentiating the Hamiltonian with respect to the control 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ and setting the result equal to zero, the optimal control action was found to be 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+u^*(t) = \frac{-p^* \beta_1(1-x^*(t))}{2R}.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+Using the calculated 
+\begin_inset Formula $u^*(t)$
+\end_inset
+
+, along with the state and co-state equations, the necessary conditions can be expressed as follows: 
+\begin_inset Formula \begin{equation}
+\left.\begin{aligned}
+\dot{x}^*(t) = \frac{-p^*(t) \beta_1^2}{2}(x^{*2}(t)-2x^*(t)+1) +\beta_2 x^{*2} - \delta x^*(t)\\
+\dot{p}^*(t) = \frac{p^{*2}(t) \beta_1^2}{2}(x^*(t) - 1) - 2p^*(t)\beta_2 x^{*2}(t) - p^{*2}(t) \lambda +2x_d.
+\end{aligned}\right.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Using MATLAB, the boundary value problem was simulated with the 
+\shape italic
+bvp4c
+\shape default
+ function. The resulting plots of states versus time at various parameters are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_4"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. 
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/Social_Craze_1_u.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Social craze control: 
+\begin_inset Formula $\beta_1=0.1,\beta_2=0.5,d=0.1,x_d=0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Social_Craze_1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parameters in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ simulate a minor business advertiser whose advertisements only influence a small portion of those who view it. However, the social media group to which the advertisement is targeted is highly interactive and connected. If someone likes the product, they will be very likely to share that information with their friends. It is easy to observe the need for significant control initially, as the social media advertisement system is sustained by the active advertisements. As the system progresses over time, less active advertisement control is needed as more social media 
+\begin_inset Quotes eld
+\end_inset
+
+buzz" is accruing and spreading the advertisement information. Eventually, no active control (and hence, advertisement effort and cost) are required to sustain the social media information. It becomes a 
+\begin_inset Quotes eld
+\end_inset
+
+craze" and is self-sustaining without additional control requirements upon reaching the desired end time. 
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/Social_Craze_2_u.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Social craze control: 
+\begin_inset Formula $\beta_1=0.6,\beta_2=0.5,d=0.1,x_d=0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Social_Craze_2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the advertiser has significantly more sway over people through its advertisement actions, as denoted by the 
+\begin_inset Formula $\beta_1$
+\end_inset
+
+ parameter. All other parameters are identical to the previous case. Here, the advertiser reaches the desired social media craze threshold much faster. In fact, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, halving the amount of control weight via 
+\begin_inset Formula $R$
+\end_inset
+
+, gives similar results with less control requirements, which generally translates to less expenditure. 
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/Social_Craze_3_u.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Social craze control: 
+\begin_inset Formula $R=.5,\beta_1=0.6,\beta_2=0.5,d=0.1,x_d=0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Social_Craze_3"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The impact of the decay factor cannot be understated. Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Social_Craze_4"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ follows the same parameters as the second case, but increases the decay rate, 
+\begin_inset Formula $\delta$
+\end_inset
+
+. In other words, a popular advertiser is advertising to a receptive group that will readily post and share the product, social cause, etc. However, this group grows disinterested or bored quickly. As a result, significantly more control is required when attempting to form a social media craze out of no initial group information. 
+\begin_inset Float figure
+placement !htbp
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename figures/Social_Craze_4_u.eps
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Social craze control: 
+\begin_inset Formula $\beta_1=0.6,\beta_2=0.5,d=0.3,x_d=0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Social_Craze_4"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the above simulations, it is not difficult to imagine the types of companies that can be similarly modeled and simulated by changing the parameters. Apple, for example, has a strong enough brand following that very little active advertisement is needed to create a group obsession over the latest device. In contrast, governmental health organizations may pour massive amounts of advertising into changing public opinion over bad health habits and achieve very slow progress.
+\end_layout
+
+\end_body
+\end_document

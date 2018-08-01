@@ -1,0 +1,1082 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Background and Literature Review
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:background"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Traffic Flow Theory
+\end_layout
+
+\begin_layout Standard
+Traffic may be modeled using different levels of models such as macroscopic,
+ microscopic, mesoscopic, and aggregation and disaggregation levels 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ Macroscopic models describe the aggregate behavior of traffic, similar
+ to how hydrodynamic models describe the aggregate behavior of particles
+ in liquids and gases.
+ Microscopic models on the other hand describe the interactions and reactions
+ of single vehicles with each other similar to multi-particle systems.
+ Mesoscopic models are hybrids of macroscopic and microscopic models.
+ Finally, aggregation and disaggregation is the use of microscopic quantities
+ to describe macroscopic ones (aggregation) and using macroscopic quantities
+ to describe microscopic ones (disaggregation).
+\end_layout
+
+\begin_layout Standard
+The macroscopic quantities that are of interest are the speed (
+\begin_inset Formula $V$
+\end_inset
+
+), density (
+\begin_inset Formula $\rho$
+\end_inset
+
+), and flow (
+\begin_inset Formula $Q$
+\end_inset
+
+) of the vehicles.
+ There are several different definitions of speed, but essentially speed
+ is the distance traveled per unit time.
+ Density is defined as the number of vehicles per unit length of road.
+ Finally, flow is defined as the number of vehicles passing through a certain
+ point in space per unit time.
+\end_layout
+
+\begin_layout Section
+Modeling
+\end_layout
+
+\begin_layout Subsection
+Macroscopic Models
+\end_layout
+
+\begin_layout Standard
+Much like at a large enough scale a gas or liquid can be described as a
+ continuous entity, traffic can also be described as continuous entity.
+ Ignoring the interactions between individual vehicles on the road, macroscopic
+ models instead focus on the quantities such as flow, density, and velocity
+ of the traffic as whole.
+ This mean that when the different macroscopic model quantities are used,
+ they are in terms of averages, means, or totals.
+\end_layout
+
+\begin_layout Subsubsection
+Density
+\end_layout
+
+\begin_layout Standard
+Density, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, is defined as the number of vehicles per length of road and can either
+ be for 
+\end_layout
+
+\begin_layout Itemize
+a single lane: 
+\begin_inset Formula $\rho_{i}\left(x,t\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $i=1,\dots,n$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of lanes
+\end_layout
+
+\begin_layout Itemize
+total density over all lanes of a length of road: 
+\begin_inset Formula $\rho_{tot}\left(x,t\right)=\sum_{i=1}^{I}\rho_{i}\left(x,t\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+lane-averaged density: 
+\begin_inset Formula $\rho\left(x,t\right)=\nicefrac{\rho_{tot}\left(x,t\right)}{I}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Velocity
+\end_layout
+
+\begin_layout Standard
+Velocity, 
+\begin_inset Formula $V$
+\end_inset
+
+, is defined in terms as a lane-averaged (or, effective) speed and is given
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V\left(x,t\right)=\sum_{i=1}^{I}\frac{\rho_{i}\left(x,t\right)}{\rho_{tot}\left(x,t\right)}V_{i}\left(x,t\right)\label{eq:lane-average-speed}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{i}\left(x,t\right)$
+\end_inset
+
+ is the local speed of lane 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Traffic Flow Rate
+\end_layout
+
+\begin_layout Standard
+Flow, 
+\begin_inset Formula $Q$
+\end_inset
+
+, is defined as the number of vehicles per unit time.
+ Traffic flow rate is the product between density and velocity, as shown
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and is known as the fundamental relation of traffic flow theory 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hall1996traffic"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q\left(x,y\right)=\rho\left(x,t\right)V\left(x,t\right).\label{eq:lane-average-flow}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Flow can be given in terms of a single lane, all lanes, or as a lane-average
+ shown in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Many times the flow in terms of all lanes will be used as the conservation
+ of vehicles holds only for the total density, 
+\begin_inset Formula $\rho_{tot}$
+\end_inset
+
+, and not for each lane individually as vehicles can change lanes after
+ all.
+ It should be noted that this relation holds for all types of macroscopic
+ models, but not for all types of roads.
+ In other words, the geometry of the road matters but not the model.
+ For example, on-ramps and off-ramps and a change in the number of lanes
+ can allow cars to enter and exit a roadway which require Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to be modified.
+\end_layout
+
+\begin_layout Subsection
+Microscopic Models
+\end_layout
+
+\begin_layout Standard
+Microscopic models differ from macroscopic models in that microscopic models
+ are concerned with interactions between vehicles and the reactions and
+ behavior of individual drivers.
+ Many first-order models have the following typical, kinematic model variables
+ for each 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $l_{i}$
+\end_inset
+
+: length of the vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+: position
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $v_{i}$
+\end_inset
+
+: velocity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}$
+\end_inset
+
+: acceleration
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h_{i}$
+\end_inset
+
+: headway
+\end_layout
+
+\begin_layout Standard
+Not all microscopic models include the headway (bumper-to-bumper distance
+ of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+vehicles), 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, but it is used enough to point it out.
+ It is important to note that these quantities are not aggregated ones,
+ but are rather for each individual vehicle.
+ Also, because it is not possible to predict human behavior therefore stochastic
+ microscopic models are frequently used 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "immers2002traffic"
+literal "false"
+
+\end_inset
+
+.
+ Because these quantities (position, velocity, acceleration, etc.) are known
+ for every vehicle on the road at all times, it is possible to model effects
+ such as economic costs and pollution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "immers2002traffic"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Mesoscopic Models
+\end_layout
+
+\begin_layout Standard
+Mesoscopic models bridge the gap between macroscopic and microscopic models.
+ They can be used to relate microscopic parameters to macroscopic ones such
+ as lane-average speed, density, and flow.
+\end_layout
+
+\begin_layout Subsection
+Fundamental Diagrams
+\end_layout
+
+\begin_layout Standard
+By assuming that traffic flow rates do not change along the road and through
+ time and all vehicles are the same, then we can use a simple model that
+ does not depend on time or location 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hall1996traffic"
+literal "false"
+
+\end_inset
+
+.
+ Using traffic data that can be obtained using aerial photography, cameras,
+ pneumatic tubes, or other methods plots of the density, velocity, and traffic
+ flow rate can be obtained.
+ These plots relate density and flow rate, velocity and flow rate, and velocity
+ and density.
+ An example using Greenshields' method is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:example-fundamental-diagrams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "greenshields1935study"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/fundamental_diagram2.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Greenshields' fundamental diagrams
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:example-fundamental-diagrams"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Much information about the condition of traffic can be obtained from these
+ plots.
+ For example, from the speed-density relation plot we can see that at the
+ lowest possible density (
+\begin_inset Formula $\rho=0$
+\end_inset
+
+) traffic is moving at the highest possible speed and as the traffic density
+ increases the speed of the traffic decreases.
+ In the flow-speed relation plot, it's shown that at the highest speeds
+ the flow will be the lowest and at the lowest speeds traffic flow is also
+ at the lowest value.
+ This is because when the traffic speed is the highest, the density is the
+ lowest, which in turn makes the traffic flow rate low.
+ The second part makes sense, if the traffic speed is low then not many
+ cars are moving.
+ What's a bit more subtle is the peak of the flow-speed relation plot.
+ This is the sweet spot of traffic flow in which we get maximum flow and,
+ as will be shown in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:math-model-shock-waves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, is the boundary between traffic that is in free flow and traffic that
+ is in congestion.
+\end_layout
+
+\begin_layout Subsection
+Traffic Shock Waves
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:background-traffic-shock-waves"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A more mathematical treatment of traffic shock waves will be given in Chapter
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:math-model-shock-waves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, however, traffic shock waves can be intuitively understood through the
+ straightforward idea of positive feedback 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ In general, drivers try to keep a safe distance between themselves and
+ the vehicle ahead of them.
+ If they drive at velocity 
+\begin_inset Formula $v$
+\end_inset
+
+ and have a response 
+\begin_inset Formula $T$
+\end_inset
+
+, then the minimum safe separation distance, 
+\begin_inset Formula $d_{min}$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{\text{min}}=Tv\label{eq:shock-wave-min-safe-sep}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If all drivers are driving at a safe distance from one another, then the
+ density, 
+\begin_inset Formula $ρ$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho=\frac{1}{\ell+Tv}\label{eq:shock-wave-traffic-density}
+\end{equation}
+
+\end_inset
+
+and the throughput, 
+\begin_inset Formula $r$
+\end_inset
+
+, is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+r=\frac{v}{\ell+Tv}.\label{eq:shock-wave-throughput}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instabilities, in the form of waves in density and speed, grow in amplitude
+ and may grow until the speed of the vehicles approach zero 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ This phenomena can understood through positive feedback.
+ Lower vehicle speeds cause higher traffic densities, which in turn cause
+ lower speeds.
+ On the other hand, higher speeds cause lower traffic densities, which cause
+ higher speeds and so on (of course taking into account speed limits and
+ safety considerations).
+ Therefore, we can see that the system is amplifying the characteristics
+ of traffic (vehicle speed and traffic density) rather than dampening them.
+ This is characteristic of a system with positive feedback.
+ In addition to the system having positive feedback, after a certain density,
+ drivers braking can cause the vehicles behind them to brake, propagating
+ the wave backwards through the roadway.
+\end_layout
+
+\begin_layout Standard
+Horn states that the root of the problem stems from the drivers’ feedback
+ and the flow of information.
+ Drivers tend to perform actions that benefit themselves, but tend to be
+ detrimental to other drivers.
+ The flow of information on the road from vehicle to vehicle is unidirectional
+ from the front vehicle to the back.
+ Each vehicle adjusts its acceleration based on the relative position and
+ velocity of the vehicle immediately ahead of it.
+ The deceleration coupled with the backwards, unidirectional flow of information
+ creates an effect that is similar to a shock wave is which also moves backwards
+ through traffic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Vehicle Platoons
+\end_layout
+
+\begin_layout Standard
+A vehicle platoon consists of a string of vehicles that travel along the
+ road, acting as one single unit, with each car following one another closely
+ at normal highway speeds, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:n-vehicle-platoon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation,kavathekar2011vehicle"
+literal "false"
+
+\end_inset
+
+.
+ The first car is the designated as the leader and the subsequent cars are
+ followers.
+ Platoons are one strategy to coordinate multiple vehicles together on a
+ road.
+ Platoons can be a heterogeneous mixture of vehicles composed of differenty
+ types of vehicles (sedans, trucks, etc.) and mixed human driver and different
+ levels of autonomous vehicles.
+ In order for platoons to be practical, vehicles need to be able to enter
+ and exit as needed and to drive as close as possible to one another.
+ If the vehicles in the platoon are at the correct distance from one another
+ then there can be cost savings due to aerodynamic efficiencies.
+\end_layout
+
+\begin_layout Standard
+Zabat et al showed that when vehicles in a platoon are close to each other,
+ e.g., race cars drafting during a NASCAR race, then the vehicles are, aerodynamic
+ally, one vehicle and there is a reduction of aerodynamic drag and therefore
+ cost savings on fuel 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zabat1995aerodynamic"
+literal "false"
+
+\end_inset
+
+.
+ Aside from cost and fuel benefits, vehicle platoons can increase traffic
+ flow rate.
+ Intuitively, it makes sense why vehicles in a platoon would increase the
+ traffic flow rate.
+ If the vehilces in the platoon are tightly packed then there are more cars
+ are per unit length of road which increases the density and the traffic
+ flow rate, for the same given speed of traffic.
+ However, vehicles moving down a highway at highspeed at close distances
+ is a situation that has potentail for an accident.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../thesis/imgs/platooning-straight.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An 
+\begin_inset Formula $n$
+\end_inset
+
+-vehicle platoon formation
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:n-vehicle-platoon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Connected and Autonomous Vehicles
+\end_layout
+
+\begin_layout Standard
+Autonomous vehicles benefit the passengers of each individual vehicle, but
+ not necessarily the rest of the vehicles on the road.
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:background-traffic-shock-waves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, traffic shock waves are created in part by the lack of traffic information
+ upstream on a road.
+ A means to counteract this is to actively share information between vehicles
+ (V2V), infrastructure (V2I), and other devices (V2X) effectively coupling
+ the vehicles via a network connection.
+ By vehicles sharing information such as speed, acceleration, and location
+ and infrastructure relaying information such as road and weather conditions
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "talebpour2016influence"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Traffic congestion is caused by a cascade of driver decelerations down a
+ roadway which, in turn, causes an increase in density of vehicles causing
+ more driver decelerations, and so on.
+ These cascaded decelerations cause a shock wave to move backwards through
+ traffic that can be sustained even after the cause of the shock wave has
+ disappeared.
+ By sharing information throughout and coordinating vehicles within a platoon,
+ these shock waves can be reduced.
+ This increases highway capacity by a factor of 2 or 3, relieves congestion,
+ reduces travel times, and decreases fuel consumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Vehicle-to-Vehicle Communication
+\end_layout
+
+\begin_layout Standard
+In a Vehicle-to-Vehicle (V2V) communication scheme, the vehicles on the
+ road communicate directly with each other.
+ This
+\end_layout
+
+\begin_layout Subsection
+Vehicle-to-Infrastructure Communication
+\end_layout
+
+\begin_layout Subsection
+Vehicle-to-Device Communication
+\end_layout
+
+\begin_layout Section
+Integration of Artificial Intelligence
+\end_layout
+
+\begin_layout Standard
+According to Chen et al, in much of industry, mediated perception techniques
+ for vision-based autonomous driving systems are used 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ Mediated perception techniques use subcomponents to recognize traffic data
+ such as other vehicles, lanes, traffic signs and signals, and pedestrians.
+ This data is then combined to create a representation of the traffic scenario
+ such as splines for lane detections and bounding boxes for vehicle detections.
+ An AI-based control system can then take in this representation, determine
+ appropriate trajectories, and actuate the vehicle.
+ Chen et al.
+ describe a few problems with this technique, however.
+ 
+\end_layout
+
+\begin_layout Standard
+First, the representation that is created can be too rich, or detailed,
+ meaning that not all of the information in the representation is necessary
+ for the AI-based controller.
+ Second, AI-controllers don't directly use this representation (i.e., it has
+ to be transformed to some other representation that the controller can
+ use) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ These transformations from splines and bounding boxes into useful information
+ can create noise and errors that add more uncertainty to the mix.
+ Third, structured details from the traffic scene such as straight edges
+ in buildings can cause false positives for other vehicles.
+\end_layout
+
+\begin_layout Standard
+Another technique is the behavior reflex approach 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chen2015deepdriving"
+literal "false"
+
+\end_inset
+
+.
+ In this technique, sensory input (e.g., radar, lidar, and images) is mapped
+ to driving actions (e.g., steering angles and accelerations or braking) using
+ neural networks.
+ Although straightforward, this technique has flaws.
+ First, driving conditions are never the same.
+ Even if the same cars are in the same location at the same time of day,
+ people have different moods and intentions and may exhibit different a
+ behavior.
+ Second, the neural network must process an entire image and determine the
+ relevant parts which is difficult for the network.
+\end_layout
+
+\begin_layout Subsection
+Obstacles and Limitations
+\end_layout
+
+\begin_layout Standard
+A hurdle for obtaining Level 5 autonomy is that of data.
+ Training neural networks takes a lot of data, which is why we see manufacturers
+ performing extensive field tests.
+ Also, it is necessary to prove that these vehicles are safe and currently
+ the way to prove this is through real-world tests.
+ The RAND Corporation estimates that in order for autonomous vehicles to
+ match the safety rate of human drivers (about 1 fatality in 100 million
+ miles driven) autonomous vehicles need to have in the range of billions
+ to hundreds of billions of test miles driven, which could take hundreds
+ (or even thousands) of years depending on the size of the test fleet and
+ how much better it is desired for the autonomous vehicles to be than human
+ drivers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kalrapaddoc2016rand"
+literal "false"
+
+\end_inset
+
+.
+ This is why Tesla is running tests using its customers' vehicles as its
+ own test fleet.
+ The more vehicles it has, the faster Tesla can improve and prove its technology.
+\end_layout
+
+\begin_layout Standard
+Another limitation of the current implementation of autonomy in industry
+ is the lack of coordination of autonomous vehicles and sharing of information.
+ As far publications go, no car companies are talking about if and how their
+ vehicles will share information with infrastructure (V2I) and each other
+ (V2V).
+ Some companies, such as Tesla and Waymo, are discussing about eventually
+ having an autonomous ride-hailing service 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "waymoridehailing,teslamasterplan2"
+literal "false"
+
+\end_inset
+
+.
+ However, the lack of sharing information about the vehicles and coordination
+ with other vehicles on the road (including private vehicles) can prove
+ to be problematic for the larger picture.
+ CAVs can increase the throughput and efficiency of roads and highways,
+ but a necessity is the sharing of information between vehicles on the road
+ due to faster response times and the shorter distances (headways) needed
+ between vehicles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rios2017automated"
+literal "false"
+
+\end_inset
+
+.
+ If this information is not shared then it will be difficult to glean these
+ efficiencies and much of the improvements of autonomous vehicles will not
+ be realized.
+\end_layout
+
+\begin_layout Section
+Literature Review
+\end_layout
+
+\begin_layout Standard
+Traffic research with vehicle platoons extends back to at least the 1950s
+ with major development taking off in the 1990s a 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "futuretruckprogram,helly1959simulation"
+literal "false"
+
+\end_inset
+
+.
+ Currently, there has been an interest in research regarding modeling lane
+ changing, control of platoons at intersections, and string stability of
+ platoons.
+ Much work with vehicle platoons has been completed in recent years.
+ There are two different types of methods of coordinating vehicles that
+ have been proposed in current research: centralized and decentralized coordinat
+ion.
+ In decentralized approaches, information is shared from vehicle to vehicle
+ and in centralized approaches information is coordinated through a global
+ coordinator.
+ For example, in highway merging problems decentralized approaches handle
+ each vehicle as an autonomous entity that aims to maximize efficiency.
+ On the other hand, in centralized approaches vehicles are controlled by
+ a global agent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rios2017survey"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The efficiency of traffic flow was quantified by Stern et.
+ al.
+ Experiments were conducted on a circular track as it represents an infinitely
+ long straight track making it simple to identify stop and go waves (i.e.,
+ shock waves)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stern2017dissipation"
+literal "false"
+
+\end_inset
+
+.
+ In the experiments, consisting of more than twenty non-autonomous vehicles,
+ uniform speed could not be maintained.
+ With the introduction of an autonomous vehicle at the front of the formation
+ the vehicles reached the uniform, desired speed.
+\end_layout
+
+\begin_layout Standard
+Kachroo et.
+ al.
+ used Mean Field Games and Radon measure with connected and normal vehicles
+ to analyze hetergeneous traffic on a circular track 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kachroo2017multiscale"
+literal "false"
+
+\end_inset
+
+.
+ The connected vehicles were treated as discrete agents which could be used
+ to control the overall traffic streams and entropy was used as a measure
+ of traffic flow efficiency.
+ Their analysis included the effect of various penetration levels of CAVs
+ in traffic stream, their placement, and various sizes of circular track.
+ It was shown that the use of connected vehicles improved the efficiency
+ by lowering the entropy.
+\end_layout
+
+\end_body
+\end_document

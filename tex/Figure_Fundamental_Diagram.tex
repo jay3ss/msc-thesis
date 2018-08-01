@@ -1,0 +1,121 @@
+% % \begin{tabular}{C{.45\textwidth}C{.45\textwidth}}
+% % \begin{tabular}{c c c}
+% %%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subfigure [Speed-density graph] {
+%     \resizebox{0.4\textwidth}{!}{%
+%     \begin{tikzpicture}
+%         % Draw axes
+%         \draw[thick,->] (0,0) -- (4.5,0) node (xaxis1) [right] {$\rho$};
+%         \draw[thick,->] (0,0) -- (0,4.5) node (yaxis1) [above] {V};
+%
+%         % Draw line and store intersection with axes as coordinates
+%         \draw (0,4) -- (4,0);
+%         \draw (0,4) node[left] {$V_{max}$};
+%         \draw (4,0) node[below] {$\rho_{max}$};
+%
+%         %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+%         %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+%     \end{tikzpicture}
+%     }
+% }
+% %%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subfigure [Subfigure 2] {
+%   \resizebox{0.4\textwidth}{!}{%
+%     \begin{tikzpicture}
+%         % Draw axes
+%         \draw[thick,->] (0,0) -- (4.5,0) node (xaxis2) [right] {$\rho$};
+%         \draw[thick,->] (0,0) -- (0,4.5) node (yaxis2) [above] {V};
+%
+%         % Draw line and store intersection with axes as coordinates
+%         \draw (0,4) -- (4,0);
+%         \draw (0,4) node[left] {$V_{max}$};
+%         \draw (4,0) node[below] {$\rho_{max}$};
+%
+%         %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+%         %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+%     \end{tikzpicture}
+%     }
+% }
+
+%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subfigure [Subfigure 3] {
+  \resizebox{0.4\textwidth}{!}{%
+    \begin{tikzpicture}
+        % Draw axes
+        \draw[thick,->] (0,0) -- (4.5,0) node (xaxis3) [right] {$\rho$};
+        \draw[thick,->] (0,0) -- (0,4.5) node (yaxis3) [above] {V};
+
+        % Draw line and store intersection with axes as coordinates
+        \draw (0,4) -- (4,0);
+        \draw (0,4) node[left] {$V_{max}$};
+        \draw (4,0) node[below] {$\rho_{max}$};
+
+        %\draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+        %\draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+    \end{tikzpicture}
+   }
+}
+% \end{tabular}
+% \begin{tikzpicture}[scale=0.75]
+% \begin{axis}
+%     \addplot coordinates { (1,2) (2,3) };
+%     \addplot coordinates { (1,4) (2,6) };
+%     \draw (axis cs:2,3) -- node[left]{Text} (axis cs:2,6);
+% \end{axis}
+% \end{tikzpicture}
+%
+% %Here ends the first plot
+% % \hskip 2pt
+%
+% \begin{tikzpicture}[scale=0.75]
+% \begin{axis}
+% \addplot[color=red]{exp(x)};
+% \end{axis}
+% \end{tikzpicture}
+
+
+
+\begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \resizebox{\linewidth}{!}{
+        \begin{tikzpicture}
+            \draw (0,3) node[left] {$\text{A}$} to[out=0,in=90] (3,0) node[below]{$\text{B}$};
+            \draw[->, very thick] (-.1,0) -- (4,0) node[below] {$\text{Α}$};
+            \draw[->, very thick] (0,-.1) -- (0,4) node[left]{$\text{Β}$};
+            \draw[ForestGreen] (0,2)  node[left] {$\text{Η}$} to [out=0, in=90] (2,0)node[below]{$\text{Θ}$};
+            \draw[<-, Cyan] (45:2.1) -- (45:2.9);
+        \end{tikzpicture}
+    }
+    \caption{Subfigure A}
+    \label{fig:subfig8}
+\end{subfigure}
+\begin{subfigure}[b]{0.32\textwidth}
+\centering
+    \resizebox{\linewidth}{!}{
+        \begin{tikzpicture}
+            \draw (0,3) node[left] {$\text{A}$} to[out=0,in=90] (3,0) node[below]{$\text{B}$};
+            \draw[->, very thick] (-.1,0) -- (4,0) node[below] {$\text{Α}$};
+            \draw[->, very thick] (0,-.1) -- (0,4) node[left]{$\text{Β}$};
+            \draw[ForestGreen] (0,2.7)  node[left] {$\text{Γ}$} to [out=0, in=90] (1.5,0)node[below]{$\text{C}$};
+            \draw[<-, Cyan] (45:2.2) -- (45:2.9);
+        \end{tikzpicture}
+    }
+    \caption{Subfigure B}
+    \label{fig:subfig9}
+\end{subfigure}
+\begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \resizebox{\linewidth}{!}{
+        \begin{tikzpicture}
+            \draw (0,3) node[left] {$\text{A}$} to[out=0,in=90] (3,0) node[below]{$\text{B}$};
+            \draw[->, very thick] (-.1,0) -- (4,0) node[below] {$\text{Α}$};
+            \draw[->, very thick] (0,-.1) -- (0,4) node[left]{$\text{Β}$};
+            \draw[ForestGreen] (0,1.5)  node[left] {$\text{E}$} to [out=0, in=90] (2.5,0)node[below]{$\text{Z}$};
+            \draw[<-, Cyan] (45:2.1) -- (45:2.5);
+        \end{tikzpicture}
+    }
+    \caption{Subfigure C}
+    \label{fig:subfig10}
+\end{subfigure}
+\caption{Caption 1}
+\label{fig:subfig1.a.4}

@@ -1,0 +1,36 @@
+\scalebox{0.75}{
+\begin{pspicture}(-1,0)(9.5,5)
+
+	\pscustom[fillstyle=hlines*,linestyle=none,hatchangle=75]{
+	\psline(2,0)(0,3)
+	\psline(0,3)(0,0)
+	\psline(0,0)(2,0)}
+	
+	\psline(2,0)(0,3)
+	
+	\pscustom[fillstyle=hlines*,linestyle=none,hatchangle=143.13]{
+	\psline(4,0)(0,3)
+	\psline(0,3)(2,0)
+	\psline(2,0)(4,0)}		
+	
+	\multido{\n=3.4+0.4}{4}{\psline(4,0)(0, \n)}
+	\multido{\n=0.0+0.4}{21}{\psline(4,0)(\n, 5)}
+	
+	\pscustom[fillstyle=hlines*,linestyle=none,hatchangle=51.34]{
+	\psline(4,0)(8,0)
+	\psline(8,0)(8,5)
+	\psline(8,5)(4,0)}	
+		
+	\psbrace[ref=b,rot=90,nodesepA=15pt]%
+  (8,0)(8,5){No Boundary Conditions}%
+  
+	\psbrace[ref=b,rot=-90,nodesepA=-5pt]%
+  (0,3)(0,0){Specify B.C.}%
+
+	\psbrace[ref=b,rot=-90,nodesepA=-5pt]%
+  (0,5)(0,3){No B.C.}%
+    
+  \rput(0,-0.5){$x = a$}
+  \rput(8,-0.5){$x = b$}
+
+\end{pspicture}}

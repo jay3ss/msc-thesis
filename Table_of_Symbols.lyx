@@ -1,0 +1,798 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Background
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:background"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Traffic Flow Theory
+\end_layout
+
+\begin_layout Standard
+Traffic may be modeled using different levels of models such as macroscopic,
+ microscopic, mesoscopic, and aggregation and disaggregation levels 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ Macroscopic models describe the aggregate behavior of traffic, similar
+ to how hydrodynamic models describe the aggregate behavior of particles
+ in liquids and gases.
+ Microscopic models on the other hand describe the interactions and reactions
+ of single vehicles with each other similar to multi-particle systems.
+ Mesoscopic models are hybrids of macroscopic and microscopic models.
+ Finally, aggregation and disaggregation is the use of microscopic quantities
+ to describe macroscopic ones (aggregation) and using macroscopic quantities
+ to describe microscopic ones (disaggregation).
+\end_layout
+
+\begin_layout Standard
+The macroscopic quantities that are of interest are the speed (
+\begin_inset Formula $V$
+\end_inset
+
+), density (
+\begin_inset Formula $\rho$
+\end_inset
+
+), and flow (
+\begin_inset Formula $Q$
+\end_inset
+
+) of the vehicles.
+ There are several different definitions of speed, but essentially speed
+ is the distance traveled per unit time.
+ Density is defined as the number of vehicles per unit length of road.
+ Finally, flow is defined as the number of vehicles passing through a certain
+ point in space per unit time.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Insert an example of the fundamental diagram.
+ Explain them
+\end_layout
+
+\begin_layout Section
+Modeling
+\end_layout
+
+\begin_layout Subsection
+Macroscopic Models
+\end_layout
+
+\begin_layout Subsubsection
+Traffic Flow Characteristics
+\end_layout
+
+\begin_layout Subsubsection
+Density
+\end_layout
+
+\begin_layout Standard
+Density, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, is defined as the number of vehicles per length of road and can either
+ be for 
+\end_layout
+
+\begin_layout Itemize
+a single lane: 
+\begin_inset Formula $\rho_{i}\left(x,t\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $i=1,\dots,n$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of lanes
+\end_layout
+
+\begin_layout Itemize
+total density over all lanes of a length of road: 
+\begin_inset Formula $\rho_{tot}\left(x,t\right)=\sum_{i=1}^{I}\rho_{i}\left(x,t\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+lane-averaged density: 
+\begin_inset Formula $\rho\left(x,t\right)=\nicefrac{\rho_{tot}\left(x,t\right)}{I}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Velocity
+\end_layout
+
+\begin_layout Standard
+Velocity, 
+\begin_inset Formula $V$
+\end_inset
+
+, is defined in terms as a lane-averaged (or, effective) speed and is given
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V\left(x,t\right)=\sum_{i=1}^{I}\frac{\rho_{i}\left(x,t\right)}{\rho_{tot}\left(x,t\right)}V_{i}\left(x,t\right)\label{eq:lane-average-speed}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{i}\left(x,t\right)$
+\end_inset
+
+ is the local speed of lane 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Hydrodynamic Flow Relation
+\end_layout
+
+\begin_layout Standard
+Flow, 
+\begin_inset Formula $Q$
+\end_inset
+
+, is defined as the number of vehicles per unit time and is the product
+ between density and velocity, as shown below
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q\left(x,y\right)=\rho\left(x,t\right)V\left(x,t\right)\label{eq:lane-average-flow}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Flow can be given in terms of a single lane, all lanes, or as a lane-average
+ (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Many times the flow in terms of all lanes will be used as the conservation
+ of vehicles holds only for the total density, 
+\begin_inset Formula $\rho_{tot}$
+\end_inset
+
+, and not for each lane individually (vehicles can change lanes afterall).
+ It should be noted that this relation holds for all types of macroscopic
+ models, but not for all types of roads.
+ In other words, the geometry of the road matters but not the model.
+ For example, on- and off-ramps and a change in the number of lanes will
+ change Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Microscopic Models
+\end_layout
+
+\begin_layout Standard
+Microscopic models take into account interactions between vehicles and the
+ reactions of drivers.
+ Many first-order models have the following (typical kinematic model) variables
+ for each 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $l_{i}$
+\end_inset
+
+: length of the vehicle
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+: position
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $v_{i}$
+\end_inset
+
+: velocity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}$
+\end_inset
+
+: acceleration
+\end_layout
+
+\begin_layout Quote
+Some models also include the headway (bumper-to-bumper distance of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+vehicles), 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, as well.
+\end_layout
+
+\begin_layout Subsubsection
+Traffic Flow Characteristics
+\end_layout
+
+\begin_layout Standard
+Mesoscopic models can be used to relate microscopic parameters to macroscopic
+ ones such as lane-average speed, density, and flow.
+\end_layout
+
+\begin_layout Subsection
+Shock Waves
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Shock-Waves"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A more mathematical treatment of traffic shock waves will be given in Chapter
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:math-model-shock-waves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, however, traffic shock waves can be intuitively understood through the
+ straightforward idea of positive feedback 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ In general, drivers try to keep a safe distance between themselves and
+ the vehicle ahead of them.
+ If they drive at velocity 
+\begin_inset Formula $v$
+\end_inset
+
+ and have a response 
+\begin_inset Formula $T$
+\end_inset
+
+, then the minimum safe separation distance, 
+\begin_inset Formula $d_{min}$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{\text{min}}=Tv\label{eq:shock-wave-min-safe-sep}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If all drivers are driving at a safe distance from one another, then the
+ density, 
+\begin_inset Formula $ρ$
+\end_inset
+
+, is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho=\frac{1}{\ell+Tv}\label{eq:shock-wave-traffic-density}
+\end{equation}
+
+\end_inset
+
+and the throughput, 
+\begin_inset Formula $r$
+\end_inset
+
+, is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+r=\frac{v}{\ell+Tv}\label{eq:shock-wave-throughput}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instabilities, in the form of waves in density and speed, grow in amplitude
+ and may grow until the speed of the vehicles approach zero 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+ This phenomena can understood through positive feedback.
+ Lower vehicle speeds cause higher traffic densities, which in turn cause
+ lower speeds.
+ On the other hand, higher speeds cause lower traffic densities, which cause
+ higher speeds and so on (of course taking into account speed limits and
+ safety considerations).
+ Therefore, we can see that the system is amplifying the characteristics
+ of traffic (vehicle speed and traffic density) rather than dampening them.
+ This is characteristic of a system with positive feedback.
+ In addition to the system having positive feedback, after a certain density,
+ drivers braking can cause the vehicles behind them to brake, propagating
+ the wave backwards through the roadway.
+\end_layout
+
+\begin_layout Standard
+Horn states that the root of the problem stems from the drivers’ feedback
+ and the flow of information.
+ Drivers tend to perform actions that benefit themselves, but tend to be
+ detrimental to other drivers.
+ The flow of information on the road from vehicle to vehicle is unidirectional
+ from the front vehicle to the back.
+ Each vehicle adjusts its acceleration based on the relative position and
+ velocity of the vehicle immediately ahead of it.
+ The deceleration coupled with the backwards, unidirectional flow of information
+ creates an effect that is similar to a shock wave is which also moves backwards
+ through traffic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "horn2013suppressing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Vehicle Platoons
+\end_layout
+
+\begin_layout Standard
+A vehicle platoon consists of a string of vehicles that travel along the
+ road, acting as one single unit, with each car following one another closely
+ at normal highway speeds, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:n-vehicle-platoon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation,kavathekar2011vehicle"
+literal "false"
+
+\end_inset
+
+.
+ The first car is the leader and the subsequent cars are followers.
+ Vehicle platooning is a promising strategy that can lead to significant
+ fuel savings and emission reduction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2018modeling"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../thesis/imgs/platooning-straight.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An 
+\begin_inset Formula $n$
+\end_inset
+
+-vehicle platoon formation
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:n-vehicle-platoon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platoons are an ideal remedy to driving situations for peak traffic conditions
+ such as at intersections and highways.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../thesis/imgs/ring-road.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Slot car race track with five vehicles.
+ The arrows indicate the instantaneous velocity vector.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ring-road"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Connected and Autonomous Vehicles
+\end_layout
+
+\begin_layout Standard
+Autonomous vehicles benefit the passengers of each individual vehicle, but
+ not the rest of the vehicles on the road.
+ As was shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Shock-Waves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, traffic shock waves are created in part by the lack of traffic information
+ to flow upstream in traffic.
+ A means to counteract this is to actively share information between vehicles
+ (V2V), infrastructure (V2I), and other devices (V2X).
+ By vehicles sharing information such as speed, acceleration, and location
+ and infrastructure relaying information such as road and weather conditions
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "talebpour2016influence"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Traffic congestion is caused by a cascade of driver decelerations down a
+ roadway which, in turn, causes an increase in density of vehicles causing
+ more driver decelerations, and so on.
+ These cascaded decelerations cause a shock wave to move backwards through
+ traffic that can be sustained even after the cause of the shock wave has
+ disappeared.
+ By sharing information throughout and coordinating vehicles within a platoon,
+ these shock waves can be reduced.
+ This increases highway capacity by a factor of 2 or 3, relieves congestion,
+ reduces travel times, and decreases fuel consumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chang1991experimentation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Literature Review
+\end_layout
+
+\begin_layout Standard
+Traffic research with vehicle platoons extends back to at least the 1950s
+ with major development taking off in the 1990s a 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "futuretruckprogram,helly1959simulation"
+literal "false"
+
+\end_inset
+
+.
+ Currently, there has been an interest in research regarding modeling lane
+ changing, control of platoons at intersections, and string stability of
+ platoons.
+ Much work with vehicle platoons has been completed in recent years.
+ There are two different types of methods of coordinating vehicles that
+ have been proposed in current research: centralized and decentralized coordinat
+ion.
+ In decentralized approaches, information is shared from vehicle to vehicle
+ and in centralized approaches information is coordinated through a global
+ coordinator.
+ For example, in highway merging problems decentralized approaches handle
+ each vehicle as an autonomous entity that aims to maximize efficiency.
+ On the other hand, in centralized approaches vehicles are controlled by
+ a global agent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rios2017survey"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The efficiency of traffic flow was quantified by Stern et.
+ al.
+ Experiments were conducted on a circular track as it represents an infinitely
+ long straight track making it simple to identify stop and go waves (i.e.,
+ shock waves).
+ In the experiments, consisting of more than twenty non-autonomous vehicles,
+ uniform speed could not be maintained.
+ With the introduction of an autonomous vehicle at the front of the formation
+ the vehicles reached the uniform, desired speed.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stern2017dissipation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kachroo et.
+ al.
+ used Mean Field Games and Radon measure with connected and normal vehicles
+ to analyze hetergeneous traffic on a circular track.
+ The connected vehicles were treated as discrete agents which could be used
+ to control the overall traffic streams and entropy was used as a measure
+ of traffic flow efficiency.
+ Their analysis included the effect of various penetration levels of CAVs
+ in traffic stream, their placement, and various sizes of circular track.
+ It was shown that the use of connected vehicles improved the efficiency
+ by lowering the entropy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kachroo2017multiscale"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Traffic
+\end_layout
+
+\begin_layout Subsection
+Models
+\end_layout
+
+\begin_layout Subsection
+Control Methods
+\end_layout
+
+\end_body
+\end_document

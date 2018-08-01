@@ -1,0 +1,1627 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Mathematical Modeling of Traffic Flow
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:math-model-traffic-flow"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Modeling traffic can happen at many different levels such as at the macroscopic
+ and microscopic levels each with it's own strengths and weaknesses.
+ For example, macroscopic models have the advantage of seeing the big picture
+ of traffic and not taking the interaction of vehicles into concern.
+ The disadvantage is that different driving behaviors cannot be modeled
+ so much information is lost.
+ On the other hand, microscopic models do model the interactions of vehicles
+ which allows different driver behaviors to be included in simulations.
+ Also, because they model each individual vehicle on a road, microscopic
+ models have access to the parameters of the vehicles such as acceleration,
+ noise levels, and pollution levels and can therefore give a different view
+ of traffic.
+ However, depending on the number of vehicles that are being simulated microscop
+ic models can require significant computing resources whereas macroscopic
+ models would not.
+\end_layout
+
+\begin_layout Section
+Macroscopic Model
+\end_layout
+
+\begin_layout Standard
+Here, traffic will be modeled using a macroscopic model using a hydrodynamic
+ flow-density relation.
+ Before the model is developed it is important define the parameters that
+ will be used, which are given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:traffic-flow-model-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ It is also important to note that each of the parameters in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:traffic-flow-model-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ have different forms such as average, effective, and total.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model parameters for macroscopic model of traffic flow
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:traffic-flow-model-parameters"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traffic density
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traffic flow
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V\left(x,t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lane-averaged, or effective speed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of lanes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of vehicles
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Continuity Equation
+\end_layout
+
+\begin_layout Standard
+In physics, the continuity equation is a consequence of the conservation
+ of matter that relates the density and velocity of a fluid 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "taylor2005classicalmechanics"
+literal "false"
+
+\end_inset
+
+.
+ Its analog in electromagnetism is the conservation of electric charge 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "taylor2005classicalmechanics"
+literal "false"
+
+\end_inset
+
+.
+ In traffic flow theory, the conservation of vehicles is the analog to the
+ conservation of matter and conservation of charge.
+ On a certain length of road, the number of vehicles is conserved and given
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+n\left(t\right)=\int_{x}^{x+\Delta x}\rho_{tot}\left(x',t\right)dx'\approx\rho_{tot}\left(x,t\right)\Delta x.\label{eq:number-of-vehicles-on-road-length}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a road section with no on-ramps or off-ramps and no change in number
+ of lanes (i.e., a homogeneous road section) of length 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, the continuity equation can be derived as follows 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{dn}{dt}= & \,Q_{in}\left(x,t\right)-Q_{out}\left(x,t\right)\\
+= & \,Q_{tot}\left(x,t\right)-Q_{tot}\left(x+\Delta x,t\right)\\
+= & \,\frac{\partial}{\partial t}\left(\rho_{tot}\,\Delta x\right).
+\end{aligned}
+\label{eq:num-vehicles-time-derivative}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rewriting Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:num-vehicles-time-derivative"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gives
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\frac{\partial\rho_{tot}}{\partial t}=\, & \frac{1}{\Delta x}\frac{dn}{dt}\\
+= & -\left(\frac{Q_{tot}\left(x+\Delta x,t\right)-Q_{tot}\left(x,t\right)}{\Delta x}\right)
+\end{aligned}
+\label{eq:partial-rho-wrt-time}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\lim_{\Delta x\rightarrow0}\,\frac{\partial\rho_{tot}}{\partial t}= & -\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}\\
+\frac{\partial\rho_{tot}}{\partial t}\approx & -\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}.
+\end{aligned}
+\label{eq:limit-of-del-x-of-total-density}
+\end{equation}
+
+\end_inset
+
+Finally, rewriting Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:limit-of-del-x-of-total-density"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we get
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho_{tot}\left(x,t\right)}{\partial t}+\frac{\partial Q_{tot}\left(x,t\right)}{\partial x}=0.\label{eq:continuity-equation-in-terms-of-q}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can use Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lane-average-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (the hydrodynamic flow relation) to rewrite Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:continuity-equation-in-terms-of-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (and using the fact that 
+\begin_inset Formula $\frac{\partial Q_{tot}}{\partial x}=\frac{\partial\rho_{tot}V}{\partial x}$
+\end_inset
+
+) and arrive at the continuity equation
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho_{tot}}{\partial t}+\frac{\partial\rho_{tot}V}{\partial x}=0}\label{eq:continuity-equation-in-terms-of-total-density}
+\end{equation}
+
+\end_inset
+
+or
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho}{\partial t}+\frac{\partial\rho V}{\partial x}=0}\label{eq:continuity-equation-in-terms-of-lane-average-density}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lighthill-Whitham-Richards Models
+\end_layout
+
+\begin_layout Standard
+Lighthill-Whitham-Richards (LWR) models are a class first-order macroscopic
+ models, i.e., they don't include acceleration, and they are all the same
+ except for the form of their respective fundamental diagrams and mathematical
+ representation which is determined by the modeling of the flow and speed
+ only 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ LWR models give flow and velocity in a functional form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}Q\left(x,t\right)= & Q_{e}\left(\rho\left(x,t\right)\right)\\
+V\left(x,t\right)= & V_{e}\left(\rho\left(x,t\right)\right).
+\end{aligned}
+\label{eq:lwr-flow-speed-functional-form}
+\end{equation}
+
+\end_inset
+
+Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-flow-speed-functional-form"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ assumes that local flow (
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+) or speed (
+\begin_inset Formula $V_{i}$
+\end_inset
+
+) are always in equilibrium with respect to the actual density, 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ It also assumes that the flow and local velocity changes instantaneously
+ to follow the density.
+\end_layout
+
+\begin_layout Standard
+Using the continuity equation, Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:continuity-equation-in-terms-of-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the LWR model can be defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho}{\partial t}+\frac{dQ_{e}\left(\rho\right)}{d\rho}\frac{\partial\rho}{\partial x}=0}\label{eq:lwr-cont-eq-model-q}
+\end{equation}
+
+\end_inset
+
+if we recognize that 
+\begin_inset Formula $\frac{\partial Q_{e}\left(\rho\right)}{\partial x}=\frac{dQ_{e}\left(\rho\right)}{d\rho}\frac{\partial\rho}{\partial x}$
+\end_inset
+
+ due to the chain rule.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-cont-eq-model-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can also be written as 
+\begin_inset Formula 
+\begin{equation}
+\boxed{\frac{\partial\rho}{\partial t}+\left(V_{e}+\rho\frac{dV_{e}}{d\rho}\right)\frac{\partial\rho}{\partial x}=0}.\label{eq:lwr-cont-eq-model-v}
+\end{equation}
+
+\end_inset
+
+which is the LWR model.
+\end_layout
+
+\begin_layout Section
+Microscopic Models
+\end_layout
+
+\begin_layout Subsection
+Human Driver Model
+\end_layout
+
+\begin_layout Standard
+To mimic the traffic shock waves to be controlled, a human driver model
+ is used.
+ The dynamics of the human driver given by Jin et al and Orosz et al is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\dot{h}_{i}\left(t\right)=\, & v_{i+1}\left(t\right)-v_{i}\left(t\right)\nonumber \\
+\dot{v}_{i}\left(t\right)=\, & \alpha_{i}\left(V_{i}\left(h_{i}\left(t\right)\right)-v_{i}\left(t\right)\right)\label{eq:human-driver-model-cosine}\\
++\, & \beta_{i}\left(v_{i+1}\left(t\right)-v_{i}\left(t\right)\right)\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $V_{i}\left(h\right)$
+\end_inset
+
+ is the distance-dependent velocity, or range policy, given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+V_{i}\left(h\right) & =\begin{cases}
+0 & \text{if }0\leq h_{i}\leq h_{stop}\\
+\frac{v_{max}}{2}A\left(h_{i}\left(t\right)\right) & \text{if }h_{stop}<h_{i}<h_{go}\\
+v_{max} & \text{if }h_{go}\leq h_{i}
+\end{cases}\label{eq:range-policy}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $A\left(h_{i}\left(t\right)\right)=\left(1-\cos\left(\pi\frac{h_{i}-h_{stop}}{h_{go}-h_{stop}}\right)\right)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014optimal,orosz2010traffic"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $v_{i}\left(t\right)$
+\end_inset
+
+ term of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:human-driver-model-cosine"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the 
+\begin_inset Formula $α_{i}$
+\end_inset
+
+ term can be thought of how much the human driver prefers to match the speed
+ given by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:range-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and the 
+\begin_inset Formula $β_{i}$
+\end_inset
+
+ term can be thought of how much the human driver prefers to match the vehicle
+ immediately ahead of it.
+ 
+\end_layout
+
+\begin_layout Subsection
+Intelligent Driver Model
+\end_layout
+
+\begin_layout Standard
+Treiber and Kesting describe the Intelligent Driver Model (IDM) as 
+\begin_inset Quotes eld
+\end_inset
+
+probably the simplest complete and accident-free model producing acceleration
+ profiles and a plausible behavior in essentially all single-lane traffic
+ situations
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ The IDM defines a safe headway, 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+, and time gap, 
+\begin_inset Formula $T$
+\end_inset
+
+, respective to the lead vehicle, has soft braking maneuvers, and smooth
+ transitions between driving modes.
+ The mathematical model for the IDM is 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\dot{x}_{i}=\, & v_{i}\\
+\dot{v}_{i}=\, & a\left[1-\left(\frac{v}{v_{0}}\right)^{\delta}-\left(\frac{s^{*}\left(v,\Delta v\right)}{s}\right)^{2}\right]\\
+s^{*}\left(v,\Delta v\right)=\, & s_{0}+max\left(0,vT+\frac{v\Delta v}{2\sqrt{ab}}\right).
+\end{aligned}
+\label{eq:intelligent-driver-model}
+\end{equation}
+
+\end_inset
+
+Treiber and Kesting break 
+\begin_inset Formula $s^{*}$
+\end_inset
+
+ into two components: the equilibrium term 
+\begin_inset Formula $s_{0}+vT$
+\end_inset
+
+ and the dynamical term 
+\begin_inset Formula $\frac{v\Delta v}{2\sqrt{ab}}$
+\end_inset
+
+.
+ The dynamical term takes care of the situation when the vehicle is approaching
+ the lead vehicle
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model parameters for the Intelligent Driver Model
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Desired speed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Time gap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Desired headway
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceleration exponent
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceleration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comfortable deceleration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:headways-of-human-drivers-idm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:velocities-of-human-drivers-idm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ show the headways and speeds of three vehicles during simulated traffic
+ shock waves, respectively.
+ 
+\end_layout
+
+\begin_layout Subsection
+Cellular Automata
+\end_layout
+
+\begin_layout Standard
+Cellular automata are simple objects that have cells, grid, and neighborhood
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shiffman2012natureofcode"
+literal "false"
+
+\end_inset
+
+.
+ Cellular automata evolve, or update, by a simple set of rules.
+ Each generation of the cellular automaton updates its state by examining
+ the previous state (generation) and using a simple rule, each cell in the
+ automaton is updated.
+ Each cell represents a position on the road and a 
+\begin_inset Formula $0$
+\end_inset
+
+ represents the lack of a vehicle and a 
+\begin_inset Formula $1$
+\end_inset
+
+ represents a vehicle.
+ A simplistic model of traffic using a cellular automaton is Rule 184 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "treiberkestingtfd"
+literal "false"
+
+\end_inset
+
+.
+ Rules are numbered 0 to 255 and are transformed into binary then a simple
+ truth table is used to define the evolution of the automaton.
+ In the new generation, each cell examines its and its neighbors' previous
+ states and, based on the rule's truth table, is either occupied, denoted
+ by 
+\begin_inset Formula $1$
+\end_inset
+
+, or empty, denoted by 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ The rule can be expressed as a truth table for Rule 184 is given in Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:rule-184-rule-set"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Truth table for Rule 184
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rule-184-rule-set"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Previous states
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+New state
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+011
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+101
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+110
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+111
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the simple rule set above with a random initial state, a surprisingly
+ complex simulation of traffic is created and shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:traffic-simulation-using-rule-184"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ It is important to note that each row in the figure is one generation of
+ the traffic simulation.
+ Therefore, one row after another is another time step in the simulation
+ and it can be seen that one row to the next has the vehicles moving from
+ left to right.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../thesis/imgs/ca-rule-184-screen-only.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cellular automaton model of traffic simulation using Rule 184
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:traffic-simulation-using-rule-184"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Connected Cruise Control Model
+\end_layout
+
+\begin_layout Standard
+A Connected Cruise Control (CCC) vehicle is a vehicle in which information
+ is transmitted and shared between other vehicles.
+ Jin et al gave the dynamics for a CCC vehicle, which is shown in Equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:connected-cruise-control-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014dynamics"
+literal "false"
+
+\end_inset
+
+.
+ In the CCC algorithm, information such as vehicle headway and velocity
+ is shared between all vehicles via a V2V communication, V2I communication,
+ or both.
+ The dynamics of the CCC vehicles are given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\dot{h}_{i}= & \,v_{i+1}\left(t\right)-v_{i}\left(t\right)\\
+\dot{v}_{i}= & \,u_{i}\left(t\right)
+\end{aligned}
+\label{eq:connected-cruise-control-dynamics}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ is the headway (bumper-to-bumper distance) between the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $i+1^{th}$
+\end_inset
+
+ vehicles, and 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is the control action 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014optimal"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the CCC algorithm, a platoon of heterogeneous vehicles is formed and
+ vehicle information is shared between the connected vehicles.
+ It is not necessary that every vehicle in the platoon be a CCC vehicle
+ and human drivers are allowed 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jin2014dynamics"
+literal "false"
+
+\end_inset
+
+.
+ This is a very flexible control scheme as it allows different types of
+ information, although relying on acceleration data, and allows for a heterogene
+ous mix of human-drivers and autonomous vehicles and a mix of connected
+ and non-connected vehicles as well.
+\end_layout
+
+\begin_layout Section
+Fundamental Diagrams
+\end_layout
+
+\begin_layout Standard
+The fundamental diagrams are a means to convey traffic states graphically.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Show fundamental diagram...
+\end_layout
+
+\begin_layout Section
+Traffic Shock Waves
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:math-model-shock-waves"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The formation of traffic shock waves can mostly be explained using the LWR
+ model.
+ Let's define the initial density of the traffic flow to be 
+\begin_inset Formula $\rho\left(x,0\right)=\rho_{0}\left(x\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho\left(x,t\right)=\rho_{0}\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{c}$
+\end_inset
+
+ is the propagation velocity of the density waves.
+ We can see that 
+\begin_inset Formula $\frac{\partial\rho}{\partial t}=-\widetilde{c}\rho_{0}'\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial\rho}{\partial x}=\rho_{0}'\left(x-\widetilde{c}t\right)$
+\end_inset
+
+ which, when combined with Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-cont-eq-model-q"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (the LWR model) leads to 
+\begin_inset Formula 
+\[
+-\widetilde{c}\,\rho_{0}'\left(x-\widetilde{c}t\right)+\frac{dQ_{e}}{d\rho}\rho_{0}'\left(x-\widetilde{c}t\right)=0,
+\]
+
+\end_inset
+
+or
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boxed{\widetilde{c}\left(\rho\right)=\frac{dQ_{e}}{d\rho}=\frac{d\left(\rho V_{e}\left(\rho\right)\right)}{d\rho}}.\label{eq:lwr-density-prop-vel}
+\end{equation}
+
+\end_inset
+
+Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lwr-density-prop-vel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows that density waves propagate at a velocity dependent on the change
+ in the flow of traffic.
+ This important result will be used to help explain the formation of traffic
+ shock waves later.
+ If we examine the density wave propagation from the point of view of driver
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\widetilde{c}_{\text{rel}}\left(\rho\right)=\, & \widetilde{c}\left(\rho\right)-V\\
+=\, & \widetilde{c}\left(\rho\right)-V_{e}\left(\rho\right)\\
+=\, & \rho V'_{e}\left(\rho\right)
+\end{aligned}
+\label{eq:lwr-rel-density-prop-vel}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $V'_{e}\left(\rho\right)<0$
+\end_inset
+
+, and thus, from the driver's perspective, when 
+\begin_inset Formula $\widetilde{c}_{\text{rel}}\left(\rho\right)\leq0$
+\end_inset
+
+ the density variations propagate backwards.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Insert image for use in derivation below
+\end_layout
+
+\begin_layout Standard
+For a single-lane highway, let 
+\begin_inset Formula $n=\rho_{1}x_{12}+\rho_{2}\left(L-x_{12}\right)$
+\end_inset
+
+ be the number of vehicles passing through a sufficiently small section
+ of road.
+ Then,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\frac{dn}{dt}=\, & \frac{d\left(\rho_{1}x_{12}\right)}{dt}+\frac{d\left(\rho_{2}\left(L-x_{12}\right)\right)}{dt}\\
+=\, & \rho_{1}\frac{dx_{12}}{dt}-\rho_{2}\frac{dx_{12}}{dt}\\
+=\, & \left(\rho_{1}-\rho_{2}\right)c_{12}\\
+=\, & Q_{1}-Q_{2}\\
+=\, & Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)\\
+\therefore\quad\left(\rho_{1}-\rho_{2}\right)c_{12}=\, & Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)
+\end{aligned}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{12}=\frac{dx_{12}}{dt}$
+\end_inset
+
+.
+ Finally, we arrive at
+\begin_inset Formula 
+\begin{equation}
+\boxed{c_{12}=\,\frac{Q_{e}\left(\rho_{1}\right)-Q_{e}\left(\rho_{2}\right)}{\rho_{1}-\rho_{2}}}.\label{eq:density-wave-propagation-velocity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A great property of the LWR model is that velocities can be determined directly
+ from the fundamental diagram.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{c}\left(\rho\right)=Q_{e}'\left(\rho\right)$
+\end_inset
+
+: propagation velocity density variations (slope of the fundamental diagram)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c_{12}$
+\end_inset
+
+: propagation velocity of shock wave fronts (slope of secant line of connecting
+ points of the fundamental diagram)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{e}\left(\rho\right)=\frac{Q_{e}\left(\rho\right)}{\rho}$
+\end_inset
+
+: vehicle speed (slope of secant line from origin to corresponding point
+ on fundamental diagram)
+\end_layout
+
+\end_body
+\end_document

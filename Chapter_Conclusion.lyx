@@ -1,0 +1,179 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Conclusion
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:conclusion"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The overriding purpose of this study was to provide an overview of social
+ media information spread theory, modeling, and analysis, as well as provide
+ some examples techniques on how to control information spread in various
+ scenarios.
+ Multiple mathematical models were proposed to better model social media
+ information spread compared to the spreading of information through traditional
+ channels.
+\end_layout
+
+\begin_layout Standard
+The need and importance of studying information spread over social media
+ was established through the use of modern examples, including political
+ campaigning and fake news.
+ A high level background of information categories was presented, along
+ with the important roles played by ignorants, spreaders, and stiflers within
+ a population as it experiences new information.
+ Popular theories on social networking, particularly with respect to online
+ social media groups, were summarized and some of the widely used modern
+ online social networks were identified.
+\end_layout
+
+\begin_layout Standard
+The groundwork for the technical and objective study of social networks
+ was given, including the classifications of relationship types and the
+ qualities that describe them, such as reciprocity, balance, and the presence
+ or absence of homophily.
+ An overview of the technical aspects of social network structure was exhibited,
+ including mathematical formulas and qualitative descriptions and examples.
+ These technical concepts included density, strength of ties, centrality,
+ distance, cohesion, the adjacency matrix and more.
+\end_layout
+
+\begin_layout Standard
+Several models were expressed, described, and simulated to demonstrate their
+ usage in a social media information spread context.
+ Deterministic models included various common epidemiology-based information
+ spread models involving ignorant, spreader, and recovered classes, particularly
+ the popular Maki-Thomson model for rumor spread.
+ Due to the growing influence of online social media networks on the spread
+ of information, several new models were proposed to account for differences
+ between traditional information spread and that of modern digital social
+ media.
+ Stochastic models were also presented briefly, explaining the need for
+ stochastic modeling in real-life information spread systems as well as
+ providing some stochastic models based on the previously discussed deterministi
+c models.
+ Aside from traditional mathematical epidemiology based models, three influentia
+l social marketing models were summarized and framed in the context of informati
+on spread applications.
+ Again, shortcomings with these models when applied to online social media
+ information spread prompted the proposal of a new model in order to describe
+ online social craze phenomenons.
+\end_layout
+
+\begin_layout Standard
+Two scenarios were created in order to explore the potential of creating
+ a social craze using the proposed model and of applying the idea of herd
+ immunity toward a potential fake news outbreak.
+ For both of these scenarios, dynamics and cost functions were established
+ and the Pontryagin minimization principle was applied to achieve optimal
+ control actions.
+ The scenarios were simulated using MATLAB under a variety of different
+ parameters to demonstrate how changes influence the evolution and control
+ of the systems.
+ Potential real-world examples behind the parameter choices were also discussed.
+\end_layout
+
+\begin_layout Standard
+Future work in online social media information spread would include testing
+ of the proposed models using data from Google, Twitter, or Facebook to
+ track the rise and decay of carefully chosen tag words and images.
+ This data can be used to determine general parameters for similar information
+ spreading systems to hopefully create practical and usable online information
+ spread predictions.
+\end_layout
+
+\end_body
+\end_document

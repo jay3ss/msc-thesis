@@ -1,0 +1,386 @@
+\chapter{Deterministic Models} \label{ch:DETERMINISTIC}
+
+\section{Epidemic and Information Spread Models: Overview and Conventions}
+
+Many deterministic models focus on a system's mathematical dynamics. That is, it describes the time dependence of a point in relation to its position (though it need not be a physical position). Examples of this can include a simple system like a swinging pendulum or complex systems such as the traffic flow on a highway \cite{contreras2016observability}. In deterministic dynamical models, only one future state can follow from the current state. Simple deterministic models of information spread have their mathematical dynamics origins as applications of epidemiology disease spread models. As such, much of the epidemiology terminology requires modification for ease of use and understanding in the context of information spread. The essential variables and parameters used here are outlined in Table \ref{tab:essential_terms}. 
+Additionally, note that some of the common epidemic model acronyms are replaced in this text to properly reference them in the context of information spread applications. Specifically, epidemic spreaders, infected, and removed classes have been renamed as ignorants, spreaders, and recovered, respectively. 
+
+\begin{table}[!htbp] \centering
+\centering
+\begin{tabular}{ll}
+\textbf{Term}      & \textbf{Meaning}                                   \\
+$I$                & Ignorants: Class which does not know the information   \\
+$S$                & Spreaders: Class which is spreading the information \\
+$R$                & Recovered: Class which no longer spreads the information \\
+$\beta$            & Information spreading rate   \\
+$\gamma$           & Information recovery rate   \\
+$k$                & Average connectedness of individuals \\
+\end{tabular}
+\caption{Essential Variables and Parameters}
+\label{tab:essential_terms}
+\end{table}
+\noindent In the simple deterministic models presented, a number of assumptions are made as follows:\\
+(i)   Information is transmitted via spreader contact with an ignorant individual.\\
+(ii)  Information is transmitted instantaneously upon contact.\\
+(iii) All ignorant and spreading individuals are equally susceptible and transmittable, respectively.\\
+(iv)  The population is fixed in size.\\
+Several models and proposed models are introduced in this chapter. The model, its application uses, and some examples of application are presented. %in Table %\ref{}.
+
+\section{The Ignorant-Spreader Model (IS)}
+Consider the most simple case of information spread in which everyone in the population is either ignorant of the information or has heard of it and spreads it around to other members of the population. The Ignorant-Spreader model flow diagram is shown in Figure \ref{fig:IS_model}. Intuitively, applications of this model may not make sense at first glance, as one would imagine people to eventually lose interest in spreading a particular piece of information or new story. While this is typically true eventually, over a specified time-span, information can spread without stop. Good examples of this type of spreading would be long-term militant social or cultural movements or important news that everyone would care about over a short span of time like a local natural disaster alert. For the purposes here, one can think of the Ignorant-Spreader model as a subset of the Ignorant-Spreader-Recovered model discussed later, but with limitations. 
+In the IS model, ignorants are always decreasing while spreaders are increasing as the information spreads throughout the population. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.5\linewidth]{figures/IS_model.eps}
+  \caption{Flow diagram for the Ignorant-Spreader model}
+  \label{fig:IS_model}
+\end{figure}
+
+\noindent The system dynamics of the IS model are taken to be:
+\begin{equation}\label{eqn:IS_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t).
+\end{aligned}\right.
+\end{equation}
+
+\noindent Plotting the system dynamics under typical parameters shows the following results:
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/IS_example.eps}
+  \caption{Time Evolution of IS Model}
+  \label{fig:IS}
+\end{figure}
+
+From Figure \ref{fig:IS} it is obvious that the spreaders eventually overtake the entire population at which point everyone is aware of the information and actively spreading it.
+
+\section{The Ignorant-Spreader-Ignorant Model (ISI)}
+Building upon the Ignorant-Spreader model, consider now the case in which ignorants become spreaders as they learn information, as before, but then recover from the information spreading state (due to disinterest over ``old news", for example) and return to a state at which the individual can became re-exposed to the information in order to again gain interest and spread it. Typical examples of this include the latest celebrity gossip or renewed interest in a technology product due to a new design. The flow diagram for the ISI model is presented in Figure \ref{fig:ISI_model}.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.5\linewidth]{figures/ISI_model.eps}
+  \caption{Flow diagram for the Ignorant-Spreader-Ignorant model}
+  \label{fig:ISI_model}
+\end{figure}
+
+\noindent The system dynamics of the ISI model are taken to be:
+\begin{equation}\label{eqn:ISI_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta i(t) s(t)+\gamma s(t)\\
+\dot{s}(t) = \beta i(t) s(t)-\gamma s(t).
+\end{aligned}\right.
+\end{equation}
+
+\noindent Note that the main difference between the ISI model and the previous IS model dynamics is the addition of a stifling parameter $\gamma$ which represents spread information stagnating, causing the spreaders to return to the ingnorant class for a particular topic or topic set.
+
+%\section{Special Case: The Ignorant-Spreader-Ignorant Model With Carriers}
+
+\section{The Ignorant-Spreader-Recovered Model (ISR Maki-Thomson)}
+Often times, information that is learned and spread is eventually simply forgotten as interest in the subject fades and people are not re-exposed to the same information. The flow diagram for the ISI model is shown in Figure \ref{fig:ISR_model}. Once a former spreader becomes recovered they are bored with spreading the information, disinterested in it, or is perhaps even aware of its true-false value and feels no need to further spread it. While in this state, individuals continue to interact pair-wise with other members of the network. Recovered individuals interacting with spreaders can sometimes signal to the spreader that the news being spread in that interaction is ``old news" and not worth spreading, hence converting the spreader to the recovered class. Likewise, two spreaders interacting can indicate that the information is already known and widespread and no longer warrants spreading, turning one of the pair into a Recovered state. Naturally, the chance of these state changes happening with any given pair are probabilistic and based on the stifling rate of the news. Examples of ISR types of information spread include factual news such as an earthquake occurring or even wide-spread universal reactions to a popular television program episode. It should be noted that ISI types of information spread can be viewed in the ISR form if one takes each new piece of information about a topic independently and specifically. While the screen size of the latest cellphone product might be modeled as an ISR system with its information propagation, the product brand as a whole could follow the ISI model as interest is renewed the the latest brand iteration. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.5\linewidth]{figures/ISR_model.eps}
+  \caption{Flow diagram for the Ignorant-Spreader-Recovered model}
+  \label{fig:ISR_model}
+\end{figure}
+
+\begin{table}[!htbp] \centering
+\centering
+
+\begin{tabular}{ll}
+\textbf{Interaction}      & \textbf{Result}                                   \\
+$I + S + R = 1$           & Conservation of individuals in the population     \\
+$I + S \rightarrow 2S$    & Spreader will infect an ignorant with the message \\
+$S + S \rightarrow S + R$ & One spreader will recover if two interact         \\
+$S + R \rightarrow 2R$    & Spreader will recover if contacting a recovered   \\
+\end{tabular}
+\caption{ISR Class Interactions}
+\label{tab:sir_interactions}
+\end{table}
+
+\noindent The system dynamics of the ISR model are taken to be:
+\begin{equation}\label{eqn:ISR_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)+r(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)+r(t)].
+\end{aligned}\right.
+\end{equation}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISR_example.eps}
+  \caption{Sample Time Evolution of the ISR Model}
+  \label{fig:ISR}
+\end{figure}
+
+\section{The Basic Reproductive Number: Spreading or Forgotten?}
+
+One useful metric for examining whether or not information will spread through a population or dissipate before any significant number of people become aware of it is the basic reproductive number, denoted by $R_0$. It was first used in its modern form in 1952 by George MacDonald to model the spread of malaria throughout a population, but can easily be applied and envisioned in a variety of systems in which a growth and decay factor are at odds with one another. To imagine it simply, if information is being spread with more ``force" than it is being quelled or forgotten, then the information takes on epidemic properties and spreads throughout the population, otherwise the information will die out in the long run. $R_0$ is a threshold condition.
+Formally, $R_0$ is defined as the expected number of secondary cases that arise from a single spreader in a population that is otherwise ignorant of the information. $R_0$ is not a rate, but instead dimensionless. 
+\noindent In general, the basic reproductive number for information spread is defined as:\\
+\begin{equation}\label{eqn:reproductive_number}
+\left.\begin{aligned}
+R_0 = \frac{\gamma + \beta}{\gamma} > 1 \\
+\frac{\beta }{\gamma } > 0
+\end{aligned}\right.
+\end{equation}
+
+\noindent The value of the basic reproduction number can have a large effect on the extent to which news and information spreads, if at all. Note in Figure \ref{fig:IRC_R0_low} the reproductive number of the information does not allow it to reach the entire Ignorant class, but in Figure \ref{fig:IRC_R0_high} the information spreads to most of the population quickly followed by a fast recovery. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISR_R0_low.eps}
+  \caption{$R_0$ Comparison: Low $R_0$ value}
+  \label{fig:IRC_R0_low}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISR_R0_high.eps}
+  \caption{$R_0$ Comparison: High $R_0$ value}
+  \label{fig:IRC_R0_high}
+\end{figure}
+
+\section{Proposed Ignorant-Spreader-Recovered Model in Social Media}
+
+While the ISR information spread model works well for ``traditional" forms of pairwise interactions, special considerations must be made when it concerns modern social media networks. What makes digital social media so special? Because interactions occur very rapidly and deliberately. When one is immediately notified of an inter-network social media posting and opts to re-post or otherwise spread the information, the spreading and stifling parameters can swing wildly based on cultural whims. Additionally, when an individual in a social network has recovered a specific news or information item, that individual is not putting themselves in a position to actively have a pairwise contact the spreader class (at least concerning that news). This results in the spreader class being unchecked from recovered class members and hence spreaders only realizing that the news they spread is widely known upon contact with other spreaders. 
+
+\noindent The resulting equations for an ISR system in social media are as follows:
+\begin{equation}\label{eqn:ISR_dynamics_sm}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)].
+\end{aligned}\right.
+\end{equation}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISR_sm.eps}
+  \caption{Sample time evolution of the ISR model for social media}
+  \label{fig:ISR_sm}
+\end{figure}
+
+\noindent It is noteworthy to observe that typically in digital social media systems, information spreads more rapidly and decays at a slower rate than traditional non-digital network rates, partially due to the lack of recovered class stifling factors.
+
+\section{Proposed Ignorant-Spreader-Recovered Model in Social Media with Decay}
+
+Consider the situation in which digital social media information or news is drawn out over a long period of time. Information will be learned, spread, and recovered from as before, but a natural human disinterest of dated news becomes a significant factor. To model this behavior, a simple exponential forgetting factor is added to the spreader dynamics, similar to the Vidale-Wolfe advertising model \cite{vidale1957operations}. The decay is balanced by the dynamics of the recovered class, as individuals who stop caring about a topic over time effectively act as recovered.
+
+\noindent The dynamics equations for a social media ISR system with decay are as follows:
+\begin{equation}\label{eqn:ISR_dynamics_decay}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \gamma k s(t)[s(t)]-\delta s(t)\\
+\dot{r}(t) = \gamma k s(t)[s(t)]+ \delta s(t).
+\end{aligned}\right.
+\end{equation}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISR_d.eps}
+  \caption{Sample time evolution of the ISR model for social media with decay}
+  \label{fig:ISR_d}
+  \end{figure}
+
+\noindent Over long periods of digital media information spreading throughout a network, spreader decay reshapes spreader behavior to more closely resemble traditional ISR information spread curves. Obviously, the relevance and ``juiciness" of the news or information will greatly influence the rate of natural spreading decay.
+
+\section{Proposed ISCR Model for Contentious Information Spread} 
+
+In order to describe a single group where ``contentious information" is being distributed, a special model is required to account for not only spreaders, but also counter spreaders of the information. The traditional ISR model serves as a good base for the new model, but has its shortcomings when examining the spread of contentious information. Examples of when to apply this ISCR model include populations where ``fake news" is being spread, public panics have started over false information that must be quelled by the government, and the spreading of false celebrity death announcements on social media. At the core of this modified model is the idea of a ``counter spreader" which acts just like the spreader, but is pushing against the spreader information with an opposite message. As such, the pairwise interactions of an information based ISR model (such as the popular Maki-Thomson model) still apply in the ISCR model, but with a new class of individual present in the population as a possible state. Here, $I$ represents the ignorant class, which is unfamiliar with the information. $S$ represents the spreader class, which knows the information and is actively spreading it to each contacted class. $C$ represents the counter-spreader class, which knows the information and is actively spreading a counter-information campaign against the information being spread by the spreader class. Finally, $R$ represents the recovered class, which knew about the information at one time, possibly spread or counter-spread it, but has become uninterested in further spreading of the information due to simple disinterest, a belief that the information is already widely known, or because the class has determined that the information is proven false and should not be spread further. Inter-class interactions evolve as shown in Table \ref{tab:sirc_interactions}.
+
+\begin{table}[!htbp] \centering
+\centering
+
+\begin{tabular}{ll}
+\textbf{Interaction}    & \textbf{Result}                                   \\
+$I + (S + C) + R = 1$     & Conservation of individuals in the population     \\
+$I + S \rightarrow 2S$    & Spreader will infect an ignorant with the message \\
+$I + C \rightarrow 2C$    & Counter will infect an ignorant with the message  \\
+$S + S \rightarrow S + R$ & One spreader will recover if two interact         \\
+$C + C \rightarrow C + R$ & One counter will recover if two interact          \\
+$S + R \rightarrow 2R$    & Spreader will recover if contacting a recovered   \\
+$C + R \rightarrow 2R$    & Counter will recover if contacting a recovered   
+\end{tabular}
+\caption{ISCR class interactions}
+\label{tab:sirc_interactions}
+\end{table}
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{drawings/SIRC_Model.eps}
+  \caption{Flow diagram for ISCR model class interactions.}
+  \label{fig:sirc_flow}
+\end{figure}
+
+Figure \ref{fig:sirc_flow} shows a flow diagram for the class interactions, where parameters $\beta$, $\alpha$, $\gamma$, and $\mu$ represent spread rate, counter-spread rate, stifle rate, and counter stifle rate, respectively. The parameter $\omega$ represents the willingness of spreaders to listen to counter-spreader information ($\omega_1$) and vice-versa ($\omega_2$), which can take a positive or zero value in the case of completely hardline spreader and counter-spreader views. These parameters allow for spreaders and counter-spreaders to potentially examine the opposite viewpoint and ``change sides."
+
+\noindent The system dynamics of the model can now be given as:
+\begin{equation}\label{eqn:SIRC_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta k i(t)s(t) - \alpha k i(t)c(t)\\
+\dot{s}(t) = \beta k i(t)s(t) - \omega_1 k s(t)c(t) + \omega_2 k s(t)c(t) - \gamma k s(t)[s(t)+r(t)]\\
+\dot{c}(t) = \alpha k i(t)c(t) + \omega_1 k s(t)c(t) - \omega_2 k s(t)c(t) - \mu k c(t)[c(t)+r(t)]\\
+\dot{r}(t) = \gamma k s(t)[s(t)+r(t)] + \mu k c(t)[c(t)+r(t)].
+\end{aligned}\right.
+\end{equation}
+\noindent Plotting the system dynamics and varying the parameters leads to the results in the proceeding figures.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_no_counters.eps}
+  \caption{No counter-spreaders}
+  \label{fig:sirc_no_counters}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_spread_dominant.eps}
+  \caption{Spreaders dominate}
+  \label{fig:sirc_spread_dominant}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_counter_dominant.eps}
+  \caption{Counter-spreaders dominate}
+  \label{fig:sirc_counter_dominant}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_even.eps}
+  \caption{Even mix of spreaders and counter-spreaders}
+  \label{fig:sirc_even}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_even_S_2x_receptive.eps}
+  \caption{Spreader twice as receptive to outside influence as counter-spreader}
+  \label{fig:sirc_even_S_2x_receptive}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_spreader_dominant_receptive.eps}
+  \caption{Dominant spreader is 4.6 times as receptive to outside influence as counter-spreader}
+  \label{fig:sirc_spreader_dominant_receptive}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_S_2x_stifle.eps}
+  \caption{Spreader is stifled twice as strongly as counter-spreader}
+  \label{fig:sirc_S_2x_stifle}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/sirc_C_2x_spread.eps}
+  \caption{Counter-spreader is spreading twice as strongly as spreader}
+  \label{fig:sirc_C_2x_spread}
+\end{figure}
+
+It is observable that spreading strength changes have the greatest effect, followed by stifling strength. Receptivity to an opposing view has a smaller, but still significant effect on information spread. Counter-spread information effectively overtakes (counters) the initial spreading view once the receptivity to outside views reaches approximately 4.6 times the receptivity of the counter-spreaders to agreeing with the initial information. 
+
+It should be noted that counter-spreaders are naturally unlikely to be receptive to information that has been proven objectively false. As such, they will have a favorable spreader to counter-spreader conversion rate compared to the spreaders when there are no remaining members of the ignorant class to become spreaders of information that has not been researched or fully absorbed, as in the case of ``fake news" and similar contentious information scenarios.
+
+\section{Proposed Hybrid ISCR Model} %\label{ch:SIRC_HYBRID} 
+Often times, situations arise where two (or more) primary group ``communities" dominate in their view and spread of a certain type of information. In the real world, this is a very common situation. For example, in the United States, conservatives and liberals often form information communities that oppose one another on political information and interpretation. One country may be a mega-community and oppose a similar community from another country in how they are accepting and spreading news relating to inter-country relations. The ISCR model covers situations where potentially contentious information is being spread within a mostly homogeneous population. What it does not do well, however, is describe how information spreads or diffuses between two different, especially polarized groups. It is therefore necessary to modify the ISCR model to account for a hybrid case.
+
+In the hybrid model, we assume two main polarized communities for simplicity, $ISCR_1$ and $ISCR_2$, which can be extended to any number of polarized groups. We assume there are some individuals within each community that has contact with the other. Perhaps they are moderates or friends who subscribe to a different political view or family members from a home country who are not part of one's current information community, but act as a link to another country-community. No matter the reason, some individuals act as diffusion elements of information between the two communities. The influence and connection strength of the overall collection of these individuals is denoted by a pair of directional constants $a_{12}$ and $a_{21}$, where $a_{12}$ is the strength of information flow from group $ISCR_1$ to  group $ISCR_2$ and $a_{21}$ is the strength of information flow from group $ISCR_2$ to  group $ISCR_1$, expressed as a percentage of cross-group receptivity. For highly polarized groups, these constants will be very small fractions of one and for completely isolated communities they will be equal to zero, reducing the hybrid model to the standard ISCR model discussed previously. Figure \ref{fig:ISCR__hybrid_model} shows the high-level flow diagram for the proposed hybrid ISCR model.
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISCR_hybrid_model.eps}
+  \caption{Flow diagram for ISCR two-community interactions.}
+  \label{fig:ISCR__hybrid_model}
+\end{figure}
+
+\noindent Modifying the previous ISCR model system dynamics for one group, we obtain:
+\begin{equation}\label{eqn:SIRC1_dynamics}
+\left.\begin{aligned}
+\dot{i}_1(t) = -\beta_1 i_1(t)s_1(t) - \alpha_1 i_1(t)c_1(t) - a_{21} \beta_2 i_1(t)s_2(t) - a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{s}_1(t) = \beta_1 i_1(t)s_1(t) - \omega_{11} s_1(t)c_1(t) + \omega_{12} s_1(t)c_1(t) - \gamma_1 s_1(t) + a_{21} \beta_2 i_1(t)s_2(t)\\
+\dot{c}_1(t) = \alpha_1 i_1(t)c_1(t) + \omega_{11} s_1(t)c_1(t) - \omega_{12} s_1(t)c_1(t) - \mu_1 c_1(t) + a_{21} \alpha_2 i_1(t)c_2(t)\\
+\dot{r}_1(t) = \gamma_1 s_1(t) + \mu_1 c_1(t).
+\end{aligned}\right.
+\end{equation}
+\noindent Likewise, for the second ISCR group the following dynamics are obtained:\begin{equation}\label{eqn:SIRC2_dynamics}
+\left.\begin{aligned}
+\dot{i}_2(t) = -\beta_2 i_2(t)s_2(t) - \alpha_2 i_2(t)c_2(t) - a_{12} \beta_1 i_2(t)s_1(t) - a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{s}_2(t) = \beta_2 i_2(t)s_2(t) - \omega_{21} s_2(t)c_2(t) + \omega_{22} s_2(t)c_2(t) - \gamma_2 s_2(t) + a_{12} \beta_1 i_2(t)s_1(t)\\
+\dot{c}_2(t) = \alpha_2 i_2(t)c_2(t) + \omega_{21} s_2(t)c_2(t) - \omega_{22} s_2(t)c_2(t) - \mu_2 c_2(t) + a_{12} \alpha_1 i_2(t)c_1(t)\\
+\dot{r}_2(t) = \gamma_2 s_2(t) + \mu_2 c_2(t).
+\end{aligned}\right.
+\end{equation}
+
+Following the diffusion terms in the dynamics, the system can be loosely described as individuals from one group spreading their group's information and opinions on a topic to an opposing community via their friends or relatives. The receptiveness of one group to believe and accept the views of another will determine how much the extra-group spreader influences the opposing group.
+
+Consider the two $ISCR$ groups shown in Figure \ref{fig:hybrid_sirc_initial}. The $ISCR_1$ community is predominantly influenced by the spreader information with minor counter-spreader information influence, while the opposite is true for the $ISCR_2$ community, being influenced mostly by the counter-spreader information (generally the information that contradicts or opposes the Spreader information). As an example, $ISCR_1$ spreaders might be mainly spreading an unverified rumor about an opposing political party candidate in the $ISCR_2$ community. Some members of $ISCR_1$ believe the initial information is a lie and are counter-spreaders in that community. The $ISCR_2$ community has their own contentious information concerning an opposing candidate from the $ISCR_1$ community with similar levels of dissent within their own group. Since the  $a_{12}$ and $a_{21}$ constants are zero, there is no diffusion with which to cause interaction between the communities. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_initial.eps}
+  \caption{Two Initial ISCR Groups: Spreader dominant and Counter-spreader dominant}
+  \label{fig:hybrid_sirc_initial}
+\end{figure}
+
+With an equal amount of cross-interactions between the two communities (Figure \ref{fig:hybrid_sirc_equal}), the influence of counter-spreaders from $ISCR_2$ counteracts the influence of $ISCR_1$ spreaders and vice-versa. This, of course, assumes that in the polarized groups, the information of $ISCR_1$ spreaders is the same message as $ISCR_2$ counter-spreaders. This need not be the case, but serves to simplify the system for example purposes. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_equal.eps}
+  \caption{Two ISCR Groups: Equal Bidirectional Diffusion}
+  \label{fig:hybrid_sirc_equal}
+\end{figure}
+
+When there is mismatched receptivity between the communities, dramatic shifts can occur in the way popular beliefs are altered via information spread. In Figure \ref{fig:hybrid_sirc_a21} the $ISCR_1$ community is more receptive to the $ISCR_2$ community and is hence more likely to listen to the messages of the diffuser spreaders and counter-spreaders. In this case, because the counter-spreaders are dominant in the $ISCR_2$ group (and many of these counter-spreaders are being heard), there is a large resurgence of counter-spreaders in $ISCR_1$, while keeping the spreaders of $ISCR_2$ relatively low (as they are not nearly as receptive to outside influence). 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21.eps}
+  \caption{Two ISCR Groups: Skewed receptivity between groups}
+  \label{fig:hybrid_sirc_a21}
+\end{figure}
+
+As skewed receptivity mismatching increases to where one group is about seven times as receptive as the other, we find a ``tip over point" where (all else being equal) the opposing community's information beliefs equal that of the primary community (Figure \ref{fig:hybrid_sirc_a21_cancel}). After this point, the information beliefs of the opposition group begin to dominate both groups (Figure \ref{fig:hybrid_sirc_a21_plus}). It should be noted that there are significant diminishing returns on the effect of receptivity to opposing polarized communities. 
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21_cancel.eps}
+  \caption{Two ISCR groups: receptivity tipping point}
+  \label{fig:hybrid_sirc_a21_cancel}
+\end{figure}
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/hybrid_sirc_a21_plus.eps}
+  \caption{Two ISCR groups: dominant inter-community belief}
+  \label{fig:hybrid_sirc_a21_plus}
+\end{figure}
+
+Clearly, between polarized groups, diffusion plays a significant role in changing the dominant information beliefs of a community. Generally speaking, if two groups are truly polarized, outside influences will be felt but the impact will be minor. A fairly strong amount of receptiveness to outside opposing communities would be required to have lasting change, and a situation in which one group is several times more receptive than the other is unlikely. Still, it is of value to objectively observe and model the influence groups have on one another along a spectrum of non-mutual receptivity levels.
+
+\section{Proposed ISSRR Model for Contentious Information}
+While the proposed ISCR model describes two primary groups in which opposing class members seek to turn the other to their side of belief of contentious information, it does not describe a situation in which there are multiple final recovered states of contentious information belief. A new model must be proposed to handle this type of social network contentious information spread.
+
+Consider a basic ISR modeling of a polarized social network group that is presented with contentious information, leading to two final recovered beliefs, representing individuals who eventually make up their mind concerning the information and have lost interest in it, pending any relevant new information. As the new information is discovered by the network population, individuals form an initial opinion and many will choose to begin to spread the information opinion stance they have decided to follow among their friends and fellow social network members. At this point, two such spreader groups will arise, each pushing people via online social media tweets and posts to come to their ``side" of the contentious information in the hopes of gaining additional spreaders who, hopefully, finally settle on their preferred of the two recovered states. We shall call this the Ignorant-Spreader-Spreader-Recovered-Recovered (ISSRR) model, which is visually depicted in Figure \ref{fig:ISSRR_Model}.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISSRR_Model.eps}
+  \caption{Proposed ISSRR model class interaction overview}
+  \label{fig:ISSRR_Model}
+\end{figure}
+
+Notice that in this model, after informed individuals split into their respective spreader groups, they will reciprocally interact with varying levels of balance with spreaders of the opposing viewpoint and eventually settle into a recovered state of one of the two contentious sides. Aside from the typical ignorant class becoming spreaders interactions from previous models, we must account for spreader-spreader interactions and the strength of tendency to achieve one of the two recovered states, based on that interaction. In other words, which side has the greater ability to compel the other, based on a demonstrable truth discovered to resolve the contention, assumed authority of the spreaders, and other factors when compared to the tendency of a group to stay with their original line of thinking will ultimately determine the relative outcome of the two competing sides of information distribution and belief. 
+
+The practicality of an ISSRR model is evident in several real world situations. Social and cultural issues a community must agree upon with no clear objective right or wrong answer is one candidate for such a model. Political campaigning between candidates or measures that represent differences in ideologies, not necessarily value, can also be described with an ISSRR model. Even the concept of fake news mentioned in previous sections can be modeled under this model, provided the competing news stories are supported by highly polarized primary groups, where final-state recovered individuals settle on a belief in the actual or fake news.
+
+The proposed ISSRR model takes the form of the following set of differential equations:
+\begin{equation}\label{eqn:ISSRR_dynamics}
+\left.\begin{aligned}
+\dot{i}(t) = -\beta_1 i(t)s_1(t) - \beta_2 i(t)s_2(t)\\
+\dot{s}_1(t) = \beta_1 i(t)s_1(t) + (d_{12}-d_{21})s_1(t)s_2(t) - (\gamma_{11}+ \gamma_{12})s_1^2(t)\\
+\dot{s}_2(t) = \beta_2 i(t)s_2(t) + (d_{21}-d_{12})s_1(t)s_2(t) - (\gamma_{22}+ \gamma_{21})s_2^2(t)\\
+\dot{r}_1(t) = \gamma_{11}s_1^2(t) + \gamma_{21} s_2^2(t)\\
+\dot{r}_2(t) = \gamma_{22}s_2^2(t) + \gamma_{12} s_1^2(t),
+\end{aligned}\right.
+\end{equation}
+\noindent where $d$ is the relative strength of influence and connection of one information-spreading group over the other. Note that this model assumes a lack of active online social media interactions on the part of the recovered class under the assumption that those who are bored, convinced of, or ``over" a topic will not be reaching out online to further engage the social network and at best will merely spectate or ``lurk" as spreaders continue to spread and argue positions. This departs from traditional rumor spread models.
+
+Two sample scenarios were simulated using the presented ISSRR dynamics. In the first scenario, presented in Figure \ref{fig:ISSRR_1}, the first group has a greater ability to spread information via online social networks compared to the second group. Perhaps the first group is generally more internet savvy or culturally willing to share information over the internet, such as is often the case with younger versus older internet users. The two groups are equally likely to cease caring about the topic once they have made up their minds on a stance and are also both likely to favor their initial group's opinion trend over the opposing side. Finally, neither group has significant social network influence over the other. Note that the simple ability to spread more effectively than the side of an opposing opinion has a major influence over the eventual total group recovered opinion distribution, all else being equal.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISSRR_1.eps}
+  \caption{Proposed ISSRR: Scenario 1}
+  \label{fig:ISSRR_1}
+\end{figure}
+
+In the second scenario, as shown in Figure \ref{fig:ISSRR_2}, both subgroups are equally effective at spreading their opinion and equally likely to grow disinterested in any given opinion, once they have made up their mind on the topic. Unlike in the first scenario, here the second group has greater influence over the first group. This quickly leads the dynamics to result in much greater numbers of individuals to ultimately settle on the second group's information-opinion.
+
+\begin{figure}[!htbp] \centering
+  \includegraphics[width=0.7\linewidth]{figures/ISSRR_2.eps}
+  \caption{Proposed ISSRR: Scenario 2}
+  \label{fig:ISSRR_2}
+\end{figure}

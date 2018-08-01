@@ -1,0 +1,1229 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Control Methods
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:control-methods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Classical control theory concerns itself with the instantaneous control
+ of a system (plant) within design parameters such as rise time, overshoot,
+ etc.
+ Frequency response methods such as Bode plots and root locus are the bread
+ and butter of designing classical control systems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ogata2014moderncontrol"
+literal "false"
+
+\end_inset
+
+.
+ Although these control systems do satisfy the design parameters they are
+ by no means optimal because they are usually designed by a trial and error
+ basis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirkdover"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kirk, on the other hand states that the purpose of optimal control is to
+ determine the control signals that will maximize or minimize a system given
+ some constraints and performance criteria
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirkdover"
+literal "false"
+
+\end_inset
+
+.
+ Optimal controllers have a long and storied history involving some of the
+ greatest minds of mathematics, physics, and engineering spanning over three
+ centuries and ignoring arbitrary national borders 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sussmann1997300"
+literal "false"
+
+\end_inset
+
+.
+ Optimal control provides a guarantee of optimality through well-developed
+ and rigorously proven theorems.
+ Using a performance measure (or cost function) engineers are able to give
+ preference to certain behaviors of the controller and to shape and mold
+ it into giving many different trajectories and thus behaviors.
+\end_layout
+
+\begin_layout Section
+Proportional Control
+\end_layout
+
+\begin_layout Standard
+One of the simplest controllers is the proportional controller which uses
+ a reference signal, 
+\begin_inset Formula $r$
+\end_inset
+
+, and finds the error, 
+\begin_inset Formula $e$
+\end_inset
+
+, between the system, or plan 
+\begin_inset Formula $P$
+\end_inset
+
+, and creates a control signal that is proportional to that error.
+ An example of this type of system is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proportional-controller-block-diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where 
+\begin_inset Formula $r$
+\end_inset
+
+ is the reference signal, 
+\begin_inset Formula $e$
+\end_inset
+
+ is the error, 
+\begin_inset Formula $u$
+\end_inset
+
+ is the control signal, 
+\begin_inset Formula $y$
+\end_inset
+
+ is the output, 
+\begin_inset Formula $K$
+\end_inset
+
+ is the gain of the controller, 
+\begin_inset Formula $P$
+\end_inset
+
+ is the plant, and 
+\begin_inset Formula $F$
+\end_inset
+
+ is the sensor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/simple-feedback-control-loop.svg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Block diagram of a system with proportional control
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proportional-controller-block-diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The algorithm for a proportional controller is straightforward:
+\end_layout
+
+\begin_layout Enumerate
+Take the difference between the reference signal and the current state of
+ the system and call it the error
+\end_layout
+
+\begin_layout Enumerate
+Multiply the error by a constant 
+\begin_inset Formula $K$
+\end_inset
+
+ which is pre-determined
+\end_layout
+
+\begin_layout Enumerate
+Let the control signal be 
+\begin_inset Formula $u=Ke$
+\end_inset
+
+ and apply 
+\begin_inset Formula $u$
+\end_inset
+
+ to the plant
+\end_layout
+
+\begin_layout Enumerate
+Repeat
+\end_layout
+
+\begin_layout Standard
+Care must be used in finding the correct value for 
+\begin_inset Formula $K$
+\end_inset
+
+ as too high of a value can lead the system into uncontrolled oscillations
+ (instability) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ogata2014moderncontrol"
+literal "false"
+
+\end_inset
+
+.
+ A drawback of using proportional control is that without an integrator
+ in the feedforward path there will always be steady-state error.
+ However, this stead-state error can be reduced by using a large value of
+ 
+\begin_inset Formula $K$
+\end_inset
+
+, but again too large of a value will push the system to be unstable.
+ Nevertheless, proportional control is simple and straightforward to implement
+ and thus is of great value.
+\end_layout
+
+\begin_layout Subsection
+Example
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:proportional-control-example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example of proportional control given by Ogata is that of a system with
+ the plant's transfer function 
+\begin_inset Formula $P\left(s\right)=\frac{1}{Ts+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $F=1$
+\end_inset
+
+ from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proportional-controller-block-diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ogata2014moderncontrol"
+literal "false"
+
+\end_inset
+
+.
+ For a unit step input of 
+\begin_inset Formula $r\left(s\right)=\frac{1}{s}$
+\end_inset
+
+, we have the ratio of the error transfer function and input transfer functions
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{e\left(s\right)}{r\left(s\right)}= & \,\frac{r\left(s\right)-y\left(s\right)}{r\left(s\right)}\nonumber \\
+= & \,1-\frac{y\left(s\right)}{r\left(s\right)}\nonumber \\
+= & \,1-\frac{KP\left(s\right)}{1+KP\left(s\right)}\label{eq:error-to-input-transfer-function-temp}\\
+= & \,\frac{1}{1+KP\left(s\right)}\nonumber 
+\end{align}
+
+\end_inset
+
+using the well-known that the transfer function of a feedback system with
+ unity feed back is 
+\begin_inset Formula $\frac{y\left(s\right)}{r\left(s\right)}=\frac{G\left(s\right)}{1+G\left(s\right)}$
+\end_inset
+
+ where 
+\begin_inset Formula $G\left(s\right)=kP\left(s\right)$
+\end_inset
+
+ is the transfer function of the feedforward path.
+ We can use this fact with Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:error-to-input-transfer-function-temp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to arrive at the transfer function of the error given in Equation 
+\begin_inset Formula 
+\begin{align}
+e\left(s\right)= & \,\frac{1}{1+KP\left(s\right)}r\left(s\right)\label{eq:unity-feedback-error-transfer-function}\\
+= & \,\frac{1}{1+KP\left(s\right)}\frac{1}{s}\nonumber \\
+= & \,\frac{1}{1+K\frac{1}{Ts+1}}\frac{1}{s}.\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final value theorem states that in order to find the steady-state response
+ of a function 
+\begin_inset Formula $f\left(s\right)$
+\end_inset
+
+, we just need to take a limit as shown in Equation
+\begin_inset Formula 
+\begin{equation}
+f\left(\infty\right)=\lim_{t\longrightarrow\infty}f\left(t\right)=\lim_{s\longrightarrow0}s\,F\left(s\right).\label{eq:final-value-theorem}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore, the final error of the system is
+\begin_inset Formula 
+\begin{align}
+e\left(\infty\right)= & \,\lim_{s\longrightarrow0}s\,e\left(s\right)\nonumber \\
+= & \,\lim_{s\longrightarrow0}s\,\frac{1}{1+K\frac{1}{Ts+1}}\frac{1}{s}\nonumber \\
+= & \frac{1}{1+K}.\label{eq:steady-state-error-proportional-controller}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+What Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:steady-state-error-proportional-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ demonstrates is that there will always be an offset from the reference
+ signal of 
+\begin_inset Formula $\frac{1}{1+K}$
+\end_inset
+
+.
+ Now, 
+\begin_inset Formula $K$
+\end_inset
+
+ be made to be very large to reduce this offset to effectively zero, but
+ this could have the undesirable consequence of introducing instability
+ to the system or be cost prohibitive or physically unrealistic.
+ A simulation of the system with differing values of 
+\begin_inset Formula $K$
+\end_inset
+
+ is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proportional-controller-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, which demonstrates that for each value of 
+\begin_inset Formula $K$
+\end_inset
+
+ there is always an offset between the output and the reference signal,
+ 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/proportional_control_demo.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Step response of a system with proportional control
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proportional-controller-example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Linear Quadratic Tracking Problems
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:linear-quadratic-tracking"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to solve an optimal control problem, we must first formulate it.
+ A well-formulated optimal control problem consists of 
+\end_layout
+
+\begin_layout Itemize
+dynamics: 
+\begin_inset Formula $\boldsymbol{\dot{X}}\left(t\right)=\boldsymbol{a}\left(\boldsymbol{X}\left(t\right),\boldsymbol{U}\left(t\right),t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+cost function: 
+\begin_inset Formula $J=h\left(\boldsymbol{X}\left(t_{f}\right),t_{f}\right)+\int_{t_{0}}^{t_{f}}g\left(\boldsymbol{X}\left(t\right),\boldsymbol{U}\left(t\right),t\right)dt$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+constraints on the system
+\end_layout
+
+\begin_layout Standard
+The dynamics given above are a general form and can be for a nonlinear time-vary
+ing system.
+ However, the dynamics can be for linear time-invariant or time-varying
+ systems as well.
+ The objective of an optimal controller is to find the optimal control trajector
+y 
+\begin_inset Formula $\boldsymbol{U}^{*}\left(t\right)$
+\end_inset
+
+ (the 
+\begin_inset Formula $^{*}$
+\end_inset
+
+ means optimal) such that the systems moves through the optimal state trajectory
+ 
+\begin_inset Formula $\boldsymbol{X}^{*}\left(t\right)$
+\end_inset
+
+ which is accomplished by minimizing the cost function (we can say minimize
+ the cost function because the difference between minimization and maximization
+ is a minus being attached to 
+\begin_inset Formula $J$
+\end_inset
+
+ for maximization).
+ For the cost function, the 
+\begin_inset Formula $h$
+\end_inset
+
+ term is called the terminal cost because this is the cost associated with
+ the final state (if any) and the 
+\begin_inset Formula $g$
+\end_inset
+
+ term is called the running cost because it is associated with the cost
+ during the execution of the process.
+\end_layout
+
+\begin_layout Standard
+There are four common types of problems that optimal control problems aim
+ to solve.
+ These types of problems are minimum-time, minimum-control-effort, terminal
+ control, and tracking problems.
+ By combining these types of problems, a plethora of behaviors can be implemente
+d.
+ Each type of optimal control problem has a specific form for its cost function
+ and is given in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:minimum-time-problem-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ through 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:tracking-problem-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, respectively
+\begin_inset Formula 
+\begin{align}
+J= & \int_{t_{0}}^{t_{f}}dt=t_{f}-t_{0}\label{eq:minimum-time-problem-cost-function}\\
+J= & \int_{t_{0}}^{t_{f}}\boldsymbol{U}\left(t\right)^{T}\,\boldsymbol{R}\,\boldsymbol{U}\left(t\right)\,dt=\int_{t_{0}}^{t_{f}}\left\Vert \mathbf{U}\left(t\right)\right\Vert _{\mathbf{R}}^{2}\,dt\label{eq:minimum-control-effort-problem-cost-function}\\
+J= & \left[\boldsymbol{X}\left(T\right)-\boldsymbol{r}\left(T\right)\right]^{T}\boldsymbol{H}\left[\boldsymbol{X}\left(T\right)-\boldsymbol{r}\left(T\right)\right]=\left\Vert \mathbf{X}\left(t\right)-\mathbf{r}\left(t\right)\right\Vert _{\mathbf{H}}^{2}\label{eq:terminal-control-problem-cost-function}\\
+J= & \int_{t_{0}}^{t_{f}}\left[\boldsymbol{X}\left(t\right)-\boldsymbol{r}\left(t\right)\right]^{T}\boldsymbol{Q}\left[\boldsymbol{X}\left(t\right)-\boldsymbol{r}\left(t\right)\right]\,dt=\int_{t_{0}}^{t_{f}}\left\Vert \mathbf{X}\left(t\right)-\mathbf{r}\left(t\right)\right\Vert _{\mathbf{Q}}^{2}\,dt\label{eq:tracking-problem-cost-function}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{H}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{Q}$
+\end_inset
+
+ are real positive semi-definite matrices and 
+\begin_inset Formula $\boldsymbol{R}$
+\end_inset
+
+ is a real positive definite matrix.
+ These matrices are used to weigh the different states for the terminal
+ and running costs of the states and the control trajectories, respectively,
+ and 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ is the reference signal.
+\end_layout
+
+\begin_layout Standard
+If a problem takes on a particular form, then finding the optimal control
+ and state trajectories can be a straight forward process.
+ A special type of problem is a .
+ An LQT problem is an optimal problem with linear dynamics, a quadratic
+ (in terms of 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+) cost function, and a tracking type problem.
+ The dynamics and cost function for an LQT problem are given in Equations
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, respectively
+\begin_inset Formula 
+\begin{align}
+J= & \,\frac{1}{2}\left\Vert \mathbf{X}\left(t\right)-\mathbf{r}\left(t\right)\right\Vert _{\mathbf{H}}^{2}+\frac{1}{2}\int_{t_{0}}^{t_{f}}\left(\left\Vert \mathbf{X}\left(t\right)-\mathbf{r}\left(t\right)\right\Vert _{\mathbf{Q}}^{2}+\left\Vert \mathbf{U}\left(t\right)\right\Vert _{\mathbf{R}}^{2}\right)\,dt\label{eq:lqt-problem-dynamics}\\
+\boldsymbol{X}\left(t\right)= & \,\boldsymbol{A}\boldsymbol{X}\left(t\right)+\boldsymbol{B}\boldsymbol{U}\left(t\right).\label{eq:lqt-problem-cost-function}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LQT problems can be solved quite nicely in a formulaic manner using variational
+ methods given by Kirk
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kirkdover"
+literal "false"
+
+\end_inset
+
+.
+ First, the Hamiltonian, 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, is constructed as shown in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-hamiltonian"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where 
+\begin_inset Formula $\boldsymbol{p}\left(t\right)$
+\end_inset
+
+ is the costate.
+ The necessary condition for 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ to be minimized is that 
+\begin_inset Formula $\frac{\partial\mathcal{H}}{\partial\boldsymbol{u}}=0$
+\end_inset
+
+.
+ Next, the optimal controller is found as is given by Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-costate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-costate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is important because it shows that the optimal controller for an LQT problem
+ gives negative feedback.
+ The costate is given in Equation .
+ Now that we have the equation for costate, we can subsitute Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-costate-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-costate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and get the new controller, Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-pseudocostate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ In Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-costate-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-pseudocostate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $\boldsymbol{K}\left(t\right)$
+\end_inset
+
+ is the solution to the algebraic Riccati equation, which is given is given
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:riccati-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Finally, in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-costate-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-controller-pseudocostate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $\boldsymbol{s}\left(t\right)$
+\end_inset
+
+ is the solution to Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-pseudocostate-diff-eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathcal{H}\left(\boldsymbol{X}\left(t\right),\boldsymbol{U}\left(t\right),\boldsymbol{p}\left(t\right),t\right)= & \,\frac{1}{2}\left\Vert \mathbf{X}\left(t\right)-\mathbf{r}\left(t\right)\right\Vert _{\mathbf{Q}}^{2}+\frac{1}{2}\left\Vert \mathbf{U}\left(t\right)\right\Vert _{\mathbf{R}}^{2}\label{eq:lqt-problem-hamiltonian}\\
++ & \,\boldsymbol{p}^{T}\left(t\right)\boldsymbol{A}\boldsymbol{X}\left(t\right)+\boldsymbol{p}^{T}\left(t\right)\boldsymbol{B}\boldsymbol{U}\left(t\right)\nonumber \\
+\boldsymbol{U}^{*}\left(t\right)= & \,-\boldsymbol{R}^{-1}\boldsymbol{B}^{T}\boldsymbol{p}^{*}\left(t\right)\label{eq:lqt-problem-controller-costate}\\
+\boldsymbol{p}\left(t\right)= & \,\boldsymbol{K}\left(t\right)\boldsymbol{X}^{*}\left(t\right)+\boldsymbol{s}\left(t\right)\label{eq:lqt-problem-costate-equation}\\
+\boldsymbol{U}^{*}\left(t\right)= & \,-\boldsymbol{R}^{-1}\boldsymbol{B}^{T}\boldsymbol{K}\left(t\right)\boldsymbol{X}^{*}\left(t\right)-\boldsymbol{R}^{-1}\boldsymbol{B}^{T}\boldsymbol{s}\left(t\right)\label{eq:lqt-problem-controller-pseudocostate}\\
+\dot{\boldsymbol{K}}\left(t\right)= & \,-\boldsymbol{K}\left(t\right)\boldsymbol{A}-\boldsymbol{A}^{T}\boldsymbol{K}\left(t\right)\label{eq:riccati-equation}\\
+ & \,-\boldsymbol{Q}+\boldsymbol{K}\left(t\right)\boldsymbol{B}\boldsymbol{R}^{-1}\boldsymbol{B}^{T}\boldsymbol{K}\left(t\right)\nonumber \\
+\dot{\boldsymbol{s}}\left(t\right)= & -\left[\boldsymbol{A}^{T}-\boldsymbol{K}\left(t\right)\boldsymbol{B}\boldsymbol{R}^{-1}\boldsymbol{B}^{T}\right]\boldsymbol{s}\left(t\right)+\boldsymbol{Q}\boldsymbol{r}\left(t\right)\label{eq:lqt-problem-pseudocostate-diff-eq}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The boundary conditions for the LQT problem are given in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-k-boundary-condition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-s-boundary-condition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{K}\left(t_{f}\right)= & \,\boldsymbol{H}\label{eq:lqt-problem-k-boundary-condition}\\
+\boldsymbol{s}\left(t_{f}\right)= & \,-\boldsymbol{H}\boldsymbol{r}\left(t_{f}\right).\label{eq:lqt-problem-s-boundary-condition}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is important to note that Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:riccati-equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-pseudocostate-diff-eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ must first be solved backwards on the interval 
+\begin_inset Formula $\left[t_{f},t_{0}\right]$
+\end_inset
+
+ then the optimal control trajectory 
+\begin_inset Formula $\boldsymbol{U}^{*}\left(t\right)$
+\end_inset
+
+ and optimal state trajectory 
+\begin_inset Formula $\boldsymbol{X}^{*}\left(t\right)$
+\end_inset
+
+ can be found going forward on the interval 
+\begin_inset Formula $\left[t_{0},t_{f}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+In order to contrast an LQT problem with proportional control problem, the
+ example from Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:proportional-control-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ will be framed as an LQT problem and the optimal control trajectory and
+ optimal state trajectory will be found using steepest descent.
+ For the LQT problem however, the reference signal, 
+\begin_inset Formula $r\left(t\right)$
+\end_inset
+
+, will be the unit-step function and the optimal control trajectory will
+ be found.
+ The same steps from the previous section will be followed.
+\end_layout
+
+\begin_layout Standard
+The transfer function for the system is 
+\begin_inset Formula $\frac{Y\left(s\right)}{U\left(s\right)}=\frac{1}{Ts+1}$
+\end_inset
+
+.
+ First, the transfer function must be transformed into the t-domain by use
+ of the inverse Laplace transform.
+ The result of this transformation is given in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-example-t-domain-dynamics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T\dot{y}\left(t\right)+y\left(t\right)=u\left(t\right).\label{eq:lqt-example-t-domain-dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First, the dynamics will be given in state-space representation by letting
+ 
+\begin_inset Formula $x_{1}=y$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{x}_{1}=\dot{y}$
+\end_inset
+
+, 
+\begin_inset Formula $T=1.5$
+\end_inset
+
+, and solving for 
+\begin_inset Formula $\dot{x}_{1}$
+\end_inset
+
+ (and dropping 
+\begin_inset Formula $\left(t\right)$
+\end_inset
+
+ for conciseness), as shown in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-example-state-space-representation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\dot{x}_{1}=-\frac{2}{3}x_{1}+\frac{2}{3}u.\label{eq:lqt-example-state-space-representation}
+\end{align}
+
+\end_inset
+
+Given Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-example-state-space-representation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, it can be seen that 
+\begin_inset Formula $A=-\frac{2}{3}$
+\end_inset
+
+, 
+\begin_inset Formula $B=\frac{2}{3}$
+\end_inset
+
+, 
+\begin_inset Formula $H=Q=5$
+\end_inset
+
+, and 
+\begin_inset Formula $r=1$
+\end_inset
+
+.
+ The cost function is given in Equation 
+\begin_inset Formula 
+\begin{equation}
+J=\int_{0}^{5}\left[2.5\left(x_{1}\left(t\right)-1\right)^{2}+0.00125u^{2}\left(t\right)\right]dt\label{eq:lqt-example-cost-function}
+\end{equation}
+
+\end_inset
+
+with boundary conditions
+\begin_inset Formula 
+\begin{align}
+K\left(5\right)= & \,5\nonumber \\
+s\left(5\right)= & -5\label{eq:lqt-example-boundary-conditions}
+\end{align}
+
+\end_inset
+
+and initial conditions 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $R$
+\end_inset
+
+ has purposefully been left as a symbol so that different values can be
+ tested against one another.
+ The Riccati equation and differential equation for 
+\begin_inset Formula $s$
+\end_inset
+
+ are
+\begin_inset Formula 
+\begin{align}
+\dot{K}\left(t\right)= & \,\frac{2}{3}K^{2}+\frac{4}{3}K-5\label{eq:lqt-example-riccati-equation}\\
+\dot{s}\left(t\right)= & \,\left(\frac{2000}{9}K+\frac{2}{3}\right)s+5.\label{eq:lqt-example-s-diff-eq}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving this system using steepest descent yields optimal control trajectory
+ and optimal state trajectory shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lqt-controller-example-plot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The state trajectory shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lqt-controller-example-plot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is quite different from those shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proportional-controller-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The optimal state trajectory reaches the reference signal, there is approximate
+ly 
+\begin_inset Formula $20\%$
+\end_inset
+
+ overshoot, and there is some damped oscillation around the reference.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/example_lqt2.eps
+	scale 42
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Step response of a system with LQT control
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lqt-controller-example-plot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

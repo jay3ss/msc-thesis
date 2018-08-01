@@ -1,0 +1,685 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openany
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0.5in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Motivation
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:motivation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Why Traffic is Important
+\end_layout
+
+\begin_layout Standard
+Transportation has played an integral role in human society from the very
+ beginning, allowing humans to colonize different geographical regions,
+ trade amongst different civilizations, and to spread ideas.
+ Initially, humans walked and carried items on their backs and heads.
+ Beasts of burden such as mules or oxen were then used which allowed for
+ more goods to be transported at a higher speed.
+ Then, roads were built and people and goods were carried by wheeled carts.
+ As transportation systems became more complex and advanced, people and
+ goods were able to be transported further and at greater speeds.
+\end_layout
+
+\begin_layout Standard
+Transportation has played an integral role in human society from the very
+ beginning, allowing humans to colonize different geographical regions,
+ trade amongst different civilizations, and to spread ideas.
+ Transport by land started by foot with people walking from place to place
+ carrying goods on their backs and heads.
+ By the early twentieth century, automobiles began to be mass produced in
+ America.
+ Initially they were seen as toys for the rich.
+ 
+\end_layout
+
+\begin_layout Standard
+Traffic congestion, air and noise pollution, and safety are common problems
+ that many cities face today.
+ It is estimated that 50% of the total population is living in cities, and
+ by 2050, this percentage is projected to grow over 70%, i.e.
+ over six billion people will live in cities and urban areas.
+ In 2014, U.S.
+ drivers drove over 2 trillion vehicle miles, with congestion costing over
+ 5 billion dollars on average for very large urban areas and over 191 million
+ dollars on average in small urban areas.
+ In 2014, there was a reported 5.9 million accidents by passenger vehicles
+ and the costs and accident rates are increasing on average across the nation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ntsaccidents"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The transportation engineering and planning communities are witnessing the
+ emergence of a new generation of traffic systems, also known as connected
+ and autonomous vehicles (CAVs).
+ Recent advancements in CAVs are expected to transform how people use transporta
+tion.
+ There is a growing interest in the research community to exploit the available
+ vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication
+ technologies in CAVs, to improve the efficiency and safety of traffic flow
+ while reducing emissions.
+ It is estimated that integration of CAVs will reduce about 40% of fatal
+ traffic accidents 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2016valuing"
+literal "false"
+
+\end_inset
+
+.
+ Aside from passenger and road safety, researchers also envision that CAV
+ technology will reduce congestion and fuel consumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fagnant2015preparing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The ability to communicate between vehicles improves the perception of the
+ driving environment and the quality of driving related decisions.
+ V2V communications provide detailed information about vehicle movements
+ and operation decisions (e.g., speed and acceleration), while V2I communications
+ provide detailed information on road and weather conditions.
+ The CAV is also able to obtain information from adjacent vehicles and predict
+ the traffic stream parameters ahead of them (e.g., shockwave formations).
+ The availability of V2I communications provides information on breakdown
+ formations (e.g., lane closures or accidents), changes in the speed limit,
+ work zone conditions, and additional information 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "talebpour2016influence"
+literal "false"
+
+\end_inset
+
+.
+ User experiences are important for smoother transition to next generation
+ technologies.
+ Bansal and Kockelman performed a national survey to understand the future
+ vehicle preferences related to CAV technology 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bansal2017forecasting"
+literal "false"
+
+\end_inset
+
+.
+ As noted by the respondents, traffic sign recognition and left turn assist
+ was of no interest, as about 46% of users were not willing to pay for the
+ technologies to be added to their vehicles.
+ However, respondents were very interested in a blind-spot monitoring system.
+ As a result, many manufacturers implemented this technology in their vehicles.
+ About 54.4% of the respondents perceived CAVs as a useful advancement in
+ the near future.
+ Furthermore, 50.4% of the respondents were comfortable with their vehicle
+ transmitting information to other vehicles and 62.3% were willing to trust
+ technology companies.
+ Most users show signs of accepting the changes, and as CAV technology continues
+ to advance, it will provide a positive impact on the future of mobility.
+\end_layout
+
+\begin_layout Section
+Trends Towards Automation in the Automotive Industry
+\end_layout
+
+\begin_layout Standard
+Like many other industries, the automotive industry is benefiting from the
+ increasing capabilities and especially shrinking footprint of computers.
+ Processing power is getting cheaper and because of this very powerful computers
+ are able to fit into smaller volumes including the cramped spaces inside
+ of motor vehicles.
+ Not only are computers more powerful, smaller, and cheaper than ever before
+ so are sensors.
+ Lidar, radar, and cameras are relatively cheap, powerful, and have high
+ resolution.
+ Powerful computers and sensors in novel objects is fertile ground for innovatio
+n.
+ Large automakers and smaller startups (many funded by large companies and/or
+ investors) are in a race to create the first autonomous vehicle.
+\end_layout
+
+\begin_layout Subsection
+Current Capabilities
+\end_layout
+
+\begin_layout Standard
+SAE International breaks down autonomous vehicles into six automation levels.
+ These levels are given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:sae-automation-levels"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and are sourced from the NHTSA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nhtsaautomatedlevels"
+literal "false"
+
+\end_inset
+
+.
+ The levels of automation range from the human driver being completely in
+ control 100% of the time (Level 0) to an Advanced Driver System (ADS) is
+ fully in control with no human intervention necessary (Level 5).
+ A great example of advancing automation in the automotive industry is Tesla.
+ 
+\end_layout
+
+\begin_layout Standard
+Currently, the 
+\begin_inset Quotes eld
+\end_inset
+
+Tesla Autopilot
+\begin_inset Quotes erd
+\end_inset
+
+ (which is one of the most advanced ADS on the market) is at Level 2 which
+ means that Tesla vehicles are capable of steering within a lane, maintaining
+ a speed relative to other vehicles, assisting lane changes, parking, and
+ summoning to and from garage.
+ Tesla will continue to update the Autopilot on its vehicles (which Tesla
+ will the Enhanced Autopilot), steadily adding new features such as automatic
+ lane keeping, speed matching, lane changing, freeway exiting, parking when
+ near a parking space.
+ Like many other car-makers, Tesla plans to eventually have its cars be
+ self-driving 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "teslaautopilotpresskit,teslaautopilot"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+SAE International automation levels
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:sae-automation-levels"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="15col%">
+<column alignment="center" valignment="top" width="78col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Automation Level
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Who does what, when
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The human driver does all the driving.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An advanced driver assistance system (ADAS) on the vehicle can sometimes
+ assist the human driver with either steering or braking/accelerating, but
+ not both simultaneously.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An ADAS on the vehicle can itself actually control both steering and braking/acc
+elerating simultaneously under some circumstances.
+ The human driver must continue to pay full attention (monitor the driving
+ environment) at all times and perform the rest of the driving task.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An Automated Driving System (ADS) on the vehicle can itself perform all
+ aspects of the driving task under some circumstances.
+ In those circumstances, the human driver must be ready to take back control
+ at any time when the ADS requests the human driver to do so.
+ In all other circumstances, the human driver performs the driving task.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An ADS on the vehicle can itself perform all driving tasks and monitor the
+ driving environment essentially, do all the driving in certain circumstances.
+ The human need not pay attention in those circumstances.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+An Automated Driving System (ADS) on the vehicle can do all the driving
+ in all circumstances.
+ The human occupants are just passengers and need never be involved in driving.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Research and Testing
+\end_layout
+
+\begin_layout Standard
+There are many companies that are competing in the race to the elusive self-driv
+ing car.
+ Some of the biggest names are Uber, Waymo (formerly known as the Google
+ self-driving car project), NVIDIA Corporation, and major car manufacturers
+ such as Honda, GM Cruise LLC, and Tesla 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2018permitholders"
+literal "false"
+
+\end_inset
+
+.
+ Because of the secretive nature of industrial research it's difficult to
+ determine just how far along each company is towards achieving full autonomy
+ for self-driving cars.
+ However, one way to determine how far along companies are towards realizing
+ a fully autonomous (Level 5) car is to examine documents that they are
+ required to release.
+ One such document is the Autonomous Vehicle Disengagement Report that the
+ California Department of Motor Vehicles requires as a part of the licensing
+ requirements for performing field tests on California roads under the Autonomou
+s Vehicle Testing Program.
+\end_layout
+
+\begin_layout Standard
+Autonomous Vehicle Disengagement Reports contain the number of miles driven
+ autonomously on public roads in California per month and disengagement
+ events and related information.
+ During field tests of autonomous vehicles, a driver must be in the driver's
+ seat of the vehicle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2016autovels"
+literal "false"
+
+\end_inset
+
+.
+ A disengagement event is 
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
+a deactivation of the autonomous mode when a failure of the autonomous technolog
+y is detected or when the safe operation of the vehicle requires that the
+ autonomous vehicle test driver disengage the autonomous mode and take immediate
+ manual control of the vehicle, or in the case of driverless vehicles, when
+ the safety of the vehicle, the occupants of the vehicle, or the public
+ requires that the autonomous technology be deactivated 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmvadoptedregulatorytext"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The information related to this event is what initiated the event (driver
+ or autonomous system), the location of the event, and a description of
+ the event 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cadmv2017disengagement"
+literal "false"
+
+\end_inset
+
+.
+ A very simple method to the progress that industry is making towards Level
+ 5 autonomy is to examine all of the Autonomous Vehicle Disengagement Reports
+ for each company for every year.
+ By doing so, a picture of each company's progress begins to emerge.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/disengagements_per_year.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Disengagements per year for the top three testers
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:disengagements-per-year"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It's interesting to note that Tesla is not included in 2017.
+ In that year's report Tesla states that it has not had any disengagement
+ events.
+ This is not because Tesla is not performing any autonomous tests, it's
+ just not performing any autonomous tests as defined by California law.
+ Tesla is performing autonomous tests via 
+\begin_inset Quotes eld
+\end_inset
+
+simulation, in laboratories, on test tracks, and on public roads in various
+ locations around the world
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tesla2017vehicletestdata"
+literal "false"
+
+\end_inset
+
+.
+ In addition, it's testing its control algorithms against the human drivers
+ of its vehicles out in field and thus considering its hundres of thousands
+ of customers' vehicles part of its test fleet.
+ By doing this Tesla has been able to acquire billions of test miles in
+ a very short time.
+ This is accomplished by the vehicles running in 
+\begin_inset Quotes eld
+\end_inset
+
+shadow mode
+\begin_inset Quotes erd
+\end_inset
+
+ which allows Tesla to collect telemetry data such as braking and acceleration
+ and Autopilot data and then uses this to develop and test its control algorithm
+s safely as none of the algorithms actuate the vehicle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "teslaprivacypolicy,tesla2017vehicletestdata"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
