@@ -177,17 +177,7 @@ noprefix "false"
 \begin_inset Formula $Q$
 \end_inset
 
- matrix in the cost function as shown in Equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:lqt-problem-R-matrix"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
+ matrix in the cost function.
  By doing so, more priority is given to the control action than the states
  which forces the control action to the main focus of the minimization process.
  In addition to having a comfortable and safe ride, this has the added benefit
@@ -197,8 +187,27 @@ noprefix "false"
 \begin_inset Formula $Q$
 \end_inset
 
- matrix larger for the velocities than the headways as shown in Equation
- 
+ matrix larger for the velocities than the headways.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-R-matrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the structure of 
+\begin_inset Formula $R$
+\end_inset
+
+, which is a diagonal matrix with 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ along the diagonal.
+ Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:lqt-problem-Q-matrix"
@@ -208,23 +217,53 @@ noprefix "false"
 
 \end_inset
 
+ shows the structure of 
+\begin_inset Formula $Q$
+\end_inset
 
+, which is a diagonal matrix with 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ corresponding to the 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ states and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ corresponding to the 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ along the diagonal 
 \begin_inset Formula 
 \begin{align}
-R= & \left[\begin{array}{ccc}
-10 & 0 & 0\\
-0 & 10 & 0\\
-0 & 0 & 10
-\end{array}\right]\label{eq:lqt-problem-R-matrix}\\
-Q= & \left[\begin{array}{cccccc}
-2.5e^{-5} & 0 &  & \cdots &  & 0\\
-0 & 1e^{-2}\\
- &  & 2.5e^{-5} & \ddots &  & \vdots\\
-\vdots &  & \ddots & 1e^{-2}\\
- &  &  &  & 2.5e^{-5} & 0\\
-0 &  & \cdots &  & 0 & 1e^{-2}
-\end{array}\right].\label{eq:lqt-problem-Q-matrix}
+R= & \,\text{diag}\left(\gamma,\gamma,\gamma\right)\label{eq:lqt-problem-R-matrix}\\
+Q= & \,\text{diag}\left(\alpha,\beta,\alpha,\beta,\alpha,\beta\right).\label{eq:lqt-problem-Q-matrix}
 \end{align}
+
+\end_inset
+
+The trajectory that is being track is given in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lqt-problem-tracked-trajectory"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{r}\left(t\right)=\left[h_{des},v_{max},h_{des},v_{max},h_{des},v_{max}\right]^{T}.\label{eq:lqt-problem-tracked-trajectory}
+\end{equation}
 
 \end_inset
 
@@ -233,6 +272,498 @@ Q= & \left[\begin{array}{cccccc}
 
 \begin_layout Section
 Simulation and Results
+\end_layout
+
+\begin_layout Standard
+The system was simulated using MATLAB with the parameters given in Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:lqt-problem-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:headways-of-lqt-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the headways of the three vehicles on the circular track under LQT
+ control.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:headways-of-lqt-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows what appears to be overshoot and oscillations while each vehicle
+ is tracking its desired headway.
+ Rather, this is an effect of each vehicle moving one after another and
+ the initial spacing of the vehicles.
+ So, although it appears that the third vehicle has a misses the trajectory
+ completely at first, it is actually the furthest ahead in the platoon.
+ After approximately two minutes all of the vehicles converge to the desired
+ headways and are at equidistant headways on the track.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:velocities-of-lqt-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the velocities of the vehicles.
+ Because vehicle three is the furthest ahead it has the most distance to
+ cover in order for it to reach the target trajectory.
+ This results in it moving first and once it's far enough away from the
+ other vehicles they begin to move and the third vehicle must slow down
+ to avoid colliding with its lead vehicle.
+ Vehicles one and two experience smooth velocities which monotonically increase.
+ After approximately two minutes all of the velocities are matched and after
+ approximately three minutes all of the vehicles' velocities converge to
+ the same desired value.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:controls-of-lqt-controller"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the control trajectories that the controller is commanding.
+ The controller stays within the parameters for each of the vehicles.
+ This would result in a comfortable ride for any human passengers as there
+ are no large, sudden accelerations or decelerations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Parameters used in MATLAB simulation
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:lqt-problem-parameters"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5\times10^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0\times10^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{des}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $141$
+\end_inset
+
+m
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{max}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5\frac{\text{m}}{\text{s}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $500$
+\end_inset
+
+s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{min}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.5\text{\frac{m}{s^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{max}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.5\text{\frac{m}{s^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/opt_ctrl_headways.eps
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Headways of vehicles move to equidistant positions on the circular track
+ while under LQT control.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:headways-of-lqt-controller"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/opt_ctrl_velocities.eps
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Velocities of vehicles converge to the same velocity on the circular track
+ while under LQT control
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:velocities-of-lqt-controller"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/opt_ctrl_controls.eps
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Control trajectories stay within the desired bounds on the circular track
+ while under LQT control.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:controls-of-lqt-controller"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
