@@ -4,7 +4,7 @@ three_car_init
 
 % Problem parameters
 Q = 2.5e-5*eye(size(A));
-Q(2, 2) = 1e-2; Q(4, 4) = 1e-2; Q(4, 4) = 1e-2;
+Q(2, 2) = 1e-2; Q(4, 4) = 1e-2; Q(6, 6) = 1e-2;
 H = Q;
 R = 10*eye(3);
 r = [HDES; VMAX; HDES; VMAX; HDES; VMAX];
