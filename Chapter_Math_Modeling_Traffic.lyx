@@ -757,7 +757,10 @@ Treiber and Kesting break
 
 .
  The dynamical term takes care of the situation when the vehicle is approaching
- the lead vehicle
+ the lead vehicle 
+\series bold
+\emph on
+finish this!!!
 \end_layout
 
 \begin_layout Standard
